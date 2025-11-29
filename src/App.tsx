@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/layout/Header";
 import BasicLineChart from "./pages/line/BasicLineChart";
+import SmoothedLineChart from "./pages/line/SmoothedLineChart";
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/line/basic-line-chart" element={<BasicLineChart />} />
+            <Route
+              path="/line/smoothed-line-chart"
+              element={<SmoothedLineChart />}
+            />
           </Routes>
         </div>
       </div>
