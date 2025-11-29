@@ -106,9 +106,14 @@ Le `ChartEditor` doit implémenter un système de redimensionnement des panneaux
 - Mettre à jour `/src/pages/Home.tsx` pour que la carte correspondante (`<section>/<titre>`) contienne un lien vers le nouveau composant créé.
 - Ajouter la route dans le router (ex: `/scatter/anscombes-quartet` → `AnscombesQuartet.tsx`)
 
-## Exception
+## Exceptions
 
-- Pas d'exception pour l'instant
+### CodePanel - Barre d'outils simplifiée
+
+Dans le composant `CodePanel`, la barre d'outils doit être minimaliste :
+
+- **Supprimer** : Les onglets de sélection de langage (JS/TS), les boutons de formatage et autres outils secondaires
+- **Conserver uniquement** : Le bouton "Run" pour exécuter le code
 
 ## Critères de succès
 
