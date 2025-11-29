@@ -1,11 +1,26 @@
 import { ChartEditor } from "../../components/chart-editor/ChartEditor";
 import type { EChartsOption } from "echarts";
 
+// Données de puissance en kW (mesures toutes les 2h)
+const powerData = [45, 32, 28, 52, 78, 65, 58, 62, 71, 98, 85, 56];
+
+// Calcul de l'énergie cumulée en kWh (intégrale par méthode des trapèzes)
+// Chaque intervalle = 2h, donc énergie = (P1 + P2) / 2 * 2h = (P1 + P2)
+const cumulativeEnergy: number[] = [];
+let cumul = 0;
+for (let i = 0; i < powerData.length; i++) {
+  if (i === 0) {
+    cumulativeEnergy.push(0);
+  } else {
+    cumul += powerData[i - 1] + powerData[i]; // (P1+P2)/2 * 2h = P1+P2
+    cumulativeEnergy.push(Math.round(cumul));
+  }
+}
+
 const option: EChartsOption = {
   title: {
-    text: "Consommation électrique journalière - Résidence Les Érables",
-    subtext:
-      "📈 Pic à 18h : +47% vs moyenne → Recommandation : décaler les machines à laver",
+    text: "Puissance électrique appelée - Résidence Les Érables",
+    subtext: "📈 Pic à 18h : +47% vs moyenne → Aire = énergie consommée (kWh)",
     left: "center",
     textStyle: {
       fontSize: 16,
@@ -24,8 +39,11 @@ const option: EChartsOption = {
       },
     },
     formatter: (params: unknown) => {
-      const data = (params as { name: string; value: number }[])[0];
-      return `${data.name}<br/>Consommation : <b>${data.value} kWh</b>`;
+      const data = (
+        params as { dataIndex: number; name: string; value: number }[]
+      )[0];
+      const cumul = cumulativeEnergy[data.dataIndex];
+      return `${data.name}<br/>Puissance : <b>${data.value} kW</b><br/>Énergie cumulée : <b>${cumul} kWh</b>`;
     },
   },
   grid: {
@@ -61,7 +79,7 @@ const option: EChartsOption = {
   },
   yAxis: {
     type: "value",
-    name: "kWh",
+    name: "kW",
     nameLocation: "end",
     max: 120,
     axisLabel: {
@@ -102,30 +120,21 @@ const option: EChartsOption = {
       emphasis: {
         focus: "series",
       },
-      data: [
-        { value: 45 },
-        { value: 32 },
-        { value: 28 },
-        { value: 52 },
-        { value: 78 },
-        { value: 65 },
-        { value: 58 },
-        { value: 62 },
-        { value: 71 },
-        {
-          value: 98,
-          itemStyle: { color: "#e74c3c" },
-          label: {
-            show: true,
-            formatter: "⚡ Pic",
-            position: "top",
-            color: "#e74c3c",
-            fontWeight: "bold",
-          },
-        },
-        { value: 85 },
-        { value: 56 },
-      ],
+      data: powerData.map((value, index) =>
+        index === 9
+          ? {
+              value,
+              itemStyle: { color: "#e74c3c" },
+              label: {
+                show: true,
+                formatter: "⚡ Pic",
+                position: "top",
+                color: "#e74c3c",
+                fontWeight: "bold" as const,
+              },
+            }
+          : { value }
+      ),
       markLine: {
         silent: true,
         data: [
@@ -133,7 +142,7 @@ const option: EChartsOption = {
             type: "average",
             name: "Moyenne",
             label: {
-              formatter: "Moy: {c} kWh",
+              formatter: "Moy: {c} kW",
               position: "insideEndTop",
             },
             lineStyle: {
