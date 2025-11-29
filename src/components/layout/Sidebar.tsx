@@ -50,16 +50,18 @@ const categories: Category[] = [
 ];
 
 // Icônes SVG simplifiées pour chaque type de graphique
-function ChartIcon({ type }: { type: string }) {
+function ChartIcon({ type, isActive }: { type: string; isActive?: boolean }) {
   const iconClass = "w-4 h-4";
+  const strokeColor = isActive ? "#3b82f6" : "#9ca3af";
+  const fillColor = isActive ? "#3b82f6" : "#9ca3af";
 
   switch (type) {
     case "line":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24">
           <path
             d="M3 17L9 11L13 15L21 7"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="2"
             fill="none"
           />
@@ -67,7 +69,7 @@ function ChartIcon({ type }: { type: string }) {
       );
     case "bar":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24" fill={fillColor}>
           <rect x="3" y="12" width="4" height="8" />
           <rect x="10" y="6" width="4" height="14" />
           <rect x="17" y="9" width="4" height="11" />
@@ -75,13 +77,13 @@ function ChartIcon({ type }: { type: string }) {
       );
     case "pie":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24" fill={fillColor}>
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8v8l6.93 4.04C17.45 18.22 14.89 20 12 20z" />
         </svg>
       );
     case "scatter":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24" fill={fillColor}>
           <circle cx="6" cy="18" r="2" />
           <circle cx="10" cy="12" r="2" />
           <circle cx="14" cy="16" r="2" />
@@ -91,20 +93,20 @@ function ChartIcon({ type }: { type: string }) {
       );
     case "geo":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24" fill={fillColor}>
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
         </svg>
       );
     case "candlestick":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24" fill={fillColor}>
           <rect x="5" y="8" width="3" height="8" />
           <line
             x1="6.5"
             y1="4"
             x2="6.5"
             y2="8"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="1"
           />
           <line
@@ -112,7 +114,7 @@ function ChartIcon({ type }: { type: string }) {
             y1="16"
             x2="6.5"
             y2="20"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="1"
           />
           <rect x="11" y="6" width="3" height="10" />
@@ -121,26 +123,26 @@ function ChartIcon({ type }: { type: string }) {
       );
     case "radar":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24">
           <polygon
             points="12,2 20,8 18,18 6,18 4,8"
             fill="none"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="2"
           />
           <polygon
             points="12,6 16,10 15,15 9,15 8,10"
-            fill="currentColor"
+            fill={fillColor}
             opacity="0.5"
           />
         </svg>
       );
     case "gl":
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24">
           <path
             d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="2"
             fill="none"
           />
@@ -148,7 +150,7 @@ function ChartIcon({ type }: { type: string }) {
       );
     default:
       return (
-        <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor">
+        <svg className={iconClass} viewBox="0 0 24 24">
           <rect
             x="3"
             y="3"
@@ -156,10 +158,10 @@ function ChartIcon({ type }: { type: string }) {
             height="18"
             rx="2"
             fill="none"
-            stroke="currentColor"
+            stroke={strokeColor}
             strokeWidth="2"
           />
-          <path d="M3 9h18M9 21V9" stroke="currentColor" strokeWidth="2" />
+          <path d="M3 9h18M9 21V9" stroke={strokeColor} strokeWidth="2" />
         </svg>
       );
   }
@@ -177,20 +179,20 @@ export default function Sidebar({
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredCategories = categories.filter((cat) =>
-    cat.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    cat.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <aside className="w-56 bg-white border-r border-gray-200 flex flex-col h-full overflow-hidden">
+    <aside className="w-[200px] min-w-[200px] bg-white border-r border-gray-200 flex flex-col h-full overflow-hidden">
       {/* Barre de recherche */}
-      <div className="p-3 border-b border-gray-200">
+      <div className="p-3 border-b border-gray-100">
         <div className="relative">
           <input
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 bg-white placeholder-gray-400"
           />
           <svg
             className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
@@ -209,29 +211,24 @@ export default function Sidebar({
       </div>
 
       {/* Liste des catégories */}
-      <nav className="flex-1 overflow-y-auto py-2">
-        {filteredCategories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => onCategoryChange(category.id)}
-            className={`w-full flex items-center gap-3 px-4 py-2 text-sm text-left transition-colors ${
-              selectedCategory === category.id
-                ? "bg-blue-50 text-blue-600 border-r-2 border-blue-600"
-                : "text-gray-700 hover:bg-gray-50"
-            }`}
-          >
-            <span
-              className={
-                selectedCategory === category.id
-                  ? "text-blue-600"
-                  : "text-gray-500"
-              }
+      <nav className="flex-1 overflow-y-auto py-1">
+        {filteredCategories.map((category) => {
+          const isActive = selectedCategory === category.id;
+          return (
+            <button
+              key={category.id}
+              onClick={() => onCategoryChange(category.id)}
+              className={`w-full flex items-center gap-3 px-4 py-2 text-[13px] text-left transition-colors ${
+                isActive
+                  ? "bg-blue-50 text-blue-600 border-r-2 border-blue-500"
+                  : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"
+              }`}
             >
-              <ChartIcon type={category.icon} />
-            </span>
-            <span>{category.name}</span>
-          </button>
-        ))}
+              <ChartIcon type={category.icon} isActive={isActive} />
+              <span>{category.name}</span>
+            </button>
+          );
+        })}
       </nav>
     </aside>
   );

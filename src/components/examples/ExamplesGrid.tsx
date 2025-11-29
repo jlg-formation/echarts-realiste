@@ -6,6 +6,49 @@ interface Example {
   category: string;
 }
 
+// Ordre des catégories pour l'affichage
+const categoryOrder = [
+  "line",
+  "bar",
+  "pie",
+  "scatter",
+  "map",
+  "candlestick",
+  "radar",
+  "boxplot",
+  "heatmap",
+  "graph",
+  "lines",
+  "tree",
+  "treemap",
+  "sunburst",
+  "parallel",
+  "sankey",
+  "funnel",
+  "gauge",
+  "pictorialBar",
+  "themeRiver",
+  "calendar",
+  "matrix",
+  "chord",
+  "custom",
+  "dataset",
+  "dataZoom",
+  "graphic",
+  "rich",
+  "globe",
+  "bar3D",
+  "scatter3D",
+  "surface",
+  "map3D",
+  "lines3D",
+  "line3D",
+  "scatterGL",
+  "linesGL",
+  "flowGL",
+  "graphGL",
+];
+
 // Données des exemples par catégorie
 const examplesData: Record<string, Example[]> = {
   line: [
@@ -592,83 +635,99 @@ function getThumbnailUrl(chartId: string): string {
   return `https://echarts.apache.org/examples/data/thumb/${chartId}.webp`;
 }
 
-interface ExamplesGridProps {
-  category: string;
+// Noms des catégories pour l'affichage
+const categoryNames: Record<string, string> = {
+  line: "Line",
+  bar: "Bar",
+  pie: "Pie",
+  scatter: "Scatter",
+  map: "GEO/Map",
+  candlestick: "Candlestick",
+  radar: "Radar",
+  boxplot: "Boxplot",
+  heatmap: "Heatmap",
+  graph: "Graph",
+  lines: "Lines",
+  tree: "Tree",
+  treemap: "Treemap",
+  sunburst: "Sunburst",
+  parallel: "Parallel",
+  sankey: "Sankey",
+  funnel: "Funnel",
+  gauge: "Gauge",
+  pictorialBar: "PictorialBar",
+  themeRiver: "ThemeRiver",
+  calendar: "Calendar",
+  matrix: "Matrix",
+  chord: "Chord",
+  custom: "Custom",
+  dataset: "Dataset",
+  dataZoom: "DataZoom",
+  graphic: "Graphic",
+  rich: "Rich Text",
+  globe: "3D Globe",
+  bar3D: "3D Bar",
+  scatter3D: "3D Scatter",
+  surface: "3D Surface",
+  map3D: "3D Map",
+  lines3D: "3D Lines",
+  line3D: "3D Line",
+  scatterGL: "Scatter GL",
+  linesGL: "Lines GL",
+  flowGL: "Flow GL",
+  graphGL: "Graph GL",
+};
+
+interface SectionProps {
+  categoryId: string;
+  examples: Example[];
 }
 
-export default function ExamplesGrid({ category }: ExamplesGridProps) {
-  const examples = examplesData[category] || [];
-
-  // Trouver le nom de la catégorie pour le titre
-  const categoryNames: Record<string, string> = {
-    line: "Line",
-    bar: "Bar",
-    pie: "Pie",
-    scatter: "Scatter",
-    map: "GEO/Map",
-    candlestick: "Candlestick",
-    radar: "Radar",
-    boxplot: "Boxplot",
-    heatmap: "Heatmap",
-    graph: "Graph",
-    lines: "Lines",
-    tree: "Tree",
-    treemap: "Treemap",
-    sunburst: "Sunburst",
-    parallel: "Parallel",
-    sankey: "Sankey",
-    funnel: "Funnel",
-    gauge: "Gauge",
-    pictorialBar: "PictorialBar",
-    themeRiver: "ThemeRiver",
-    calendar: "Calendar",
-    matrix: "Matrix",
-    chord: "Chord",
-    custom: "Custom",
-    dataset: "Dataset",
-    dataZoom: "DataZoom",
-    graphic: "Graphic",
-    rich: "Rich Text",
-    globe: "3D Globe",
-    bar3D: "3D Bar",
-    scatter3D: "3D Scatter",
-    surface: "3D Surface",
-    map3D: "3D Map",
-    lines3D: "3D Lines",
-    line3D: "3D Line",
-    scatterGL: "Scatter GL",
-    linesGL: "Lines GL",
-    flowGL: "Flow GL",
-    graphGL: "Graph GL",
-  };
+function Section({ categoryId, examples }: SectionProps) {
+  if (examples.length === 0) return null;
 
   return (
-    <div className="p-6">
+    <section
+      id={`section-${categoryId}`}
+      data-section={categoryId}
+      className="mb-8"
+    >
       {/* Titre de la section */}
-      <div className="flex items-center gap-3 mb-6">
+      <div className="flex items-center gap-3 mb-4">
         <h2 className="text-lg font-medium text-gray-800">
-          {categoryNames[category] || category}
+          {categoryNames[categoryId] || categoryId}
         </h2>
-        <span className="text-xs text-gray-400 lowercase">{category}</span>
+        <span className="text-xs text-gray-400 lowercase">{categoryId}</span>
       </div>
 
       {/* Grille d'exemples */}
-      {examples.length > 0 ? (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {examples.map((example) => (
-            <ExampleCard
-              key={example.id}
-              title={example.title}
-              thumbnail={getThumbnailUrl(example.id)}
-              chartId={example.id}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12 text-gray-500">
-          No examples available for this category.
-        </div>
-      )}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {examples.map((example) => (
+          <ExampleCard
+            key={example.id}
+            title={example.title}
+            thumbnail={getThumbnailUrl(example.id)}
+            chartId={example.id}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default function ExamplesGrid() {
+  return (
+    <div className="p-6">
+      {categoryOrder.map((categoryId) => {
+        const examples = examplesData[categoryId] || [];
+        return (
+          <Section
+            key={categoryId}
+            categoryId={categoryId}
+            examples={examples}
+          />
+        );
+      })}
     </div>
   );
 }

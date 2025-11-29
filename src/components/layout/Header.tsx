@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 export default function Header() {
   return (
-    <header className="h-[50px] bg-white flex items-center justify-between px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] relative z-50">
+    <header className="h-[50px] bg-[#293042] flex items-center justify-between px-5 shadow-md relative z-50">
       {/* Logo et navigation gauche */}
       <div className="flex items-center gap-8">
         <Link to="/" className="flex items-center">
@@ -16,12 +16,12 @@ export default function Header() {
         <nav className="flex items-center gap-6">
           <Link
             to="/"
-            className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors"
+            className="text-white/80 hover:text-white text-[14px] transition-colors"
           >
             Home
           </Link>
           <div className="relative group">
-            <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white text-[14px] transition-colors flex items-center gap-1">
               Docs
               <svg
                 className="w-2.5 h-2.5 ml-0.5"
@@ -39,7 +39,7 @@ export default function Header() {
             </button>
           </div>
           <div className="relative group">
-            <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white text-[14px] transition-colors flex items-center gap-1">
               Download
               <svg
                 className="w-2.5 h-2.5 ml-0.5"
@@ -58,12 +58,12 @@ export default function Header() {
           </div>
           <Link
             to="/"
-            className="text-[#e43961] text-[14px] transition-colors relative after:absolute after:bottom-[-13px] after:left-0 after:right-0 after:h-[2px] after:bg-[#e43961]"
+            className="text-[#e43961] text-[14px] font-medium transition-colors relative after:absolute after:bottom-[-14px] after:left-0 after:right-0 after:h-[3px] after:bg-[#e43961]"
           >
             Examples
           </Link>
           <div className="relative group">
-            <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white text-[14px] transition-colors flex items-center gap-1">
               Resources
               <svg
                 className="w-2.5 h-2.5 ml-0.5"
@@ -81,7 +81,7 @@ export default function Header() {
             </button>
           </div>
           <div className="relative group">
-            <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white text-[14px] transition-colors flex items-center gap-1">
               Community
               <svg
                 className="w-2.5 h-2.5 ml-0.5"
@@ -99,7 +99,7 @@ export default function Header() {
             </button>
           </div>
           <div className="relative group">
-            <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors flex items-center gap-1">
+            <button className="text-white/80 hover:text-white text-[14px] transition-colors flex items-center gap-1">
               ASF
               <svg
                 className="w-2.5 h-2.5 ml-0.5"
@@ -121,14 +121,14 @@ export default function Header() {
 
       {/* Navigation droite */}
       <div className="flex items-center gap-5">
-        <button className="text-[#6e7079] hover:text-[#e43961] text-[14px] transition-colors">
+        <button className="text-white/80 hover:text-white text-[14px] transition-colors">
           中文
         </button>
         <a
           href="https://github.com/apache/echarts"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#6e7079] hover:text-[#e43961] transition-colors"
+          className="text-white/80 hover:text-white transition-colors"
         >
           <svg
             className="w-[18px] h-[18px]"
