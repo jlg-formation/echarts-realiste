@@ -37,7 +37,7 @@ export default function PreviewPanel({
       darkMode ? "dark" : undefined,
       {
         renderer: renderType,
-      }
+      },
     );
 
     // Apply option with decal if needed

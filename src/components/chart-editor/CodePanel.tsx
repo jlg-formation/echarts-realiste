@@ -6,8 +6,6 @@ interface CodePanelProps {
   onRun: (newOption: EChartsOption) => void;
 }
 
-type Language = "js" | "ts";
-
 function formatOption(option: EChartsOption): string {
   const formatValue = (value: unknown, indent: number = 0): string => {
     const spaces = "  ".repeat(indent);
@@ -58,7 +56,6 @@ function formatOption(option: EChartsOption): string {
 }
 
 export default function CodePanel({ option, onRun }: CodePanelProps) {
-  const [language, setLanguage] = useState<Language>("js");
   const [code, setCode] = useState(() => formatOption(option));
 
   const handleRun = useCallback(() => {
@@ -75,10 +72,6 @@ export default function CodePanel({ option, onRun }: CodePanelProps) {
       console.error("Error parsing option:", error);
     }
   }, [code, onRun]);
-
-  const handleLanguageChange = useCallback((lang: Language) => {
-    setLanguage(lang);
-  }, []);
 
   return (
     <div className="flex flex-col h-full bg-white">
@@ -97,63 +90,17 @@ export default function CodePanel({ option, onRun }: CodePanelProps) {
         </div>
       </div>
 
-      {/* Language tabs + actions */}
-      <div className="flex items-center justify-between px-2 py-1 border-b border-gray-200 bg-gray-50">
-        <div className="flex items-center">
-          <button
-            onClick={() => handleLanguageChange("js")}
-            className={`px-3 py-1 text-xs font-medium rounded ${
-              language === "js"
-                ? "bg-yellow-400 text-yellow-900"
-                : "bg-gray-200 text-gray-600"
-            }`}
-          >
-            JS
-          </button>
-          <button
-            onClick={() => handleLanguageChange("ts")}
-            className={`ml-1 px-3 py-1 text-xs font-medium rounded ${
-              language === "ts"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-600"
-            }`}
-          >
-            TS
-          </button>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <button className="p-1.5 text-gray-500 hover:text-gray-700">
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 3v18M3 12h18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-          <button className="p-1.5 text-gray-500 hover:text-gray-700">
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M10 20l4-16M18 4l4 4-4 4M6 20l-4-4 4-4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            onClick={handleRun}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-green-500 rounded hover:bg-green-600 transition-colors"
-          >
-            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            Run
-          </button>
-        </div>
+      {/* Action bar - simplified with only Run button */}
+      <div className="flex items-center justify-end px-2 py-1 border-b border-gray-200 bg-gray-50">
+        <button
+          onClick={handleRun}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-green-500 rounded hover:bg-green-600 transition-colors"
+        >
+          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          Run
+        </button>
       </div>
 
       {/* Code editor area */}
