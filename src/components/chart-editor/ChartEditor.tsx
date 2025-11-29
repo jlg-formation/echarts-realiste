@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type { EChartsOption, ECharts } from "echarts";
 import CodePanel from "./CodePanel";
 import PreviewPanel from "./PreviewPanel";
@@ -10,6 +10,9 @@ interface ChartEditorProps {
   option: EChartsOption;
 }
 
+const MIN_PANEL_WIDTH = 300;
+const STORAGE_KEY = "chartEditorSplitPosition";
+
 export function ChartEditor({ title, section, option }: ChartEditorProps) {
   const [currentOption, setCurrentOption] = useState<EChartsOption>(option);
   const [generatedAt, setGeneratedAt] = useState(() => {
@@ -18,6 +21,65 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
   });
   const [generationTime, setGenerationTime] = useState(0);
   const chartInstanceRef = useRef<ECharts | null>(null);
+
+  // Resizable panels state
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [leftPanelWidth, setLeftPanelWidth] = useState<number>(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? parseInt(saved, 10) : 0; // 0 means 50%
+  });
+  const [isDragging, setIsDragging] = useState(false);
+  const [resizeKey, setResizeKey] = useState(0);
+
+  // Handle drag start
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  }, []);
+
+  // Handle drag
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerWidth = containerRect.width;
+      let newLeftWidth = e.clientX - containerRect.left;
+
+      // Apply minimum width constraints
+      newLeftWidth = Math.max(MIN_PANEL_WIDTH, newLeftWidth);
+      newLeftWidth = Math.min(containerWidth - MIN_PANEL_WIDTH, newLeftWidth);
+
+      setLeftPanelWidth(newLeftWidth);
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      // Save position to localStorage
+      if (leftPanelWidth > 0) {
+        localStorage.setItem(STORAGE_KEY, leftPanelWidth.toString());
+      }
+      // Trigger chart resize
+      setResizeKey((prev) => prev + 1);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging, leftPanelWidth]);
+
+  // Initialize left panel width on mount
+  useEffect(() => {
+    if (containerRef.current && leftPanelWidth === 0) {
+      setLeftPanelWidth(containerRef.current.offsetWidth / 2);
+    }
+  }, [leftPanelWidth]);
 
   const handleRun = useCallback((newOption: EChartsOption) => {
     setCurrentOption(newOption);
@@ -77,17 +139,29 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
         <span className="text-gray-800 font-medium">{title}</span>
       </div>
 
-      {/* Main content - 2 columns */}
-      <div className="flex flex-1 overflow-hidden">
+      {/* Main content - 2 resizable columns */}
+      <div ref={containerRef} className="flex flex-1 overflow-hidden">
         {/* Left panel - Code editor */}
-        <div className="w-1/2 border-r border-gray-300">
+        <div
+          className="border-r border-gray-300 overflow-hidden"
+          style={{ width: leftPanelWidth > 0 ? leftPanelWidth : "50%" }}
+        >
           <CodePanel option={currentOption} onRun={handleRun} />
         </div>
 
+        {/* Resizable divider */}
+        <div
+          className={`w-1 bg-gray-300 hover:bg-blue-400 cursor-col-resize transition-colors shrink-0 ${
+            isDragging ? "bg-blue-500" : ""
+          }`}
+          onMouseDown={handleMouseDown}
+        />
+
         {/* Right panel - Preview */}
-        <div className="w-1/2 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-[300px]">
           <div className="flex-1 overflow-hidden">
             <PreviewPanel
+              key={resizeKey}
               option={currentOption}
               onChartReady={handleChartReady}
               onGenerationTime={handleGenerationTime}

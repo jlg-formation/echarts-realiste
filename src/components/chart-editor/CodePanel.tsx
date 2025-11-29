@@ -27,17 +27,17 @@ function formatOption(option: EChartsOption): string {
           (v) =>
             typeof v === "string" ||
             typeof v === "number" ||
-            typeof v === "boolean"
+            typeof v === "boolean",
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${v}'` : String(v)
+          typeof v === "string" ? `'${v}'` : String(v),
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
       }
       const items = value.map(
-        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`
+        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`,
       );
       return `[\n${items.join(",\n")}\n${spaces}]`;
     }
@@ -46,7 +46,7 @@ function formatOption(option: EChartsOption): string {
       const entries = Object.entries(value as Record<string, unknown>);
       if (entries.length === 0) return "{}";
       const items = entries.map(
-        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`
+        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`,
       );
       return `{\n${items.join(",\n")}\n${spaces}}`;
     }

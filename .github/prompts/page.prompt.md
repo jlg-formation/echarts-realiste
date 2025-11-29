@@ -84,11 +84,22 @@ export default function AnscombesQuartet() {
 
 Le composant de page doit reproduire le layout de `/specifications/screenshots/dataviz.png` (basé sur `https://echarts.apache.org/examples/en/editor.html?c=line-simple`) :
 
-- **Structure en 2 colonnes** :
-  - **Panneau gauche** : Éditeur de code affichant l'objet `option` d'ECharts (avec onglets JS/TS, bouton Run)
-  - **Panneau droit** : Zone de prévisualisation du graphique avec options (Dark Mode, Decal Pattern, Render)
+- **Structure en 2 colonnes redimensionnables** :
+  - **Panneau gauche (`CodePanel`)** : Éditeur de code affichant l'objet `option` d'ECharts (avec onglets JS/TS, bouton Run)
+  - **Panneau droit (`PreviewPanel`)** : Zone de prévisualisation du graphique avec options (Dark Mode, Decal Pattern, Render)
+  - **Séparateur ajustable** : Un diviseur vertical draggable entre les deux panneaux permettant à l'utilisateur de redimensionner la largeur de chaque panneau en temps réel
 - **Barre d'actions en bas du panneau droit** : Boutons Download, Screenshot, Share
 - **Footer** : Horodatage et temps de génération du graphique
+
+### Panneaux redimensionnables
+
+Le `ChartEditor` doit implémenter un système de redimensionnement des panneaux :
+
+- **Séparateur draggable** : Une barre verticale (4-6px de large) entre `CodePanel` et `PreviewPanel` que l'utilisateur peut glisser horizontalement
+- **Curseur de redimensionnement** : Le curseur doit changer en `col-resize` au survol du séparateur
+- **Largeur minimale** : Chaque panneau doit avoir une largeur minimale (ex: 300px) pour éviter qu'il soit complètement réduit
+- **Persistance optionnelle** : La position du séparateur peut être sauvegardée en `localStorage` pour être restaurée à la prochaine visite
+- **Responsive** : Le graphique dans `PreviewPanel` doit se redimensionner automatiquement quand la largeur du panneau change
 
 ### Routing
 

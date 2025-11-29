@@ -37,7 +37,7 @@ export default function PreviewPanel({
       darkMode ? "dark" : undefined,
       {
         renderer: renderType,
-      }
+      },
     );
 
     // Apply option with decal if needed
@@ -68,8 +68,18 @@ export default function PreviewPanel({
 
     window.addEventListener("resize", handleResize);
 
+    // Use ResizeObserver to detect container size changes (for resizable panels)
+    const resizeObserver = new ResizeObserver(() => {
+      chartInstance.current?.resize();
+    });
+
+    if (chartRef.current) {
+      resizeObserver.observe(chartRef.current);
+    }
+
     return () => {
       window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       chartInstance.current?.dispose();
     };
   }, [initChart]);
