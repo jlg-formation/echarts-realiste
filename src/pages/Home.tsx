@@ -60,7 +60,7 @@ export default function Home() {
       />
 
       {/* Contenu principal */}
-      <main ref={mainRef} className="flex-1 bg-[#f9f9f9] overflow-y-auto">
+      <main ref={mainRef} className="flex-1 bg-[#f7f8fa] overflow-y-auto">
         <ExamplesGrid />
       </main>
     </div>

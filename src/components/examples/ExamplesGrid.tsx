@@ -690,18 +690,18 @@ function Section({ categoryId, examples }: SectionProps) {
     <section
       id={`section-${categoryId}`}
       data-section={categoryId}
-      className="mb-8"
+      className="mb-10"
     >
       {/* Titre de la section */}
-      <div className="flex items-center gap-3 mb-4">
-        <h2 className="text-lg font-medium text-gray-800">
+      <div className="flex items-baseline gap-3 mb-5">
+        <h2 className="text-2xl font-normal text-gray-800">
           {categoryNames[categoryId] || categoryId}
         </h2>
-        <span className="text-xs text-gray-400 lowercase">{categoryId}</span>
+        <span className="text-sm text-gray-400 lowercase">{categoryId}</span>
       </div>
 
       {/* Grille d'exemples */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div className="flex flex-wrap gap-6">
         {examples.map((example) => (
           <ExampleCard
             key={example.id}
