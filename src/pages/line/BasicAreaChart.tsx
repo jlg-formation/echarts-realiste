@@ -58,7 +58,7 @@ const option: EChartsOption = {
     boundaryGap: false,
     name: "Heure",
     nameLocation: "middle",
-    nameGap: 30,
+    nameGap: 25,
     data: [
       "00h",
       "02h",
@@ -157,7 +157,7 @@ const option: EChartsOption = {
         data: [
           [
             {
-              name: "Heures creuses",
+              name: "Tarif creux (-20%)",
               xAxis: "00h",
               itemStyle: {
                 color: "rgba(46, 204, 113, 0.1)",
@@ -169,7 +169,19 @@ const option: EChartsOption = {
           ],
           [
             {
-              name: "Heures pleines",
+              name: "Tarif normal",
+              xAxis: "06h",
+              itemStyle: {
+                color: "transparent",
+              },
+            },
+            {
+              xAxis: "16h",
+            },
+          ],
+          [
+            {
+              name: "Tarif plein (+15%)",
               xAxis: "16h",
               itemStyle: {
                 color: "rgba(231, 76, 60, 0.1)",
