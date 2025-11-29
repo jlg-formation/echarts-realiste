@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import type { EChartsOption, ECharts } from "echarts";
+import JsonTreeView from "./JsonTreeView";
 
 type TabType = "edit" | "full" | "preview";
 
@@ -28,17 +29,17 @@ function formatOption(option: EChartsOption): string {
           (v) =>
             typeof v === "string" ||
             typeof v === "number" ||
-            typeof v === "boolean",
+            typeof v === "boolean"
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${v}'` : String(v),
+          typeof v === "string" ? `'${v}'` : String(v)
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
       }
       const items = value.map(
-        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`,
+        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`
       );
       return `[\n${items.join(",\n")}\n${spaces}]`;
     }
@@ -47,7 +48,7 @@ function formatOption(option: EChartsOption): string {
       const entries = Object.entries(value as Record<string, unknown>);
       if (entries.length === 0) return "{}";
       const items = entries.map(
-        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`,
+        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`
       );
       return `{\n${items.join(",\n")}\n${spaces}}`;
     }
@@ -82,15 +83,14 @@ export default function CodePanel({
 
   // Option Preview: affiche l'option COMPLETE via chart.getOption()
   // Cela inclut toutes les valeurs par défaut appliquées par ECharts
-  const optionPreview = useMemo(() => {
+  const resolvedOption = useMemo(() => {
     if (!chartInstance) {
-      return "// Chart not ready yet...";
+      return null;
     }
     try {
-      const resolvedOption = chartInstance.getOption();
-      return JSON.stringify(resolvedOption, null, 2);
+      return chartInstance.getOption();
     } catch {
-      return "// Error getting option from chart";
+      return null;
     }
   }, [chartInstance]);
 
@@ -109,18 +109,60 @@ export default function CodePanel({
     }
   }, [code, onRun]);
 
+  // Code affiché pour les onglets Edit Code et Full Code
   const displayCode = useMemo(() => {
-    switch (activeTab) {
-      case "edit":
-        return code;
-      case "full":
-        return fullCode;
-      case "preview":
-        return optionPreview;
-    }
-  }, [activeTab, code, fullCode, optionPreview]);
+    if (activeTab === "edit") return code;
+    if (activeTab === "full") return fullCode;
+    return "";
+  }, [activeTab, code, fullCode]);
 
-  const isReadOnly = activeTab !== "edit";
+  // Rendu du contenu en fonction de l'onglet actif
+  const renderContent = () => {
+    if (activeTab === "preview") {
+      // Affichage en arbre dépliable pour Option Preview
+      return (
+        <div className="flex-1 overflow-auto bg-gray-50">
+          {resolvedOption ? (
+            <JsonTreeView data={resolvedOption} initialExpanded={true} />
+          ) : (
+            <div className="p-4 text-gray-500 text-sm">
+              Chart not ready yet...
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Affichage code pour Edit Code et Full Code
+    const isReadOnly = activeTab === "full";
+
+    return (
+      <div className="flex h-full">
+        {/* Line numbers */}
+        <div className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono">
+          {displayCode.split("\n").map((_: string, i: number) => (
+            <div key={i} className="leading-5">
+              {i + 1}
+            </div>
+          ))}
+        </div>
+
+        {/* Code content */}
+        {isReadOnly ? (
+          <pre className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto">
+            {displayCode}
+          </pre>
+        ) : (
+          <textarea
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white"
+            spellCheck={false}
+          />
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="flex flex-col h-full bg-white">
@@ -174,32 +216,7 @@ export default function CodePanel({
       </div>
 
       {/* Code editor area */}
-      <div className="flex-1 overflow-auto">
-        <div className="flex h-full">
-          {/* Line numbers */}
-          <div className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono">
-            {displayCode.split("\n").map((_, i) => (
-              <div key={i} className="leading-5">
-                {i + 1}
-              </div>
-            ))}
-          </div>
-
-          {/* Code content */}
-          {isReadOnly ? (
-            <pre className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto">
-              {displayCode}
-            </pre>
-          ) : (
-            <textarea
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white"
-              spellCheck={false}
-            />
-          )}
-        </div>
-      </div>
+      <div className="flex-1 overflow-auto">{renderContent()}</div>
     </div>
   );
 }
