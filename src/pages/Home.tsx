@@ -14,7 +14,9 @@ export default function Home() {
       setActiveCategory(categoryId);
 
       // Scroll rapide avec easing
-      const targetPosition = element.offsetTop;
+      // Offset pour que le titre soit visible (pas masqué par le padding)
+      const offset = 60;
+      const targetPosition = element.offsetTop - offset;
       const startPosition = mainRef.current.scrollTop;
       const distance = targetPosition - startPosition;
       const duration = 200; // 200ms pour un scroll rapide
