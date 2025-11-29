@@ -10,7 +10,7 @@ Expert en visualisation de donnée réaliste et en insight.
 ## Ton objectif
 
 Imiter au maximum la page du site web de demonstration `https://echarts.apache.org/examples/en/index.html`
-Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se trouve à `/specifications/screenshots/accueil.png`
+Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se trouve dans le fichier `/specifications/screenshots/accueil.png`
 
 ## Contraintes
 

@@ -1,12 +1,22 @@
+import { useState } from "react";
+import Sidebar from "../components/layout/Sidebar";
+import ExamplesGrid from "../components/examples/ExamplesGrid";
+
 export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState("line");
+
   return (
-    <div className="p-8">
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">
-        Bienvenue sur la page d'accueil
-      </h1>
-      <p className="text-gray-700 text-lg">
-        Ceci est une démonstration de React Router avec Tailwind CSS.
-      </p>
+    <div className="flex h-full">
+      {/* Sidebar */}
+      <Sidebar
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+      />
+
+      {/* Contenu principal */}
+      <main className="flex-1 bg-gray-50 overflow-y-auto">
+        <ExamplesGrid category={selectedCategory} />
+      </main>
     </div>
   );
 }
