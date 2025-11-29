@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/layout/Header";
+import BasicLineChart from "./pages/line/BasicLineChart";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/line/basic-line-chart" element={<BasicLineChart />} />
           </Routes>
         </div>
       </div>

@@ -4,6 +4,7 @@ interface Example {
   id: string;
   title: string;
   category: string;
+  internalLink?: string;
 }
 
 // Ordre des catégories pour l'affichage
@@ -52,7 +53,12 @@ const categoryOrder = [
 // Données des exemples par catégorie
 const examplesData: Record<string, Example[]> = {
   line: [
-    { id: "line-simple", title: "Basic Line Chart", category: "line" },
+    {
+      id: "line-simple",
+      title: "Basic Line Chart",
+      category: "line",
+      internalLink: "/line/basic-line-chart",
+    },
     { id: "line-smooth", title: "Smoothed Line Chart", category: "line" },
     { id: "area-basic", title: "Basic area chart", category: "line" },
     { id: "line-stack", title: "Stacked Line Chart", category: "line" },
@@ -708,6 +714,7 @@ function Section({ categoryId, examples }: SectionProps) {
             title={example.title}
             thumbnail={getThumbnailUrl(example.id)}
             chartId={example.id}
+            internalLink={example.internalLink}
           />
         ))}
       </div>
