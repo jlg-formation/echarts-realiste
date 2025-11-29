@@ -133,7 +133,7 @@ const option: EChartsOption = {
                 fontWeight: "bold" as const,
               },
             }
-          : { value }
+          : { value },
       ),
       markLine: {
         silent: true,

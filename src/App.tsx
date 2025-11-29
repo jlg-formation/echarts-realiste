@@ -8,7 +8,7 @@ import BasicAreaChart from "./pages/line/BasicAreaChart";
 
 function App() {
   return (
-    <BrowserRouter basename="/echarts-realiste">
+    <BrowserRouter basename="/echarts-realiste/">
       <div className="h-screen flex flex-col bg-gray-50">
         <Header />
         <div className="flex-1 overflow-hidden">
