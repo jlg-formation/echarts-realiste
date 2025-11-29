@@ -112,8 +112,51 @@ Le `ChartEditor` doit implémenter un système de redimensionnement des panneaux
 
 Dans le composant `CodePanel`, la barre d'outils doit être minimaliste :
 
-- **Supprimer** : Les onglets de sélection de langage (JS/TS), les boutons de formatage et autres outils secondaires
+- **Supprimer** : Les onglets de sélection de langage (JS/TS), les boutons de formatage, "Open with CodePen", "Open with CodeSandbox" et autres outils secondaires
 - **Conserver uniquement** : Le bouton "Run" pour exécuter le code
+
+### CodePanel - Onglets de vue (comme sur le site original)
+
+Le `CodePanel` doit implémenter 3 onglets de vue en haut du panneau, identiques à ceux du site original (`https://echarts.apache.org/examples/en/editor.html?c=line-simple`) :
+
+1. **Edit Code** (onglet par défaut) :
+   - Affiche uniquement le contenu de l'objet `option` dans l'éditeur de code
+   - C'est le code que l'utilisateur peut modifier directement
+   - Exemple : `{ xAxis: { type: 'category', ... }, yAxis: { ... }, series: [...] }`
+
+2. **Full Code** :
+   - Affiche le code JavaScript/TypeScript complet et autonome pour créer le graphique
+   - Inclut les imports, l'initialisation du DOM, la création de l'instance ECharts, et l'appel à `setOption()`
+   - Exemple :
+
+     ```javascript
+     import * as echarts from "echarts";
+
+     var chartDom = document.getElementById("main");
+     var myChart = echarts.init(chartDom);
+     var option;
+
+     option = {
+       // ... le contenu de l'option
+     };
+
+     option && myChart.setOption(option);
+     ```
+
+   - Ce code est en lecture seule (non éditable) et sert à montrer comment utiliser le graphique dans un projet réel
+
+3. **Option Preview** :
+   - Affiche l'objet `option` **complet et résolu** tel qu'il est réellement appliqué au graphique par ECharts
+   - Cela inclut toutes les propriétés : celles définies explicitement par l'utilisateur ET celles générées par défaut par ECharts (couleurs, styles, marges, animations, etc.)
+   - Pour obtenir cet objet complet, utiliser la méthode `chart.getOption()` sur l'instance ECharts après le rendu
+   - Format JSON prettifié et en lecture seule
+   - Utile pour inspecter la configuration finale complète du graphique, y compris les valeurs par défaut appliquées automatiquement
+
+#### Style des onglets
+
+- Les onglets doivent être affichés horizontalement en haut du `CodePanel`
+- L'onglet actif doit être visuellement distinct (texte plus foncé, bordure inférieure colorée)
+- Les onglets inactifs doivent avoir un style plus discret (gris clair)
 
 ## Critères de succès
 

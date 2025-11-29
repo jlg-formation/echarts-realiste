@@ -1,9 +1,12 @@
-import { useState, useCallback } from "react";
-import type { EChartsOption } from "echarts";
+import { useState, useCallback, useMemo } from "react";
+import type { EChartsOption, ECharts } from "echarts";
+
+type TabType = "edit" | "full" | "preview";
 
 interface CodePanelProps {
   option: EChartsOption;
   onRun: (newOption: EChartsOption) => void;
+  chartInstance: ECharts | null;
 }
 
 function formatOption(option: EChartsOption): string {
@@ -25,17 +28,17 @@ function formatOption(option: EChartsOption): string {
           (v) =>
             typeof v === "string" ||
             typeof v === "number" ||
-            typeof v === "boolean",
+            typeof v === "boolean"
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${v}'` : String(v),
+          typeof v === "string" ? `'${v}'` : String(v)
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
       }
       const items = value.map(
-        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`,
+        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`
       );
       return `[\n${items.join(",\n")}\n${spaces}]`;
     }
@@ -44,7 +47,7 @@ function formatOption(option: EChartsOption): string {
       const entries = Object.entries(value as Record<string, unknown>);
       if (entries.length === 0) return "{}";
       const items = entries.map(
-        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`,
+        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`
       );
       return `{\n${items.join(",\n")}\n${spaces}}`;
     }
@@ -55,8 +58,41 @@ function formatOption(option: EChartsOption): string {
   return `option = ${formatValue(option)};`;
 }
 
-export default function CodePanel({ option, onRun }: CodePanelProps) {
+function generateFullCode(optionCode: string): string {
+  return `import * as echarts from 'echarts';
+
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+${optionCode}
+
+option && myChart.setOption(option);`;
+}
+
+export default function CodePanel({
+  option,
+  onRun,
+  chartInstance,
+}: CodePanelProps) {
+  const [activeTab, setActiveTab] = useState<TabType>("edit");
   const [code, setCode] = useState(() => formatOption(option));
+
+  const fullCode = useMemo(() => generateFullCode(code), [code]);
+
+  // Option Preview: affiche l'option COMPLETE via chart.getOption()
+  // Cela inclut toutes les valeurs par défaut appliquées par ECharts
+  const optionPreview = useMemo(() => {
+    if (!chartInstance) {
+      return "// Chart not ready yet...";
+    }
+    try {
+      const resolvedOption = chartInstance.getOption();
+      return JSON.stringify(resolvedOption, null, 2);
+    } catch {
+      return "// Error getting option from chart";
+    }
+  }, [chartInstance]);
 
   const handleRun = useCallback(() => {
     try {
@@ -73,18 +109,52 @@ export default function CodePanel({ option, onRun }: CodePanelProps) {
     }
   }, [code, onRun]);
 
+  const displayCode = useMemo(() => {
+    switch (activeTab) {
+      case "edit":
+        return code;
+      case "full":
+        return fullCode;
+      case "preview":
+        return optionPreview;
+    }
+  }, [activeTab, code, fullCode, optionPreview]);
+
+  const isReadOnly = activeTab !== "edit";
+
   return (
     <div className="flex flex-col h-full bg-white">
       {/* Tabs header */}
       <div className="flex items-center justify-between px-2 border-b border-gray-200">
         <div className="flex items-center">
-          <button className="px-4 py-2 text-sm text-blue-600 border-b-2 border-blue-600">
+          <button
+            onClick={() => setActiveTab("edit")}
+            className={`px-4 py-2 text-sm transition-colors ${
+              activeTab === "edit"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
             Edit Code
           </button>
-          <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
+          <button
+            onClick={() => setActiveTab("full")}
+            className={`px-4 py-2 text-sm transition-colors ${
+              activeTab === "full"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
             Full Code
           </button>
-          <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
+          <button
+            onClick={() => setActiveTab("preview")}
+            className={`px-4 py-2 text-sm transition-colors ${
+              activeTab === "preview"
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
             Option Preview
           </button>
         </div>
@@ -108,7 +178,7 @@ export default function CodePanel({ option, onRun }: CodePanelProps) {
         <div className="flex h-full">
           {/* Line numbers */}
           <div className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono">
-            {code.split("\n").map((_, i) => (
+            {displayCode.split("\n").map((_, i) => (
               <div key={i} className="leading-5">
                 {i + 1}
               </div>
@@ -116,12 +186,18 @@ export default function CodePanel({ option, onRun }: CodePanelProps) {
           </div>
 
           {/* Code content */}
-          <textarea
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white"
-            spellCheck={false}
-          />
+          {isReadOnly ? (
+            <pre className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto">
+              {displayCode}
+            </pre>
+          ) : (
+            <textarea
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+              className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white"
+              spellCheck={false}
+            />
+          )}
         </div>
       </div>
     </div>

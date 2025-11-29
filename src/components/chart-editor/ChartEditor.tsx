@@ -21,7 +21,7 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
     return now.toLocaleTimeString("en-US", { hour12: false });
   });
   const [generationTime, setGenerationTime] = useState(0);
-  const chartInstanceRef = useRef<ECharts | null>(null);
+  const [chartInstance, setChartInstance] = useState<ECharts | null>(null);
 
   // Resizable panels state
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
   }, []);
 
   const handleChartReady = useCallback((chart: ECharts) => {
-    chartInstanceRef.current = chart;
+    setChartInstance(chart);
   }, []);
 
   const handleGenerationTime = useCallback((time: number) => {
@@ -109,9 +109,9 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
   }, [currentOption, title]);
 
   const handleScreenshot = useCallback(() => {
-    if (!chartInstanceRef.current) return;
+    if (!chartInstance) return;
 
-    const dataUrl = chartInstanceRef.current.getDataURL({
+    const dataUrl = chartInstance.getDataURL({
       type: "png",
       pixelRatio: 2,
       backgroundColor: "#fff",
@@ -121,7 +121,7 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
     link.href = dataUrl;
     link.download = `${title.toLowerCase().replace(/\s+/g, "-")}.png`;
     link.click();
-  }, [title]);
+  }, [chartInstance, title]);
 
   const handleShare = useCallback(() => {
     // Copy current URL to clipboard
@@ -157,7 +157,11 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
           className="border-r border-gray-300 overflow-hidden"
           style={{ width: leftPanelWidth > 0 ? leftPanelWidth : "50%" }}
         >
-          <CodePanel option={currentOption} onRun={handleRun} />
+          <CodePanel
+            option={currentOption}
+            onRun={handleRun}
+            chartInstance={chartInstance}
+          />
         </div>
 
         {/* Resizable divider */}
