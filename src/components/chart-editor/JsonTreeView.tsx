@@ -14,7 +14,7 @@ interface TreeNodeProps {
 
 function TreeNode({ keyName, value, depth, initialExpanded }: TreeNodeProps) {
   const [isExpanded, setIsExpanded] = useState(
-    initialExpanded && depth < 2 // Auto-expand first 2 levels
+    initialExpanded && depth < 2, // Auto-expand first 2 levels
   );
 
   const toggleExpand = useCallback(() => {

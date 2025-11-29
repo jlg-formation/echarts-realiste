@@ -171,7 +171,7 @@ export default function CodePanel({
         <div className="flex items-center">
           <button
             onClick={() => setActiveTab("edit")}
-            className={`px-4 py-2 text-sm transition-colors ${
+            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
               activeTab === "edit"
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-500 hover:text-gray-700"
@@ -181,7 +181,7 @@ export default function CodePanel({
           </button>
           <button
             onClick={() => setActiveTab("full")}
-            className={`px-4 py-2 text-sm transition-colors ${
+            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
               activeTab === "full"
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-500 hover:text-gray-700"
@@ -191,7 +191,7 @@ export default function CodePanel({
           </button>
           <button
             onClick={() => setActiveTab("preview")}
-            className={`px-4 py-2 text-sm transition-colors ${
+            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
               activeTab === "preview"
                 ? "text-blue-600 border-b-2 border-blue-600"
                 : "text-gray-500 hover:text-gray-700"

@@ -159,6 +159,7 @@ Le `CodePanel` doit implémenter 3 onglets de vue en haut du panneau, identiques
 #### Style des onglets
 
 - Les onglets doivent être affichés horizontalement en haut du `CodePanel`
+- Les onglets doivent avoir un curseur `cursor-pointer` pour indiquer qu'ils sont cliquables
 - L'onglet actif doit être visuellement distinct (texte plus foncé, bordure inférieure colorée)
 - Les onglets inactifs doivent avoir un style plus discret (gris clair)
 
