@@ -14,7 +14,8 @@ Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se tro
 
 ## Contraintes
 
-- Aucune pour l'instant
+- L'entête (`/src/components/layout/Header.tsx`) doit ressembler exactement à l'entête du screenshot, notamment les couleurs de fonds, effet d'ombrage, fontes, etc.
+- L'entête se positionne au dessus (z-index) de la sidebar et du contenu principal pour assurer la visibilité de l'ombrage.
 
 ## Critères de succès
 
