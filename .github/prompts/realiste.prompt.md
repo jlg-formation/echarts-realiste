@@ -77,6 +77,9 @@ Le but est de montrer un cas d'utilisation d'un graphique en l'intégrant dans u
 ## Critères de succès
 
 - Le page revisitée doit présenter un scénario réaliste.
+- Aucun probleme d'accessibilité (couleur, contraste, taille de caractères, etc.)
+- Pas de texte tronqué
+- Pas de recouvrement de texte
 
 ## Exemple avant/après
 
