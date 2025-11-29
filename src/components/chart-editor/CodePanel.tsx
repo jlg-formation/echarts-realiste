@@ -10,6 +10,15 @@ interface CodePanelProps {
   chartInstance: ECharts | null;
 }
 
+function escapeString(str: string): string {
+  return str
+    .replace(/\\/g, "\\\\")
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, "\\n")
+    .replace(/\r/g, "\\r")
+    .replace(/\t/g, "\\t");
+}
+
 function formatOption(option: EChartsOption): string {
   const formatValue = (value: unknown, indent: number = 0): string => {
     const spaces = "  ".repeat(indent);
@@ -17,7 +26,11 @@ function formatOption(option: EChartsOption): string {
 
     if (value === null) return "null";
     if (value === undefined) return "undefined";
-    if (typeof value === "string") return `'${value}'`;
+    if (typeof value === "function") {
+      // Sérialiser les fonctions en préservant leur code source
+      return value.toString();
+    }
+    if (typeof value === "string") return `'${escapeString(value)}'`;
     if (typeof value === "number" || typeof value === "boolean")
       return String(value);
 
@@ -33,7 +46,7 @@ function formatOption(option: EChartsOption): string {
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${v}'` : String(v)
+          typeof v === "string" ? `'${escapeString(v)}'` : String(v)
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
