@@ -146,11 +146,15 @@ Le `CodePanel` doit implémenter 3 onglets de vue en haut du panneau, identiques
    - Ce code est en lecture seule (non éditable) et sert à montrer comment utiliser le graphique dans un projet réel
 
 3. **Option Preview** :
+   - Se référer au screenshot `/specifications/screenshots/option-preview.png` pour le rendu visuel attendu
    - Affiche l'objet `option` **complet et résolu** tel qu'il est réellement appliqué au graphique par ECharts
    - Cela inclut toutes les propriétés : celles définies explicitement par l'utilisateur ET celles générées par défaut par ECharts (couleurs, styles, marges, animations, etc.)
    - Pour obtenir cet objet complet, utiliser la méthode `chart.getOption()` sur l'instance ECharts après le rendu
-   - Format JSON prettifié et en lecture seule
-   - Utile pour inspecter la configuration finale complète du graphique, y compris les valeurs par défaut appliquées automatiquement
+   - **Affichage en arbre dépliable** : L'objet JSON doit être présenté sous forme d'arbre interactif (tree view) où chaque nœud (objet ou tableau) peut être déplié/replié en cliquant dessus
+   - Chaque niveau de l'arbre doit afficher une icône ou un indicateur visuel (▶/▼) pour indiquer l'état déplié/replié
+   - Les clés et valeurs doivent être colorées différemment pour une meilleure lisibilité (clés en violet/bleu, chaînes en vert, nombres en orange, etc.)
+   - Vue en lecture seule
+   - Utile pour explorer et inspecter la configuration finale complète du graphique de manière interactive
 
 #### Style des onglets
 
