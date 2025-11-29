@@ -5,7 +5,7 @@ import Header from "./components/layout/Header";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/echarts-realiste">
       <div className="h-screen flex flex-col bg-gray-50">
         <Header />
         <div className="flex-1 overflow-hidden">

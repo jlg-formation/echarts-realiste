@@ -1,0 +1,53 @@
+name: Deploy Vite site to Pages with Bun
+
+on:
+  push:
+    branches: [master]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Not needed if lastUpdated is not enabled
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.21
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Build with Vite
+        run: bun run build
+      - name: SPA fallback
+        run: cp dist/index.html dist/404.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
