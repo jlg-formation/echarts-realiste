@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useRef } from "react";
 import type { EChartsOption, ECharts } from "echarts";
 import JsonTreeView from "./JsonTreeView";
 
@@ -29,17 +29,17 @@ function formatOption(option: EChartsOption): string {
           (v) =>
             typeof v === "string" ||
             typeof v === "number" ||
-            typeof v === "boolean",
+            typeof v === "boolean"
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${v}'` : String(v),
+          typeof v === "string" ? `'${v}'` : String(v)
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
       }
       const items = value.map(
-        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`,
+        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`
       );
       return `[\n${items.join(",\n")}\n${spaces}]`;
     }
@@ -48,7 +48,7 @@ function formatOption(option: EChartsOption): string {
       const entries = Object.entries(value as Record<string, unknown>);
       if (entries.length === 0) return "{}";
       const items = entries.map(
-        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`,
+        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`
       );
       return `{\n${items.join(",\n")}\n${spaces}}`;
     }
@@ -78,6 +78,7 @@ export default function CodePanel({
 }: CodePanelProps) {
   const [activeTab, setActiveTab] = useState<TabType>("edit");
   const [code, setCode] = useState(() => formatOption(option));
+  const lineNumbersRef = useRef<HTMLDivElement>(null);
 
   const fullCode = useMemo(() => generateFullCode(code), [code]);
 
@@ -109,6 +110,16 @@ export default function CodePanel({
     }
   }, [code, onRun]);
 
+  // Synchronise le scroll des numéros de ligne avec le code
+  const handleScroll = useCallback(
+    (e: React.UIEvent<HTMLTextAreaElement | HTMLPreElement>) => {
+      if (lineNumbersRef.current) {
+        lineNumbersRef.current.scrollTop = e.currentTarget.scrollTop;
+      }
+    },
+    []
+  );
+
   // Code affiché pour les onglets Edit Code et Full Code
   const displayCode = useMemo(() => {
     if (activeTab === "edit") return code;
@@ -137,9 +148,12 @@ export default function CodePanel({
     const isReadOnly = activeTab === "full";
 
     return (
-      <div className="flex h-full">
+      <div className="flex h-full overflow-hidden">
         {/* Line numbers */}
-        <div className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono">
+        <div
+          ref={lineNumbersRef}
+          className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono overflow-hidden"
+        >
           {displayCode.split("\n").map((_: string, i: number) => (
             <div key={i} className="leading-5">
               {i + 1}
@@ -149,14 +163,18 @@ export default function CodePanel({
 
         {/* Code content */}
         {isReadOnly ? (
-          <pre className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto">
+          <pre
+            onScroll={handleScroll}
+            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto"
+          >
             {displayCode}
           </pre>
         ) : (
           <textarea
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white"
+            onScroll={handleScroll}
+            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white overflow-auto"
             spellCheck={false}
           />
         )}
@@ -206,7 +224,7 @@ export default function CodePanel({
       <div className="flex items-center justify-end px-2 py-1 border-b border-gray-200 bg-gray-50">
         <button
           onClick={handleRun}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-green-500 rounded hover:bg-green-600 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-green-500 rounded hover:bg-green-600 transition-colors cursor-pointer"
         >
           <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z" />
@@ -216,7 +234,7 @@ export default function CodePanel({
       </div>
 
       {/* Code editor area */}
-      <div className="flex-1 overflow-auto">{renderContent()}</div>
+      <div className="flex-1 overflow-hidden">{renderContent()}</div>
     </div>
   );
 }
