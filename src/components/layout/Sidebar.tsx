@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface Category {
   id: string;
   name: string;
@@ -176,49 +174,17 @@ export default function Sidebar({
   selectedCategory,
   onCategoryChange,
 }: SidebarProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredCategories = categories.filter((cat) =>
-    cat.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
-
   return (
     <aside className="w-[200px] min-w-[200px] bg-white border-r border-gray-200 flex flex-col h-full overflow-hidden">
-      {/* Barre de recherche */}
-      <div className="p-3 border-b border-gray-100">
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 bg-white placeholder-gray-400"
-          />
-          <svg
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
-      </div>
-
       {/* Liste des catégories */}
       <nav className="flex-1 overflow-y-auto py-1">
-        {filteredCategories.map((category) => {
+        {categories.map((category) => {
           const isActive = selectedCategory === category.id;
           return (
             <button
               key={category.id}
               onClick={() => onCategoryChange(category.id)}
-              className={`w-full flex items-center gap-3 px-4 py-2 text-[13px] text-left transition-colors ${
+              className={`w-full flex items-center gap-3 px-4 py-2 text-[13px] text-left transition-colors cursor-pointer ${
                 isActive
                   ? "bg-blue-50 text-blue-600 border-r-2 border-blue-500"
                   : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"

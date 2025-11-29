@@ -19,6 +19,7 @@ Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se tro
 - La contenu principale contient toutes les sections (Line, Bar, Pie, etc.)
 - Lorsque l'utilisateur clique sur une section de la sidebar, le contenu principal scroll avec animation vers la section correspondante.
 - Le contenu principal doit conserver la taille des cartes originelles, les titres des cartes sont en gras.
+- Les parties clickable du site on le "cursor-pointer", notamment la sidebar
 
 ## Exception
 

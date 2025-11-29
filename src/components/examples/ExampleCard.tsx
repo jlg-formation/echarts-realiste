@@ -13,7 +13,7 @@ export default function ExampleCard({
     // Ouvrir l'éditeur ECharts dans un nouvel onglet
     window.open(
       `https://echarts.apache.org/examples/en/editor.html?c=${chartId}`,
-      "_blank"
+      "_blank",
     );
   };
 

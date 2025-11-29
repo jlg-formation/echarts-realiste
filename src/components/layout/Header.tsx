@@ -5,7 +5,7 @@ export default function Header() {
     <header className="h-[50px] bg-white flex items-center justify-between px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] relative z-50">
       {/* Logo */}
       <div className="flex items-center">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center cursor-pointer">
           <img
             src="https://echarts.apache.org/en/images/logo.png"
             alt="Apache ECharts"
@@ -20,7 +20,7 @@ export default function Header() {
           href="https://github.com/apache/echarts"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#6e7079] hover:text-[#e43961] transition-colors"
+          className="text-[#6e7079] hover:text-[#e43961] transition-colors cursor-pointer"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
