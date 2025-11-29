@@ -5,3 +5,4 @@
 5. Les pages du site doivent être dans `/src/pages`
 6. Le projet doit utiliser tailwind et le moins possible de CSS natif
 7. Utiliser le conventional commit
+8. Coder en utilisant les format de prettier et du fichier `.prettierrc`.
