@@ -4,6 +4,7 @@ import About from "./pages/About";
 import Header from "./components/layout/Header";
 import BasicLineChart from "./pages/line/BasicLineChart";
 import SmoothedLineChart from "./pages/line/SmoothedLineChart";
+import BasicAreaChart from "./pages/line/BasicAreaChart";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               path="/line/smoothed-line-chart"
               element={<SmoothedLineChart />}
             />
+            <Route path="/line/basic-area-chart" element={<BasicAreaChart />} />
           </Routes>
         </div>
       </div>

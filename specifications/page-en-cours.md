@@ -1,2 +1,2 @@
 - section="Line"
-- titre="Smoothed Line Chart"
+- titre="Basic area chart"
