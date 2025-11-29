@@ -15,7 +15,7 @@ const option: EChartsOption = {
     subtextStyle: {
       fontSize: 13,
       color: "#059669",
-      fontWeight: "500",
+      fontWeight: "bold",
     },
   },
   tooltip: {
