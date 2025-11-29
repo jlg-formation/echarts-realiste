@@ -63,6 +63,7 @@ const option: EChartsOption = {
     type: "value",
     name: "kWh",
     nameLocation: "end",
+    max: 120,
     axisLabel: {
       formatter: "{value}",
       color: "#666",
@@ -163,10 +164,6 @@ const option: EChartsOption = {
               xAxis: "16h",
               itemStyle: {
                 color: "rgba(231, 76, 60, 0.1)",
-              },
-              label: {
-                position: "insideBottom",
-                distance: 10,
               },
             },
             {
