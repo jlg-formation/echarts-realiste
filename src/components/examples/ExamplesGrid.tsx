@@ -71,7 +71,12 @@ const examplesData: Record<string, Example[]> = {
       category: "line",
       internalLink: "/line/basic-area-chart",
     },
-    { id: "line-stack", title: "Stacked Line Chart", category: "line" },
+    {
+      id: "line-stack",
+      title: "Stacked Line Chart",
+      category: "line",
+      internalLink: "/line/stacked-line-chart",
+    },
     { id: "area-stack", title: "Stacked Area Chart", category: "line" },
     {
       id: "area-stack-gradient",
