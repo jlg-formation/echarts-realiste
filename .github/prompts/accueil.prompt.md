@@ -10,7 +10,7 @@ Expert en visualisation de donnée réaliste et en insight.
 ## Ton objectif
 
 Imiter au maximum la page du site web de demonstration `https://echarts.apache.org/examples/en/index.html`, sauf les exceptions
-Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se trouve dans le fichier `/specifications/screenshots/accueil.png`
+Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se trouve dans le fichier `/specifications/screenshots/accueil.png` (appelée dans le prompt screenshot d'accueil)
 
 ## Contraintes
 
@@ -20,6 +20,7 @@ Une copie d'écran de `https://echarts.apache.org/examples/en/index.html` se tro
 - Lorsque l'utilisateur clique sur une section de la sidebar, le contenu principal scroll avec animation vers la section correspondante.
 - Le contenu principal doit conserver la taille des cartes originelles, les titres des cartes sont en gras.
 - Les parties clickable du site on le "cursor-pointer", notamment la sidebar
+- La barre de scroll du sidebar doit ressembler a celle du screenshot d'accueil.
 
 ## Exception
 

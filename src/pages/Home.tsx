@@ -13,15 +13,34 @@ export default function Home() {
       isScrollingRef.current = true;
       setActiveCategory(categoryId);
 
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      // Scroll rapide avec easing
+      const targetPosition = element.offsetTop;
+      const startPosition = mainRef.current.scrollTop;
+      const distance = targetPosition - startPosition;
+      const duration = 200; // 200ms pour un scroll rapide
+      let startTime: number | null = null;
 
-      // Reset scrolling flag after animation
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, 800);
+      // Fonction easing (ease-in-out)
+      const easeInOutCubic = (t: number): number => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animateScroll = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+
+        mainRef.current!.scrollTop = startPosition + distance * easedProgress;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateScroll);
+        } else {
+          isScrollingRef.current = false;
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
     }
   }, []);
 

@@ -177,14 +177,14 @@ export default function Sidebar({
   return (
     <aside className="w-[200px] min-w-[200px] bg-white border-r border-gray-200 flex flex-col h-full overflow-hidden">
       {/* Liste des catégories */}
-      <nav className="flex-1 overflow-y-auto py-1">
+      <nav className="flex-1 overflow-y-auto py-4 sidebar-scroll">
         {categories.map((category) => {
           const isActive = selectedCategory === category.id;
           return (
             <button
               key={category.id}
               onClick={() => onCategoryChange(category.id)}
-              className={`w-full flex items-center gap-3 px-4 py-2 text-[13px] text-left transition-colors cursor-pointer ${
+              className={`w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-left transition-colors cursor-pointer ${
                 isActive
                   ? "bg-blue-50 text-blue-600 border-r-2 border-blue-500"
                   : "text-gray-600 hover:bg-gray-50 hover:text-gray-800"
