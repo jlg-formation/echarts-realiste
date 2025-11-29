@@ -17,6 +17,17 @@ Créer le composant de page pour la dataviz donnée en entrée par son titre et 
 /page section=<section> titre=<titre>
 ```
 
+### Fichier de configuration `page-en-cours.md`
+
+Si le fichier `/specifications/page-en-cours.md` existe, les valeurs de `section` et `titre` doivent être lues depuis ce fichier. Le format attendu est :
+
+```markdown
+- section="<section>"
+- titre="<titre>"
+```
+
+Les valeurs du fichier ont priorité sur les valeurs par défaut, mais les paramètres passés explicitement en ligne de commande ont priorité sur le fichier.
+
 Créer si nécessaire le répertoire `/src/pages/<slug-section>` et le composant de page (router) `/src/pages/<slug-section>/<SlugTitre>.tsx`
 
 ### Convention de nommage

@@ -1,0 +1,2 @@
+- section="Line"
+- titre="Smoothed Line Chart"
