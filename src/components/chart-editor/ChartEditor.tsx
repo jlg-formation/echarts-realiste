@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import { Link } from "react-router";
 import type { EChartsOption, ECharts } from "echarts";
 import CodePanel from "./CodePanel";
 import PreviewPanel from "./PreviewPanel";
@@ -132,9 +133,19 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
     <div className="flex flex-col h-full bg-gray-100">
       {/* Breadcrumb */}
       <div className="px-4 py-2 text-sm text-gray-600 bg-white border-b border-gray-200">
-        <span className="text-gray-400">Examples</span>
+        <Link
+          to="/"
+          className="text-gray-400 hover:text-blue-600 transition-colors"
+        >
+          Examples
+        </Link>
         <span className="mx-2 text-gray-400">/</span>
-        <span className="text-gray-400">{section}</span>
+        <Link
+          to={`/#${section.toLowerCase()}`}
+          className="text-gray-400 hover:text-blue-600 transition-colors"
+        >
+          {section}
+        </Link>
         <span className="mx-2 text-gray-400">/</span>
         <span className="text-gray-800 font-medium">{title}</span>
       </div>
