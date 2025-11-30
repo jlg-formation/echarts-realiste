@@ -167,17 +167,34 @@ const examplesData: Record<string, Example[]> = {
       id: "bar-polar-label-radial",
       title: "Radial Polar Bar Label Position",
       category: "bar",
+      internalLink: "/bar/radial-polar-bar-label-position",
     },
     {
       id: "bar-polar-label-tangential",
       title: "Tangential Polar Bar Label Position",
       category: "bar",
+      internalLink: "/bar/tangential-polar-bar-label-position",
     },
-    { id: "bar-y-category", title: "World Population", category: "bar" },
-    { id: "bar-label-rotation", title: "Bar Label Rotation", category: "bar" },
+    {
+      id: "bar-y-category",
+      title: "World Population",
+      category: "bar",
+      internalLink: "/bar/world-population",
+    },
+    {
+      id: "bar-label-rotation",
+      title: "Bar Label Rotation",
+      category: "bar",
+      internalLink: "/bar/bar-label-rotation",
+    },
   ],
   pie: [
-    { id: "pie-simple", title: "Referer of a Website", category: "pie" },
+    {
+      id: "pie-simple",
+      title: "Referer of a Website",
+      category: "pie",
+      internalLink: "/pie/referer-of-a-website",
+    },
     {
       id: "pie-borderRadius",
       title: "Doughnut Chart with Rounded Corner",

@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 18 / 174
-- 🔲 Restants : 156
+- ✅ Traités : 23 / 174
+- 🔲 Restants : 151
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -49,24 +49,24 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Bar
 
-| Catégorie | Titre                               | Statut     | Sujet métier suggéré                            |
-| --------- | ----------------------------------- | ---------- | ----------------------------------------------- |
-| Bar       | Basic Bar                           | ✅ Fait    | Ventes mensuelles par région                    |
-| Bar       | Axis Align with Tick                | ✅ Fait    | Heures de travail par jour de la semaine        |
-| Bar       | Bar with Background                 | ✅ Fait    | Taux d'occupation hôtelière                     |
-| Bar       | Set Style of Single Bar             | ✅ Fait    | Performance commerciaux (meilleur mis en avant) |
-| Bar       | Waterfall Chart                     | ✅ Fait    | Analyse de trésorerie mensuelle                 |
-| Bar       | Bar Chart with Negative Value       | ✅ Fait    | Balance commerciale import/export               |
-| Bar       | Radial Polar Bar Label Position     | 🔲 À faire | Répartition budget marketing par canal          |
-| Bar       | Tangential Polar Bar Label Position | 🔲 À faire | Compétences radar d'un développeur              |
-| Bar       | World Population                    | 🔲 À faire | Top 10 pays par PIB                             |
-| Bar       | Bar Label Rotation                  | 🔲 À faire | Nombre de commits par développeur               |
+| Catégorie | Titre                               | Statut  | Sujet métier suggéré                            |
+| --------- | ----------------------------------- | ------- | ----------------------------------------------- |
+| Bar       | Basic Bar                           | ✅ Fait | Ventes mensuelles par région                    |
+| Bar       | Axis Align with Tick                | ✅ Fait | Heures de travail par jour de la semaine        |
+| Bar       | Bar with Background                 | ✅ Fait | Taux d'occupation hôtelière                     |
+| Bar       | Set Style of Single Bar             | ✅ Fait | Performance commerciaux (meilleur mis en avant) |
+| Bar       | Waterfall Chart                     | ✅ Fait | Analyse de trésorerie mensuelle                 |
+| Bar       | Bar Chart with Negative Value       | ✅ Fait | Balance commerciale import/export               |
+| Bar       | Radial Polar Bar Label Position     | ✅ Fait | Répartition budget marketing par canal          |
+| Bar       | Tangential Polar Bar Label Position | ✅ Fait | Compétences radar d'un développeur              |
+| Bar       | World Population                    | ✅ Fait | Top 10 pays par PIB                             |
+| Bar       | Bar Label Rotation                  | ✅ Fait | Nombre de commits par développeur               |
 
 ### Pie
 
 | Catégorie | Titre                              | Statut     | Sujet métier suggéré                      |
 | --------- | ---------------------------------- | ---------- | ----------------------------------------- |
-| Pie       | Referer of a Website               | 🔲 À faire | Sources de trafic d'un site e-commerce    |
+| Pie       | Referer of a Website               | ✅ Fait    | Sources de trafic d'un site e-commerce    |
 | Pie       | Doughnut Chart with Rounded Corner | 🔲 À faire | Répartition des dépenses ménage           |
 | Pie       | Doughnut Chart                     | 🔲 À faire | Parts de marché navigateurs web           |
 | Pie       | Half Doughnut Chart                | 🔲 À faire | Jauge de satisfaction client NPS          |

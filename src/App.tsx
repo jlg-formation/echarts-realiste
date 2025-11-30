@@ -20,6 +20,11 @@ import BarWithBackground from "./pages/bar/BarWithBackground";
 import SetStyleOfSingleBar from "./pages/bar/SetStyleOfSingleBar";
 import WaterfallChart from "./pages/bar/WaterfallChart";
 import BarChartWithNegativeValue from "./pages/bar/BarChartWithNegativeValue";
+import RadialPolarBarLabelPosition from "./pages/bar/RadialPolarBarLabelPosition";
+import TangentialPolarBarLabelPosition from "./pages/bar/TangentialPolarBarLabelPosition";
+import WorldPopulation from "./pages/bar/WorldPopulation";
+import BarLabelRotation from "./pages/bar/BarLabelRotation";
+import RefererOfAWebsite from "./pages/pie/RefererOfAWebsite";
 
 function App() {
   return (
@@ -80,6 +85,23 @@ function App() {
             <Route
               path="/bar/bar-chart-with-negative-value"
               element={<BarChartWithNegativeValue />}
+            />
+            <Route
+              path="/bar/radial-polar-bar-label-position"
+              element={<RadialPolarBarLabelPosition />}
+            />
+            <Route
+              path="/bar/tangential-polar-bar-label-position"
+              element={<TangentialPolarBarLabelPosition />}
+            />
+            <Route path="/bar/world-population" element={<WorldPopulation />} />
+            <Route
+              path="/bar/bar-label-rotation"
+              element={<BarLabelRotation />}
+            />
+            <Route
+              path="/pie/referer-of-a-website"
+              element={<RefererOfAWebsite />}
             />
           </Routes>
         </div>
