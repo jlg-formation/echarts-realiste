@@ -115,7 +115,7 @@ const option: EChartsOption = {
         const labelOffset =
           value >= objectif ? -5 : -(objectif - value) / 50000 - 15;
         // Afficher uniquement si objectif atteint
-        if (ecart < 0) return null;
+        if (ecart < 0) return "-";
         return {
           value,
           itemStyle: {
@@ -133,7 +133,6 @@ const option: EChartsOption = {
           },
         };
       }),
-      barWidth: "60%",
       barGap: "-100%",
       itemStyle: {
         color: "#86efac",
@@ -162,7 +161,7 @@ const option: EChartsOption = {
         const labelOffset =
           value >= objectif ? -5 : -(objectif - value) / 50000 - 15;
         // Afficher uniquement si objectif non atteint
-        if (ecart >= 0) return null;
+        if (ecart >= 0) return "-";
         return {
           value,
           itemStyle: {
@@ -180,7 +179,6 @@ const option: EChartsOption = {
           },
         };
       }),
-      barWidth: "60%",
       barGap: "-100%",
       itemStyle: {
         color: "#fca5a5",
