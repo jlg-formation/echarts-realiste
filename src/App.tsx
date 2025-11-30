@@ -30,6 +30,11 @@ import DoughnutChart from "./pages/pie/DoughnutChart";
 import HalfDoughnutChart from "./pages/pie/HalfDoughnutChart";
 import PieWithPadAngle from "./pages/pie/PieWithPadAngle";
 import CustomizedPie from "./pages/pie/CustomizedPie";
+import TextureOnPieChart from "./pages/pie/TextureOnPieChart";
+import NightingaleChart from "./pages/pie/NightingaleChart";
+import NightingaleChartSimple from "./pages/pie/NightingaleChartSimple";
+import NestedPies from "./pages/pie/NestedPies";
+import BasicScatterChart from "./pages/scatter/BasicScatterChart";
 
 function App() {
   return (
@@ -122,6 +127,23 @@ function App() {
               element={<PieWithPadAngle />}
             />
             <Route path="/pie/customized-pie" element={<CustomizedPie />} />
+            <Route
+              path="/pie/texture-on-pie-chart"
+              element={<TextureOnPieChart />}
+            />
+            <Route
+              path="/pie/nightingale-chart"
+              element={<NightingaleChart />}
+            />
+            <Route
+              path="/pie/nightingale-chart-simple"
+              element={<NightingaleChartSimple />}
+            />
+            <Route path="/pie/nested-pies" element={<NestedPies />} />
+            <Route
+              path="/scatter/basic-scatter-chart"
+              element={<BasicScatterChart />}
+            />
           </Routes>
         </div>
       </div>

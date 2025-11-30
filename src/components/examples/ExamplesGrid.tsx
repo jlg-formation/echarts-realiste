@@ -225,17 +225,38 @@ const examplesData: Record<string, Example[]> = {
       category: "pie",
       internalLink: "/pie/customized-pie",
     },
-    { id: "pie-pattern", title: "Texture on Pie Chart", category: "pie" },
-    { id: "pie-roseType", title: "Nightingale Chart", category: "pie" },
+    {
+      id: "pie-pattern",
+      title: "Texture on Pie Chart",
+      category: "pie",
+      internalLink: "/pie/texture-on-pie-chart",
+    },
+    {
+      id: "pie-roseType",
+      title: "Nightingale Chart",
+      category: "pie",
+      internalLink: "/pie/nightingale-chart",
+    },
     {
       id: "pie-roseType-simple",
       title: "Nightingale Chart Simple",
       category: "pie",
+      internalLink: "/pie/nightingale-chart-simple",
     },
-    { id: "pie-nest", title: "Nested Pies", category: "pie" },
+    {
+      id: "pie-nest",
+      title: "Nested Pies",
+      category: "pie",
+      internalLink: "/pie/nested-pies",
+    },
   ],
   scatter: [
-    { id: "scatter-simple", title: "Basic Scatter Chart", category: "scatter" },
+    {
+      id: "scatter-simple",
+      title: "Basic Scatter Chart",
+      category: "scatter",
+      internalLink: "/scatter/basic-scatter-chart",
+    },
     {
       id: "scatter-anscombe-quartet",
       title: "Anscombe's quartet",

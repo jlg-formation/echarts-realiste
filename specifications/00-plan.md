@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 28 / 174
-- 🔲 Restants : 146
+- ✅ Traités : 33 / 174
+- 🔲 Restants : 141
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -64,24 +64,24 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Pie
 
-| Catégorie | Titre                              | Statut     | Sujet métier suggéré                      |
-| --------- | ---------------------------------- | ---------- | ----------------------------------------- |
-| Pie       | Referer of a Website               | ✅ Fait    | Sources de trafic d'un site e-commerce    |
-| Pie       | Doughnut Chart with Rounded Corner | ✅ Fait    | Répartition des dépenses ménage           |
-| Pie       | Doughnut Chart                     | ✅ Fait    | Parts de marché navigateurs web           |
-| Pie       | Half Doughnut Chart                | ✅ Fait    | Jauge de satisfaction client NPS          |
-| Pie       | Pie with padAngle                  | ✅ Fait    | Répartition temps de travail par projet   |
-| Pie       | Customized Pie                     | ✅ Fait    | Mix énergétique d'un pays                 |
-| Pie       | Texture on Pie Chart               | 🔲 À faire | Types de cultures agricoles               |
-| Pie       | Nightingale Chart                  | 🔲 À faire | Répartition sinistres assurance par type  |
-| Pie       | Nightingale Chart Simple           | 🔲 À faire | Ventes par catégorie de produits          |
-| Pie       | Nested Pies                        | 🔲 À faire | Budget entreprise (départements + postes) |
+| Catégorie | Titre                              | Statut  | Sujet métier suggéré                      |
+| --------- | ---------------------------------- | ------- | ----------------------------------------- |
+| Pie       | Referer of a Website               | ✅ Fait | Sources de trafic d'un site e-commerce    |
+| Pie       | Doughnut Chart with Rounded Corner | ✅ Fait | Répartition des dépenses ménage           |
+| Pie       | Doughnut Chart                     | ✅ Fait | Parts de marché navigateurs web           |
+| Pie       | Half Doughnut Chart                | ✅ Fait | Jauge de satisfaction client NPS          |
+| Pie       | Pie with padAngle                  | ✅ Fait | Répartition temps de travail par projet   |
+| Pie       | Customized Pie                     | ✅ Fait | Mix énergétique d'un pays                 |
+| Pie       | Texture on Pie Chart               | ✅ Fait | Types de cultures agricoles               |
+| Pie       | Nightingale Chart                  | ✅ Fait | Répartition sinistres assurance par type  |
+| Pie       | Nightingale Chart Simple           | ✅ Fait | Ventes par catégorie de produits          |
+| Pie       | Nested Pies                        | ✅ Fait | Budget entreprise (départements + postes) |
 
 ### Scatter
 
 | Catégorie | Titre                  | Statut     | Sujet métier suggéré                         |
 | --------- | ---------------------- | ---------- | -------------------------------------------- |
-| Scatter   | Basic Scatter Chart    | 🔲 À faire | Corrélation prix immobilier vs surface       |
+| Scatter   | Basic Scatter Chart    | ✅ Fait    | Corrélation prix immobilier vs surface       |
 | Scatter   | Anscombe's quartet     | 🔲 À faire | Données statistiques pédagogiques            |
 | Scatter   | Clustering Process     | 🔲 À faire | Segmentation clients e-commerce              |
 | Scatter   | Exponential Regression | 🔲 À faire | Croissance virale d'une application          |
