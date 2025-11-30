@@ -261,26 +261,31 @@ const examplesData: Record<string, Example[]> = {
       id: "scatter-anscombe-quartet",
       title: "Anscombe's quartet",
       category: "scatter",
+      internalLink: "/scatter/anscombes-quartet",
     },
     {
       id: "scatter-clustering",
       title: "Clustering Process",
       category: "scatter",
+      internalLink: "/scatter/clustering-process",
     },
     {
       id: "scatter-exponential-regression",
       title: "Exponential Regression",
       category: "scatter",
+      internalLink: "/scatter/exponential-regression",
     },
     {
       id: "scatter-effect",
       title: "Effect Scatter Chart",
       category: "scatter",
+      internalLink: "/scatter/effect-scatter-chart",
     },
     {
       id: "scatter-linear-regression",
       title: "Linear Regression",
       category: "scatter",
+      internalLink: "/scatter/linear-regression",
     },
     {
       id: "scatter-polynomial-regression",

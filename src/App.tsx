@@ -35,6 +35,11 @@ import NightingaleChart from "./pages/pie/NightingaleChart";
 import NightingaleChartSimple from "./pages/pie/NightingaleChartSimple";
 import NestedPies from "./pages/pie/NestedPies";
 import BasicScatterChart from "./pages/scatter/BasicScatterChart";
+import AnscombesQuartet from "./pages/scatter/AnscombesQuartet";
+import ClusteringProcess from "./pages/scatter/ClusteringProcess";
+import ExponentialRegression from "./pages/scatter/ExponentialRegression";
+import EffectScatterChart from "./pages/scatter/EffectScatterChart";
+import LinearRegression from "./pages/scatter/LinearRegression";
 
 function App() {
   return (
@@ -143,6 +148,26 @@ function App() {
             <Route
               path="/scatter/basic-scatter-chart"
               element={<BasicScatterChart />}
+            />
+            <Route
+              path="/scatter/anscombes-quartet"
+              element={<AnscombesQuartet />}
+            />
+            <Route
+              path="/scatter/clustering-process"
+              element={<ClusteringProcess />}
+            />
+            <Route
+              path="/scatter/exponential-regression"
+              element={<ExponentialRegression />}
+            />
+            <Route
+              path="/scatter/effect-scatter-chart"
+              element={<EffectScatterChart />}
+            />
+            <Route
+              path="/scatter/linear-regression"
+              element={<LinearRegression />}
             />
           </Routes>
         </div>

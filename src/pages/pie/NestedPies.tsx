@@ -142,7 +142,7 @@ const option: EChartsOption = {
             .slice(0, 3)
             .map(
               (poste) =>
-                `• ${poste.nom} : ${poste.montant.toLocaleString("fr-FR")} k €`
+                `• ${poste.nom} : ${poste.montant.toLocaleString("fr-FR")} k €`,
             )
             .join("<br/>")}
         `;
@@ -257,10 +257,10 @@ const option: EChartsOption = {
       },
       data: postesData.map((poste) => {
         const deptIndex = departements.findIndex(
-          (d) => d.nom === poste.departement
+          (d) => d.nom === poste.departement,
         );
         const posteIndexInDept = departements[deptIndex]?.postes.findIndex(
-          (p) => p.nom === poste.name
+          (p) => p.nom === poste.name,
         );
         return {
           value: poste.value,

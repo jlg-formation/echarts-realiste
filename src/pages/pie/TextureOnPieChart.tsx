@@ -81,7 +81,7 @@ const totalSurface = cultures.reduce((acc, c) => acc + c.surface, 0);
 const partCereales = (
   (cultures
     .filter((c) =>
-      ["Blé tendre", "Maïs grain", "Orge", "Autres céréales"].includes(c.nom)
+      ["Blé tendre", "Maïs grain", "Orge", "Autres céréales"].includes(c.nom),
     )
     .reduce((acc, c) => acc + c.surface, 0) /
     totalSurface) *

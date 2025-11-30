@@ -90,7 +90,7 @@ const option: EChartsOption = {
       const surface = p.data[0];
       const prix = p.data[1];
       const appart = appartements.find(
-        (a) => a.surface === surface && a.prix === prix
+        (a) => a.surface === surface && a.prix === prix,
       );
       if (!appart) return "";
       const prixM2 = Math.round(prix / surface);

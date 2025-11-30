@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 33 / 174
-- 🔲 Restants : 141
+- ✅ Traités : 38 / 174
+- 🔲 Restants : 136
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -82,11 +82,11 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Catégorie | Titre                  | Statut     | Sujet métier suggéré                         |
 | --------- | ---------------------- | ---------- | -------------------------------------------- |
 | Scatter   | Basic Scatter Chart    | ✅ Fait    | Corrélation prix immobilier vs surface       |
-| Scatter   | Anscombe's quartet     | 🔲 À faire | Données statistiques pédagogiques            |
-| Scatter   | Clustering Process     | 🔲 À faire | Segmentation clients e-commerce              |
-| Scatter   | Exponential Regression | 🔲 À faire | Croissance virale d'une application          |
-| Scatter   | Effect Scatter Chart   | 🔲 À faire | Épidémie - foyers actifs sur une carte       |
-| Scatter   | Linear Regression      | 🔲 À faire | Corrélation heures d'étude vs notes          |
+| Scatter   | Anscombe's quartet     | ✅ Fait    | Données statistiques pédagogiques            |
+| Scatter   | Clustering Process     | ✅ Fait    | Segmentation clients e-commerce              |
+| Scatter   | Exponential Regression | ✅ Fait    | Croissance virale d'une application          |
+| Scatter   | Effect Scatter Chart   | ✅ Fait    | Épidémie - foyers actifs sur une carte       |
+| Scatter   | Linear Regression      | ✅ Fait    | Corrélation heures d'étude vs notes          |
 | Scatter   | Polynomial Regression  | 🔲 À faire | Courbe de consommation carburant vs vitesse  |
 | Scatter   | Scatter with Jittering | 🔲 À faire | Répartition salaires par niveau d'expérience |
 
