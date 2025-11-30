@@ -16,6 +16,10 @@ import LineGradient from "./pages/line/LineGradient";
 import LineWithSections from "./pages/line/LineWithSections";
 import BasicBar from "./pages/bar/BasicBar";
 import AxisAlignWithTick from "./pages/bar/AxisAlignWithTick";
+import BarWithBackground from "./pages/bar/BarWithBackground";
+import SetStyleOfSingleBar from "./pages/bar/SetStyleOfSingleBar";
+import WaterfallChart from "./pages/bar/WaterfallChart";
+import BarChartWithNegativeValue from "./pages/bar/BarChartWithNegativeValue";
 
 function App() {
   return (
@@ -63,6 +67,19 @@ function App() {
             <Route
               path="/bar/axis-align-with-tick"
               element={<AxisAlignWithTick />}
+            />
+            <Route
+              path="/bar/bar-with-background"
+              element={<BarWithBackground />}
+            />
+            <Route
+              path="/bar/set-style-of-single-bar"
+              element={<SetStyleOfSingleBar />}
+            />
+            <Route path="/bar/waterfall-chart" element={<WaterfallChart />} />
+            <Route
+              path="/bar/bar-chart-with-negative-value"
+              element={<BarChartWithNegativeValue />}
             />
           </Routes>
         </div>

@@ -139,17 +139,29 @@ const examplesData: Record<string, Example[]> = {
       category: "bar",
       internalLink: "/bar/axis-align-with-tick",
     },
-    { id: "bar-background", title: "Bar with Background", category: "bar" },
+    {
+      id: "bar-background",
+      title: "Bar with Background",
+      category: "bar",
+      internalLink: "/bar/bar-with-background",
+    },
     {
       id: "bar-data-color",
       title: "Set Style of Single Bar",
       category: "bar",
+      internalLink: "/bar/set-style-of-single-bar",
     },
-    { id: "bar-waterfall", title: "Waterfall Chart", category: "bar" },
+    {
+      id: "bar-waterfall",
+      title: "Waterfall Chart",
+      category: "bar",
+      internalLink: "/bar/waterfall-chart",
+    },
     {
       id: "bar-negative2",
       title: "Bar Chart with Negative Value",
       category: "bar",
+      internalLink: "/bar/bar-chart-with-negative-value",
     },
     {
       id: "bar-polar-label-radial",
