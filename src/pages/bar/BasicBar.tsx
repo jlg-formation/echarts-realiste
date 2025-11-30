@@ -75,7 +75,7 @@ const option: EChartsOption = {
     itemGap: 40,
   },
   grid: {
-    left: 20,
+    left: 80,
     right: 40,
     bottom: 60,
     top: 80,
