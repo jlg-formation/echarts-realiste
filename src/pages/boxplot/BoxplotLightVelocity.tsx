@@ -334,7 +334,7 @@ const globalMedian = [...allTimes].sort((a, b) => a - b)[
   Math.floor(allTimes.length / 2)
 ];
 const globalMean = Math.round(
-  allTimes.reduce((a, b) => a + b, 0) / allTimes.length
+  allTimes.reduce((a, b) => a + b, 0) / allTimes.length,
 );
 const p95 = [...allTimes].sort((a, b) => a - b)[
   Math.floor(allTimes.length * 0.95)

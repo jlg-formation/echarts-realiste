@@ -161,6 +161,7 @@ export default function CodePanel({
             prose-ol:my-2 prose-ol:list-decimal prose-ol:pl-4
             prose-strong:text-gray-800 prose-strong:font-semibold
             prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:text-pink-600 prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-lg
             prose-blockquote:border-l-4 prose-blockquote:border-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-gray-700
             prose-hr:my-6 prose-hr:border-gray-200
             first:prose-headings:mt-0"
