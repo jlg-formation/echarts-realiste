@@ -74,14 +74,14 @@ export default function Home() {
         requestAnimationFrame(animateScroll);
       }
     },
-    [navigate]
+    [navigate],
   );
 
   const handleCategoryClick = useCallback(
     (categoryId: string) => {
       scrollToSectionAnimated(categoryId);
     },
-    [scrollToSectionAnimated]
+    [scrollToSectionAnimated],
   );
 
   // Scroll initial vers le hash quand le composant est monté
