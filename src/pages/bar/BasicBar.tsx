@@ -58,7 +58,7 @@ const option: EChartsOption = {
       const vente = ventesT3[idx];
       const objectif = objectifs[idx];
       const ecart = ecarts[idx];
-      const ecartColor = ecart >= 0 ? "#27ae60" : "#e74c3c";
+      const ecartColor = ecart >= 0 ? "#22c55e" : "#ef4444";
       const ecartIcon = ecart >= 0 ? "✅" : "⚠️";
 
       return `
@@ -107,39 +107,55 @@ const option: EChartsOption = {
     {
       name: "Ventes T3 2024",
       type: "bar",
-      data: ventesT3.map((value, index) => ({
-        value,
-        itemStyle: {
-          color: ecarts[index] >= 0 ? "#27ae60" : "#e74c3c",
-          borderRadius: [4, 4, 0, 0],
-        },
-        label: {
-          show: true,
-          position: "top",
-          formatter: () => {
-            const ecart = ecarts[index];
-            return ecart >= 0 ? `+${ecart} %` : `${ecart} %`;
+      data: ventesT3.map((value, index) => {
+        const ecart = ecarts[index];
+        const objectif = objectifs[index];
+        // Positionner le label au-dessus du max entre vente et objectif pour éviter le chevauchement
+        const labelOffset =
+          value >= objectif ? -5 : -(objectif - value) / 50000 - 15;
+        return {
+          value,
+          itemStyle: {
+            // Couleurs claires avec bon contraste : vert clair (succès) vs rouge clair (attention)
+            color: ecart >= 0 ? "#86efac" : "#fca5a5",
+            borderRadius: [4, 4, 0, 0],
           },
-          fontSize: 10,
-          fontWeight: "bold",
-          color: ecarts[index] >= 0 ? "#27ae60" : "#e74c3c",
-        },
-      })),
+          label: {
+            show: true,
+            position: "top",
+            offset: [0, labelOffset],
+            formatter: () => {
+              return ecart >= 0 ? `+${ecart} %` : `${ecart} %`;
+            },
+            fontSize: 10,
+            fontWeight: "bold",
+            color: ecart >= 0 ? "#166534" : "#b91c1c",
+          },
+        };
+      }),
       barWidth: "60%",
+      markPoint: {
+        symbol: "rect",
+        symbolSize: [40, 4],
+        data: objectifs.map((objectif, index) => ({
+          name: "Objectif",
+          coord: [index, objectif],
+          itemStyle: {
+            color: "#000000",
+          },
+        })),
+        label: {
+          show: false,
+        },
+      },
     },
     {
+      // Série invisible pour la légende "Objectif"
       name: "Objectif",
-      type: "line",
-      data: objectifs,
-      symbol: "diamond",
-      symbolSize: 8,
-      lineStyle: {
-        type: "dashed",
-        width: 2,
-        color: "#3498db",
-      },
+      type: "bar",
+      data: [],
       itemStyle: {
-        color: "#3498db",
+        color: "#000000",
       },
     },
   ],
@@ -182,7 +198,7 @@ Le diagramme en barres est idéal dans les situations suivantes :
 ### 🔧 Fonctionnalités ECharts utilisées
 
 - **Couleurs conditionnelles** : vert si objectif atteint, rouge sinon
-- **Ligne d'objectif superposée** : permet de voir immédiatement l'écart
+- **Marqueurs d'objectif (markPoint)** : traits horizontaux indiquant la cible sur chaque barre
 - **Labels dynamiques** : affichent le % d'écart au-dessus de chaque barre
 - **Tooltip enrichi** : montre vente, objectif et écart en un coup d'œil
 
