@@ -11,6 +11,8 @@ import GradientStackedAreaChart from "./pages/line/GradientStackedAreaChart";
 import BumpChart from "./pages/line/BumpChart";
 import TemperatureChange from "./pages/line/TemperatureChange";
 import AreaPieces from "./pages/line/AreaPieces";
+import DataTransformFilter from "./pages/line/DataTransformFilter";
+import LineGradient from "./pages/line/LineGradient";
 
 function App() {
   return (
@@ -45,6 +47,11 @@ function App() {
               element={<TemperatureChange />}
             />
             <Route path="/line/area-pieces" element={<AreaPieces />} />
+            <Route
+              path="/line/data-transform-filter"
+              element={<DataTransformFilter />}
+            />
+            <Route path="/line/line-gradient" element={<LineGradient />} />
           </Routes>
         </div>
       </div>

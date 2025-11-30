@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 9 / 174
-- 🔲 Restants : 165
+- ✅ Traités : 11 / 174
+- 🔲 Restants : 163
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -43,8 +43,8 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Line      | Bump Chart (Ranking)                  | ✅ Fait    | Classement équipes de football sur une saison |
 | Line      | Temperature Change in the Coming Week | ✅ Fait    | Prévisions météo hebdomadaires multi-villes   |
 | Line      | Area Pieces                           | ✅ Fait    | Niveau de stock critique vs normal            |
-| Line      | Data Transform Filter                 | 🔲 À faire | Filtrage patients par groupe sanguin          |
-| Line      | Line Gradient                         | 🔲 À faire | Altitude d'un vol commercial                  |
+| Line      | Data Transform Filter                 | ✅ Fait    | Filtrage patients par groupe sanguin          |
+| Line      | Line Gradient                         | ✅ Fait    | Altitude d'un vol commercial                  |
 | Line      | Line with Sections                    | 🔲 À faire | Phases de production industrielle             |
 
 ### Bar

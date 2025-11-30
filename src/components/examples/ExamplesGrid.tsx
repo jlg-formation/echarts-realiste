@@ -111,8 +111,14 @@ const examplesData: Record<string, Example[]> = {
       id: "data-transform-filter",
       title: "Data Transform Filter",
       category: "line",
+      internalLink: "/line/data-transform-filter",
     },
-    { id: "line-gradient", title: "Line Gradient", category: "line" },
+    {
+      id: "line-gradient",
+      title: "Line Gradient",
+      category: "line",
+      internalLink: "/line/line-gradient",
+    },
     { id: "line-sections", title: "Line with Sections", category: "line" },
   ],
   bar: [
