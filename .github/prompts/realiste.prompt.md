@@ -158,13 +158,116 @@ N'intervenir que dans les options echarts pour enrichir la visualisation de donn
 
 Le but est de montrer un cas d'utilisation d'un graphique en l'intégrant dans une histoire.
 
+## Critères de qualité obligatoires
+
+### 🎨 Accessibilité visuelle
+
+- **Contraste minimum 4.5:1** pour tous les textes (titres, labels, légendes)
+- **Ne pas utiliser uniquement la couleur** pour distinguer les données : ajouter des symboles différents (`circle`, `rect`, `triangle`, `diamond`), des motifs de lignes (`solid`, `dashed`, `dotted`) ou des labels explicites
+- **Taille de police minimum 12px** pour garantir la lisibilité
+- **Éviter le rouge/vert seul** pour les daltoniens : combiner avec des icônes (✅/❌) ou des formes différentes
+
+### 🌓 Support Dark/Light Theme
+
+- **Ne pas hardcoder les couleurs de fond ou de texte** : laisser ECharts gérer via le thème
+- **Utiliser des couleurs qui fonctionnent dans les deux modes** :
+  - Éviter le blanc pur (`#ffffff`) ou le noir pur (`#000000`) pour les éléments principaux
+  - Préférer les couleurs de la palette ECharts par défaut qui s'adaptent au thème
+- **Exception** : les couleurs sémantiques (rouge alerte, vert succès) peuvent être hardcodées car elles ont un sens métier
+
+### 📱 Responsive et lisibilité
+
+- **Labels non tronqués** : utiliser `axisLabel.rotate` ou `axisLabel.interval` si nécessaire
+- **Pas de superposition de texte** : ajuster les marges avec `grid.left`, `grid.right`, `grid.top`, `grid.bottom`
+- **Tooltip toujours visible** : utiliser `tooltip.confine: true` si le graphique est dans un conteneur contraint
+- **Légende adaptative** : utiliser `legend.type: 'scroll'` si beaucoup de séries
+
+### 🇫🇷 Localisation francophone
+
+- **Dates en français** : "Lun", "Mar", "Mer"... ou "Janvier", "Février"...
+- **Nombres avec espace comme séparateur de milliers** : `1 000`, `10 000` (pas `1,000`)
+- **Décimales avec virgule** : `3,14` (pas `3.14`)
+- **Devises** : `€` après le montant (`1 500 €`)
+
+### ⚡ Performance
+
+- **Limiter à 1000 points visibles maximum** par série pour garantir la fluidité
+- **Utiliser `sampling`** pour les grandes séries : `sampling: 'lttb'` (Largest Triangle Three Buckets)
+- **Éviter les animations lourdes** sur les grands datasets : `animation: false` ou `animationThreshold: 2000`
+
+### 🧠 Lisibilité et efficacité cognitive
+
+L'objectif est que l'utilisateur comprenne le message principal en **moins de 5 secondes**.
+
+#### Hiérarchie visuelle claire
+
+- **Titre = message principal** : le titre doit répondre à "De quoi parle ce graphique ?"
+- **Sous-titre = insight clé** : le sous-titre doit répondre à "Quel est le point important à retenir ?"
+- **Le graphique confirme** : les données visualisées doivent supporter le message du titre/sous-titre
+
+#### Réduction de la charge cognitive
+
+- **Maximum 5-7 séries** visibles simultanément (limite de la mémoire de travail)
+- **Maximum 2 axes Y** : au-delà, diviser en plusieurs graphiques
+- **Éviter les légendes à décoder** : préférer les labels directs sur les séries quand c'est possible
+- **Couleurs sémantiques intuitives** : rouge = danger/négatif, vert = succès/positif, bleu = neutre/informatif
+
+#### Guidage visuel
+
+- **Mettre en évidence l'élément clé** : utiliser `emphasis`, couleur contrastée, ou `markPoint` pour attirer l'œil sur le point important
+- **Ajouter des repères contextuels** : `markLine` pour moyenne, objectif, ou seuil critique
+- **Annotations si nécessaire** : expliquer les anomalies directement sur le graphique
+
+#### Anti-patterns à éviter
+
+- ❌ **Graphique "sapin de Noël"** : trop de couleurs, effets, décorations
+- ❌ **Données sans contexte** : des chiffres sans comparaison (vs période précédente, vs objectif, vs moyenne)
+- ❌ **Axes trompeurs** : ne pas commencer l'axe Y à une valeur arbitraire sans le signaler
+- ❌ **Titre générique** : "Évolution des ventes" → préférer "Ventes T3 2024 : +15 % vs objectif"
+
+### 📖 Dimension pédagogique
+
+Le site a une vocation **éducative**. Chaque graphique doit enseigner quelque chose à l'utilisateur.
+
+#### Le graphique comme support d'apprentissage
+
+- **Illustrer une fonctionnalité ECharts** : le scénario réaliste doit mettre en valeur la fonctionnalité technique démontrée (ex: `markLine`, `visualMap`, `dataZoom`)
+- **Montrer les bonnes pratiques** : le graphique doit être un exemple à suivre, pas juste "un graphique qui marche"
+- **Varier les domaines métier** : alterner entre finance, e-commerce, santé, RH, industrie, environnement... pour montrer la polyvalence
+
+#### Cohérence scénario / type de graphique
+
+- **Le scénario doit justifier le type de graphique** : un line chart pour une évolution temporelle, un scatter pour une corrélation, un pie pour des proportions
+- **Éviter les scénarios artificiels** : si le scénario ne colle pas naturellement au type de graphique, en choisir un autre
+- **Expliquer implicitement le "pourquoi"** : l'utilisateur doit comprendre intuitivement pourquoi ce type de graphique est adapté
+
+#### Progressivité et reproductibilité
+
+- **Code lisible et commenté si complexe** : l'utilisateur doit pouvoir comprendre et reproduire
+- **Éviter les hacks obscurs** : préférer les solutions idiomatiques ECharts
+- **Données réalistes mais simples** : assez de données pour être crédible, pas trop pour rester lisible (5-15 points idéalement)
+
+#### Valeur ajoutée du scénario
+
+Le scénario réaliste doit apporter une **valeur pédagogique supplémentaire** :
+
+| ❌ Scénario pauvre    | ✅ Scénario riche                                                           |
+| --------------------- | --------------------------------------------------------------------------- |
+| "Données de ventes"   | "Ventes du Black Friday 2024 : pic record à 14h, serveur saturé à 15h"      |
+| "Température"         | "Canicule août 2024 : 5 jours consécutifs > 35°C, alerte rouge déclenchée"  |
+| "Utilisateurs actifs" | "Lancement produit : +340 % d'inscriptions J+1, rétention à surveiller J+7" |
+
+Le scénario riche enseigne :
+
+- Comment contextualiser les données
+- Comment identifier et mettre en avant les insights
+- Comment transformer des chiffres en histoire actionnable
+
 ## Critères de succès
 
 - La page revisitée doit présenter un scénario réaliste
 - La prop `notes` est ajoutée au composant `ChartEditor` avec une note pédagogique complète
-- Aucun problème d'accessibilité (couleur, contraste, taille de caractères, etc.)
-- Pas de texte tronqué
-- Pas de recouvrement de texte
+- Tous les critères de qualité obligatoires sont respectés
 - Pas de `graphic` utilisé pour la note pédagogique (utiliser la prop `notes` à la place)
 
 ## Exemple avant/après
@@ -198,16 +301,27 @@ import type { EChartsOption } from "echarts";
 const option: EChartsOption = {
   title: {
     text: "Fréquentation du site e-commerce - Semaine 47",
-    subtext: "🚨 Chute de 38% le vendredi : incident serveur détecté",
+    subtext: "🚨 Chute de 38 % le vendredi : incident serveur détecté",
     left: "center",
   },
   tooltip: {
     trigger: "axis",
-    formatter: "{b}<br/>Visiteurs uniques : <b>{c}</b>",
+    confine: true,
+    formatter: (params: unknown) => {
+      const p = (params as { name: string; value: number }[])[0];
+      return `${p.name}<br/>Visiteurs uniques : <b>${p.value.toLocaleString("fr-FR")}</b>`;
+    },
+  },
+  grid: {
+    left: 80,
+    right: 40,
+    bottom: 60,
   },
   xAxis: {
     type: "category",
     name: "Jour",
+    nameLocation: "middle",
+    nameGap: 35,
     data: [
       "Lun 18/11",
       "Mar 19/11",
@@ -222,26 +336,30 @@ const option: EChartsOption = {
     type: "value",
     name: "Visiteurs uniques",
     axisLabel: {
-      formatter: "{value} k",
+      formatter: (value: number) =>
+        `${(value / 1000).toLocaleString("fr-FR")} k`,
     },
   },
   series: [
     {
       name: "Visiteurs",
       data: [
-        { value: 15000 },
-        { value: 23000 },
-        { value: 22400 },
-        { value: 21800 },
+        { value: 15000, symbol: "circle" },
+        { value: 23000, symbol: "circle" },
+        { value: 22400, symbol: "circle" },
+        { value: 21800, symbol: "circle" },
         {
           value: 13500,
+          symbol: "triangle",
+          symbolSize: 12,
           itemStyle: { color: "#e74c3c" },
-          label: { show: true, formatter: "⚠️ -38%", position: "top" },
+          label: { show: true, formatter: "⚠️ -38 %", position: "top" },
         },
-        { value: 14700 },
-        { value: 26000 },
+        { value: 14700, symbol: "circle" },
+        { value: 26000, symbol: "circle" },
       ],
       type: "line",
+      symbolSize: 8,
       markLine: {
         data: [{ type: "average", name: "Moyenne" }],
       },
@@ -304,6 +422,13 @@ export default function BasicLineChart() {
 - **Unités claires** : "Visiteurs uniques" et "k" pour milliers
 - **Point d'attention visuel** : le vendredi est en rouge avec un label d'alerte
 - **Ligne de moyenne** : donne un repère pour contextualiser les valeurs
+
+**Ce qui respecte les critères de qualité :**
+
+- **Accessibilité** : le point d'alerte utilise un symbole différent (`triangle`) en plus de la couleur rouge
+- **Format français** : nombres formatés avec `toLocaleString("fr-FR")`, espace avant `%`
+- **Responsive** : `grid` avec marges explicites, `tooltip.confine: true`
+- **Dark/Light** : seule la couleur d'alerte rouge est hardcodée (sens métier), le reste utilise le thème
 
 **Ce qui rend la note pédagogique utile :**
 
