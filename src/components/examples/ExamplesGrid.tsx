@@ -99,8 +99,14 @@ const examplesData: Record<string, Example[]> = {
       id: "line-marker",
       title: "Temperature Change in the Coming Week",
       category: "line",
+      internalLink: "/line/temperature-change",
     },
-    { id: "area-pieces", title: "Area Pieces", category: "line" },
+    {
+      id: "area-pieces",
+      title: "Area Pieces",
+      category: "line",
+      internalLink: "/line/area-pieces",
+    },
     {
       id: "data-transform-filter",
       title: "Data Transform Filter",

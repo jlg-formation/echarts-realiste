@@ -9,6 +9,8 @@ import StackedLineChart from "./pages/line/StackedLineChart";
 import StackedAreaChart from "./pages/line/StackedAreaChart";
 import GradientStackedAreaChart from "./pages/line/GradientStackedAreaChart";
 import BumpChart from "./pages/line/BumpChart";
+import TemperatureChange from "./pages/line/TemperatureChange";
+import AreaPieces from "./pages/line/AreaPieces";
 
 function App() {
   return (
@@ -38,6 +40,11 @@ function App() {
               element={<GradientStackedAreaChart />}
             />
             <Route path="/line/bump-chart" element={<BumpChart />} />
+            <Route
+              path="/line/temperature-change"
+              element={<TemperatureChange />}
+            />
+            <Route path="/line/area-pieces" element={<AreaPieces />} />
           </Routes>
         </div>
       </div>
