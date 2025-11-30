@@ -87,7 +87,7 @@ const polluants = [
 
 // Seuils OMS normalisés sur 100
 const seuilsOMS = polluants.map((p) =>
-  Math.min((p.seuilOMS / p.max) * 100, 50)
+  Math.min((p.seuilOMS / p.max) * 100, 50),
 );
 
 const option: EChartsOption = {
@@ -133,7 +133,7 @@ const option: EChartsOption = {
       if (!ville) return "";
 
       const depassements = ville.polluants.filter(
-        (val, i) => val > seuilsOMS[i]
+        (val, i) => val > seuilsOMS[i],
       ).length;
 
       return `

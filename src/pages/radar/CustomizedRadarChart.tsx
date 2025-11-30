@@ -70,7 +70,7 @@ const moyennes = evaluateurs.map((e) => ({
 
 // Calcul des écarts (angles morts)
 const ecartAutoVsCollabo = competences.map(
-  (_, i) => evaluateurs[0].scores[i] - evaluateurs[2].scores[i]
+  (_, i) => evaluateurs[0].scores[i] - evaluateurs[2].scores[i],
 );
 const maxEcart = Math.max(...ecartAutoVsCollabo);
 const indexMaxEcart = ecartAutoVsCollabo.indexOf(maxEcart);
@@ -103,7 +103,7 @@ const option: EChartsOption = {
       if (!evaluateur) return "";
 
       const moyenne = Math.round(
-        evaluateur.scores.reduce((a, b) => a + b, 0) / evaluateur.scores.length
+        evaluateur.scores.reduce((a, b) => a + b, 0) / evaluateur.scores.length,
       );
 
       // Points forts et axes d'amélioration

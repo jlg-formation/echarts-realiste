@@ -58,6 +58,9 @@ import BasicRadarChart from "./pages/radar/BasicRadarChart";
 import AqiRadarChart from "./pages/radar/AqiRadarChart";
 import CustomizedRadarChart from "./pages/radar/CustomizedRadarChart";
 import ProportionOfBrowsers from "./pages/radar/ProportionOfBrowsers";
+import MultipleRadar from "./pages/radar/MultipleRadar";
+import DataTransformSimpleAggregate from "./pages/boxplot/DataTransformSimpleAggregate";
+import BoxplotLightVelocity from "./pages/boxplot/BoxplotLightVelocity";
 
 function App() {
   return (
@@ -246,6 +249,15 @@ function App() {
             <Route
               path="/radar/proportion-of-browsers"
               element={<ProportionOfBrowsers />}
+            />
+            <Route path="/radar/multiple-radar" element={<MultipleRadar />} />
+            <Route
+              path="/boxplot/data-transform-simple-aggregate"
+              element={<DataTransformSimpleAggregate />}
+            />
+            <Route
+              path="/boxplot/boxplot-light-velocity"
+              element={<BoxplotLightVelocity />}
             />
           </Routes>
         </div>

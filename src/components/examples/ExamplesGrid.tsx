@@ -401,18 +401,25 @@ const examplesData: Record<string, Example[]> = {
       category: "radar",
       internalLink: "/radar/proportion-of-browsers",
     },
-    { id: "radar-multiple", title: "Multiple Radar", category: "radar" },
+    {
+      id: "radar-multiple",
+      title: "Multiple Radar",
+      category: "radar",
+      internalLink: "/radar/multiple-radar",
+    },
   ],
   boxplot: [
     {
       id: "data-transform-aggregate",
       title: "Data Transform Simple Aggregate",
       category: "boxplot",
+      internalLink: "/boxplot/data-transform-simple-aggregate",
     },
     {
       id: "boxplot-light-velocity",
       title: "Boxplot Light Velocity",
       category: "boxplot",
+      internalLink: "/boxplot/boxplot-light-velocity",
     },
     {
       id: "boxplot-light-velocity2",

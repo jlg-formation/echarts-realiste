@@ -225,7 +225,7 @@ export default function GeoBeefCuts() {
             name: nom,
             value: prix,
             categorie,
-          })
+          }),
         );
 
         const newOption: EChartsOption = {

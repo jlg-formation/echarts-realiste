@@ -82,7 +82,7 @@ const poids = [0.25, 0.2, 0.15, 0.15, 0.1, 0.15]; // Photo prioritaire
 const scoresGlobaux = smartphones.map((s) => ({
   nom: s.nom,
   score: Math.round(
-    s.scores.reduce((acc, score, i) => acc + score * poids[i], 0)
+    s.scores.reduce((acc, score, i) => acc + score * poids[i], 0),
   ),
 }));
 

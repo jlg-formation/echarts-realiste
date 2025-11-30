@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 56 / 174
-- 🔲 Restants : 118
+- ✅ Traités : 59 / 174
+- 🔲 Restants : 115
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -120,14 +120,14 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Radar     | AQI - Radar Chart      | ✅ Fait    | Qualité de l'air multi-polluants |
 | Radar     | Customized Radar Chart | ✅ Fait    | Évaluation 360° d'un manager     |
 | Radar     | Proportion of Browsers | ✅ Fait    | Comparaison features smartphones |
-| Radar     | Multiple Radar         | 🔲 À faire | Benchmark produits concurrents   |
+| Radar     | Multiple Radar         | ✅ Fait    | Benchmark produits concurrents   |
 
 ### Boxplot
 
 | Catégorie | Titre                           | Statut     | Sujet métier suggéré                  |
 | --------- | ------------------------------- | ---------- | ------------------------------------- |
-| Boxplot   | Data Transform Simple Aggregate | 🔲 À faire | Distribution salaires par département |
-| Boxplot   | Boxplot Light Velocity          | 🔲 À faire | Temps de réponse serveur              |
+| Boxplot   | Data Transform Simple Aggregate | ✅ Fait    | Distribution salaires par département |
+| Boxplot   | Boxplot Light Velocity          | ✅ Fait    | Temps de réponse serveur              |
 | Boxplot   | Boxplot Light Velocity2         | 🔲 À faire | Latence réseau par datacenter         |
 | Boxplot   | Multiple Categories             | 🔲 À faire | Notes examens par matière             |
 
