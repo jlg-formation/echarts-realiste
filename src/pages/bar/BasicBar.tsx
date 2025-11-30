@@ -70,7 +70,7 @@ const option: EChartsOption = {
     },
   },
   legend: {
-    data: ["Ventes T3 2024", "Objectif"],
+    data: ["Objectif atteint", "Objectif non atteint", "Objectif"],
     bottom: 10,
   },
   grid: {
@@ -105,7 +105,7 @@ const option: EChartsOption = {
   },
   series: [
     {
-      name: "Ventes T3 2024",
+      name: "Objectif atteint",
       type: "bar",
       data: ventesT3.map((value, index) => {
         const ecart = ecarts[index];
@@ -113,27 +113,30 @@ const option: EChartsOption = {
         // Positionner le label au-dessus du max entre vente et objectif pour éviter le chevauchement
         const labelOffset =
           value >= objectif ? -5 : -(objectif - value) / 50000 - 15;
+        // Afficher uniquement si objectif atteint
+        if (ecart < 0) return null;
         return {
           value,
           itemStyle: {
-            // Couleurs claires avec bon contraste : vert clair (succès) vs rouge clair (attention)
-            color: ecart >= 0 ? "#86efac" : "#fca5a5",
+            color: "#86efac",
             borderRadius: [4, 4, 0, 0],
           },
           label: {
             show: true,
             position: "top",
             offset: [0, labelOffset],
-            formatter: () => {
-              return ecart >= 0 ? `+${ecart} %` : `${ecart} %`;
-            },
+            formatter: () => `+${ecart} %`,
             fontSize: 10,
             fontWeight: "bold",
-            color: ecart >= 0 ? "#166534" : "#b91c1c",
+            color: "#166534",
           },
         };
       }),
       barWidth: "60%",
+      barGap: "-100%",
+      itemStyle: {
+        color: "#86efac",
+      },
       markPoint: {
         symbol: "rect",
         symbolSize: [40, 4],
@@ -147,6 +150,39 @@ const option: EChartsOption = {
         label: {
           show: false,
         },
+      },
+    },
+    {
+      name: "Objectif non atteint",
+      type: "bar",
+      data: ventesT3.map((value, index) => {
+        const ecart = ecarts[index];
+        const objectif = objectifs[index];
+        const labelOffset =
+          value >= objectif ? -5 : -(objectif - value) / 50000 - 15;
+        // Afficher uniquement si objectif non atteint
+        if (ecart >= 0) return null;
+        return {
+          value,
+          itemStyle: {
+            color: "#fca5a5",
+            borderRadius: [4, 4, 0, 0],
+          },
+          label: {
+            show: true,
+            position: "top",
+            offset: [0, labelOffset],
+            formatter: () => `${ecart} %`,
+            fontSize: 10,
+            fontWeight: "bold",
+            color: "#b91c1c",
+          },
+        };
+      }),
+      barWidth: "60%",
+      barGap: "-100%",
+      itemStyle: {
+        color: "#fca5a5",
       },
     },
     {
