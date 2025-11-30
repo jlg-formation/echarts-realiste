@@ -66,6 +66,51 @@ Realiste veut en particulier dire que :
 - on comprend tout de suite le message transmis
 - il y a toujours un message qui est passé et qui indique une décision à prendre ou conscientiser un problème ou une bonne nouvelle.
 
+### Note pédagogique
+
+En plus du scénario réaliste, ajouter une **note pédagogique**. Cette note doit :
+
+- Expliquer **quand utiliser** ce type de diagramme
+- Expliquer **quand ne pas utiliser** ce type de diagramme
+- Expliquer de manière structurée avec des titres et chapitres, avec bullets points et paragraphe explicatif
+
+#### Exemple de note pédagogique (pour un graphique en ligne)
+
+```markdown
+## 📚 Note pédagogique : Graphique en ligne (Line Chart)
+
+### ✅ Quand utiliser ce type de diagramme
+
+Le graphique en ligne est idéal dans les situations suivantes :
+
+- **Visualiser une évolution temporelle** : suivi de métriques sur des jours, semaines, mois ou années
+- **Détecter des tendances** : croissance, décroissance, saisonnalité
+- **Identifier des anomalies** : pics ou chutes soudaines dans les données
+- **Comparer plusieurs séries** : évolution parallèle de 2-5 variables sur la même période
+- **Montrer la continuité** : quand les données ont une progression logique entre les points
+
+**Exemples concrets :**
+
+- Évolution du chiffre d'affaires mensuel
+- Suivi de la température sur une journée
+- Progression du nombre d'utilisateurs actifs
+
+### ❌ Quand ne pas utiliser ce type de diagramme
+
+Évitez le graphique en ligne dans ces cas :
+
+- **Données catégorielles sans ordre** : utilisez plutôt un diagramme en barres
+- **Comparaison de proportions** : préférez un camembert ou un treemap
+- **Peu de points de données** (< 3) : un tableau ou des indicateurs chiffrés seront plus clairs
+- **Données non continues** : si les points n'ont pas de lien logique entre eux
+- **Trop de séries** (> 5-6 lignes) : le graphique devient illisible, envisagez des small multiples
+
+**Erreurs courantes à éviter :**
+
+- Ne pas connecter des points qui n'ont pas de relation temporelle
+- Ne pas utiliser pour des données cumulées (préférer un area chart)
+```
+
 ### Options echarts
 
 N'intervenir que dans les options echarts pour enrichir la visualisation de donnée
@@ -158,6 +203,19 @@ const option: EChartsOption = {
       },
     },
   ],
+  graphic: {
+    type: "text",
+    right: 10,
+    bottom: 10,
+    style: {
+      text: "💡 Graphique en ligne : idéal pour visualiser des tendances\ntemporelles et détecter des anomalies dans une série.",
+      fontSize: 11,
+      fill: "#666",
+      backgroundColor: "#f5f5f5",
+      padding: [6, 10],
+      borderRadius: 4,
+    },
+  },
 };
 ```
 
@@ -169,3 +227,4 @@ const option: EChartsOption = {
 - **Unités claires** : "Visiteurs uniques" et "k" pour milliers
 - **Point d'attention visuel** : le vendredi est en rouge avec un label d'alerte
 - **Ligne de moyenne** : donne un repère pour contextualiser les valeurs
+- **Note pédagogique** : explique quand et pourquoi utiliser ce type de graphique
