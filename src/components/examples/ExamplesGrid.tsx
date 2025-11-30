@@ -87,8 +87,14 @@ const examplesData: Record<string, Example[]> = {
       id: "area-stack-gradient",
       title: "Gradient Stacked Area Chart",
       category: "line",
+      internalLink: "/line/gradient-stacked-area-chart",
     },
-    { id: "bump-chart", title: "Bump Chart (Ranking)", category: "line" },
+    {
+      id: "bump-chart",
+      title: "Bump Chart (Ranking)",
+      category: "line",
+      internalLink: "/line/bump-chart",
+    },
     {
       id: "line-marker",
       title: "Temperature Change in the Coming Week",

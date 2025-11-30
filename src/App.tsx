@@ -7,6 +7,8 @@ import SmoothedLineChart from "./pages/line/SmoothedLineChart";
 import BasicAreaChart from "./pages/line/BasicAreaChart";
 import StackedLineChart from "./pages/line/StackedLineChart";
 import StackedAreaChart from "./pages/line/StackedAreaChart";
+import GradientStackedAreaChart from "./pages/line/GradientStackedAreaChart";
+import BumpChart from "./pages/line/BumpChart";
 
 function App() {
   return (
@@ -31,6 +33,11 @@ function App() {
               path="/line/stacked-area-chart"
               element={<StackedAreaChart />}
             />
+            <Route
+              path="/line/gradient-stacked-area-chart"
+              element={<GradientStackedAreaChart />}
+            />
+            <Route path="/line/bump-chart" element={<BumpChart />} />
           </Routes>
         </div>
       </div>

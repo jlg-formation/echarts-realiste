@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 5 / 174
-- 🔲 Restants : 169
+- ✅ Traités : 7 / 174
+- 🔲 Restants : 167
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -39,8 +39,8 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Line      | Basic area chart                      | ✅ Fait    | Consommation électrique résidentielle         |
 | Line      | Stacked Line Chart                    | ✅ Fait    | Répartition du trafic web par source          |
 | Line      | Stacked Area Chart                    | ✅ Fait    | Consommation énergétique par secteur          |
-| Line      | Gradient Stacked Area Chart           | 🔲 À faire | Évolution des ventes e-commerce par canal     |
-| Line      | Bump Chart (Ranking)                  | 🔲 À faire | Classement équipes de football sur une saison |
+| Line      | Gradient Stacked Area Chart           | ✅ Fait    | Évolution des ventes e-commerce par canal     |
+| Line      | Bump Chart (Ranking)                  | ✅ Fait    | Classement équipes de football sur une saison |
 | Line      | Temperature Change in the Coming Week | 🔲 À faire | Prévisions météo hebdomadaires multi-villes   |
 | Line      | Area Pieces                           | 🔲 À faire | Niveau de stock critique vs normal            |
 | Line      | Data Transform Filter                 | 🔲 À faire | Filtrage patients par groupe sanguin          |
