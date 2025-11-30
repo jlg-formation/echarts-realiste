@@ -72,6 +72,7 @@ const option: EChartsOption = {
   legend: {
     data: ["Objectif atteint", "Objectif non atteint", "Objectif"],
     bottom: 10,
+    itemGap: 40,
   },
   grid: {
     left: 20,
