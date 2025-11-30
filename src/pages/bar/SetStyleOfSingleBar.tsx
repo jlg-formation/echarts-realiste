@@ -53,7 +53,7 @@ const option: EChartsOption = {
       const idx = p[0].dataIndex;
       const commercial = commerciaux[idx];
       const ecart = Math.round(
-        ((commercial.ventes - commercial.objectif) / commercial.objectif) * 100
+        ((commercial.ventes - commercial.objectif) / commercial.objectif) * 100,
       );
       const ecartColor = ecart >= 0 ? "#27ae60" : "#e74c3c";
       const ecartIcon = ecart >= 0 ? "✅" : "⚠️";

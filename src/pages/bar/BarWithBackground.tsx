@@ -16,7 +16,7 @@ const jours = [
 const capacite = 120;
 const chambresOccupees = [78, 85, 92, 96, 114, 118, 89];
 const tauxOccupation = chambresOccupees.map((c) =>
-  Math.round((c / capacite) * 100)
+  Math.round((c / capacite) * 100),
 );
 
 // Seuils métier
