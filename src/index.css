@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Scrollbar personnalisée pour la sidebar */
 .sidebar-scroll::-webkit-scrollbar {
