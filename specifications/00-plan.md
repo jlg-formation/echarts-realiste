@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 23 / 174
-- 🔲 Restants : 151
+- ✅ Traités : 28 / 174
+- 🔲 Restants : 146
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -67,11 +67,11 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Catégorie | Titre                              | Statut     | Sujet métier suggéré                      |
 | --------- | ---------------------------------- | ---------- | ----------------------------------------- |
 | Pie       | Referer of a Website               | ✅ Fait    | Sources de trafic d'un site e-commerce    |
-| Pie       | Doughnut Chart with Rounded Corner | 🔲 À faire | Répartition des dépenses ménage           |
-| Pie       | Doughnut Chart                     | 🔲 À faire | Parts de marché navigateurs web           |
-| Pie       | Half Doughnut Chart                | 🔲 À faire | Jauge de satisfaction client NPS          |
-| Pie       | Pie with padAngle                  | 🔲 À faire | Répartition temps de travail par projet   |
-| Pie       | Customized Pie                     | 🔲 À faire | Mix énergétique d'un pays                 |
+| Pie       | Doughnut Chart with Rounded Corner | ✅ Fait    | Répartition des dépenses ménage           |
+| Pie       | Doughnut Chart                     | ✅ Fait    | Parts de marché navigateurs web           |
+| Pie       | Half Doughnut Chart                | ✅ Fait    | Jauge de satisfaction client NPS          |
+| Pie       | Pie with padAngle                  | ✅ Fait    | Répartition temps de travail par projet   |
+| Pie       | Customized Pie                     | ✅ Fait    | Mix énergétique d'un pays                 |
 | Pie       | Texture on Pie Chart               | 🔲 À faire | Types de cultures agricoles               |
 | Pie       | Nightingale Chart                  | 🔲 À faire | Répartition sinistres assurance par type  |
 | Pie       | Nightingale Chart Simple           | 🔲 À faire | Ventes par catégorie de produits          |

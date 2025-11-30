@@ -25,6 +25,11 @@ import TangentialPolarBarLabelPosition from "./pages/bar/TangentialPolarBarLabel
 import WorldPopulation from "./pages/bar/WorldPopulation";
 import BarLabelRotation from "./pages/bar/BarLabelRotation";
 import RefererOfAWebsite from "./pages/pie/RefererOfAWebsite";
+import DoughnutChartWithRoundedCorner from "./pages/pie/DoughnutChartWithRoundedCorner";
+import DoughnutChart from "./pages/pie/DoughnutChart";
+import HalfDoughnutChart from "./pages/pie/HalfDoughnutChart";
+import PieWithPadAngle from "./pages/pie/PieWithPadAngle";
+import CustomizedPie from "./pages/pie/CustomizedPie";
 
 function App() {
   return (
@@ -103,6 +108,20 @@ function App() {
               path="/pie/referer-of-a-website"
               element={<RefererOfAWebsite />}
             />
+            <Route
+              path="/pie/doughnut-chart-with-rounded-corner"
+              element={<DoughnutChartWithRoundedCorner />}
+            />
+            <Route path="/pie/doughnut-chart" element={<DoughnutChart />} />
+            <Route
+              path="/pie/half-doughnut-chart"
+              element={<HalfDoughnutChart />}
+            />
+            <Route
+              path="/pie/pie-with-pad-angle"
+              element={<PieWithPadAngle />}
+            />
+            <Route path="/pie/customized-pie" element={<CustomizedPie />} />
           </Routes>
         </div>
       </div>
