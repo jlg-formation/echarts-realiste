@@ -91,7 +91,7 @@ const option: EChartsOption = {
   },
   legend: {
     data: ["Cadence réelle", "Objectif"],
-    bottom: 10,
+    bottom: 0,
   },
   grid: {
     left: 70,
@@ -101,13 +101,11 @@ const option: EChartsOption = {
   },
   xAxis: {
     type: "category",
-    name: "Heure",
-    nameLocation: "middle",
-    nameGap: 30,
     data: heures,
     axisLabel: {
       fontSize: 11,
-      rotate: 45,
+      rotate: 0,
+      interval: 1,
     },
     splitLine: {
       show: true,
