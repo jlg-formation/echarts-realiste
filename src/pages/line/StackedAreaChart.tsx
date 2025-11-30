@@ -1,6 +1,54 @@
 import { ChartEditor } from "../../components/chart-editor/ChartEditor";
 import type { EChartsOption } from "echarts";
 
+const notes = `
+## 📚 Note pédagogique : Graphique en aires empilées (Stacked Area Chart)
+
+### ✅ Quand utiliser ce type de diagramme
+
+Le graphique en aires empilées est idéal dans les situations suivantes :
+
+- **Visualiser la composition d'un total sur le temps** : voir comment chaque partie contribue à l'ensemble
+- **Montrer les tendances cumulées** : évolution simultanée de plusieurs catégories formant un tout
+- **Comparer les proportions relatives** : identifier quelle catégorie domine à quel moment
+- **Mettre en évidence les variations saisonnières** : patterns récurrents par période
+- **Illustrer des flux ou des consommations** : énergie, budget, trafic, effectifs
+
+**Exemples concrets :**
+
+- Répartition de la consommation électrique par secteur (comme ici)
+- Évolution des parts de marché de plusieurs concurrents
+- Sources de revenus d'une entreprise sur plusieurs années
+- Trafic web par canal d'acquisition (SEO, publicité, réseaux sociaux)
+- Répartition du temps de travail par type d'activité
+
+### ❌ Quand ne pas utiliser ce type de diagramme
+
+Évitez le graphique en aires empilées dans ces cas :
+
+- **Données non additives** : si les catégories ne forment pas un total logique
+- **Trop de catégories** (> 5-6) : le graphique devient illisible, préférez des small multiples
+- **Valeurs très différentes** : si une catégorie écrase visuellement les autres
+- **Comparaison précise de valeurs** : difficile de comparer des aires non alignées sur la même base
+- **Données négatives** : les aires empilées ne gèrent pas bien les valeurs négatives
+- **Données discontinues** : préférez un diagramme en barres empilées
+
+**Erreurs courantes à éviter :**
+
+- Ne pas empiler des données qui n'ont pas de relation "partie d'un tout"
+- Éviter les couleurs trop proches qui rendent les aires difficiles à distinguer
+- Ne pas oublier la légende pour identifier chaque catégorie
+- Attention à l'ordre d'empilement : placer les catégories les plus stables en bas
+
+### 💡 Bonnes pratiques appliquées ici
+
+- **Ordre logique** : secteurs classés par importance structurelle
+- **Palette de couleurs distinctes** : chaque secteur est facilement identifiable
+- **Seuil d'alerte visualisé** : ligne de référence RTE à 75 GW
+- **Tooltip enrichi** : affiche les valeurs et pourcentages de chaque secteur
+- **Pic mis en évidence** : le record hivernal est marqué visuellement
+`;
+
 const option: EChartsOption = {
   title: {
     text: "Consommation électrique France 2024",
@@ -251,23 +299,15 @@ const option: EChartsOption = {
       },
     },
   ],
-  graphic: [
-    {
-      type: "text",
-      left: "center",
-      bottom: 10,
-      style: {
-        text: "📊 Source: RTE France - Bilan électrique national | 💡 Conseil: privilégier les heures creuses pour réduire la facture",
-        fontSize: 11,
-        fill: "#6b7280",
-        fontStyle: "italic",
-      },
-    },
-  ],
 };
 
 export default function StackedAreaChart() {
   return (
-    <ChartEditor title="Stacked Area Chart" section="Line" option={option} />
+    <ChartEditor
+      title="Stacked Area Chart"
+      section="Line"
+      option={option}
+      notes={notes}
+    />
   );
 }

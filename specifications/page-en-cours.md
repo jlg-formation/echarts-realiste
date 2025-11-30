@@ -1,2 +1,2 @@
 - section="Line"
-- titre="Basic Line Chart"
+- titre="Stacked Area Chart"
