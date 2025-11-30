@@ -119,11 +119,26 @@ const examplesData: Record<string, Example[]> = {
       category: "line",
       internalLink: "/line/line-gradient",
     },
-    { id: "line-sections", title: "Line with Sections", category: "line" },
+    {
+      id: "line-sections",
+      title: "Line with Sections",
+      category: "line",
+      internalLink: "/line/line-with-sections",
+    },
   ],
   bar: [
-    { id: "bar-simple", title: "Basic Bar", category: "bar" },
-    { id: "bar-tick-align", title: "Axis Align with Tick", category: "bar" },
+    {
+      id: "bar-simple",
+      title: "Basic Bar",
+      category: "bar",
+      internalLink: "/bar/basic-bar",
+    },
+    {
+      id: "bar-tick-align",
+      title: "Axis Align with Tick",
+      category: "bar",
+      internalLink: "/bar/axis-align-with-tick",
+    },
     { id: "bar-background", title: "Bar with Background", category: "bar" },
     {
       id: "bar-data-color",

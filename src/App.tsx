@@ -13,6 +13,9 @@ import TemperatureChange from "./pages/line/TemperatureChange";
 import AreaPieces from "./pages/line/AreaPieces";
 import DataTransformFilter from "./pages/line/DataTransformFilter";
 import LineGradient from "./pages/line/LineGradient";
+import LineWithSections from "./pages/line/LineWithSections";
+import BasicBar from "./pages/bar/BasicBar";
+import AxisAlignWithTick from "./pages/bar/AxisAlignWithTick";
 
 function App() {
   return (
@@ -52,6 +55,15 @@ function App() {
               element={<DataTransformFilter />}
             />
             <Route path="/line/line-gradient" element={<LineGradient />} />
+            <Route
+              path="/line/line-with-sections"
+              element={<LineWithSections />}
+            />
+            <Route path="/bar/basic-bar" element={<BasicBar />} />
+            <Route
+              path="/bar/axis-align-with-tick"
+              element={<AxisAlignWithTick />}
+            />
           </Routes>
         </div>
       </div>

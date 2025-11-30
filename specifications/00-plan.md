@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 11 / 174
-- 🔲 Restants : 163
+- ✅ Traités : 14 / 174
+- 🔲 Restants : 160
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -32,27 +32,27 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Line
 
-| Catégorie | Titre                                 | Statut     | Sujet métier suggéré                          |
-| --------- | ------------------------------------- | ---------- | --------------------------------------------- |
-| Line      | Basic Line Chart                      | ✅ Fait    | Température mensuelle                         |
-| Line      | Smoothed Line Chart                   | ✅ Fait    | Cours de bourse                               |
-| Line      | Basic area chart                      | ✅ Fait    | Consommation électrique résidentielle         |
-| Line      | Stacked Line Chart                    | ✅ Fait    | Répartition du trafic web par source          |
-| Line      | Stacked Area Chart                    | ✅ Fait    | Consommation énergétique par secteur          |
-| Line      | Gradient Stacked Area Chart           | ✅ Fait    | Évolution des ventes e-commerce par canal     |
-| Line      | Bump Chart (Ranking)                  | ✅ Fait    | Classement équipes de football sur une saison |
-| Line      | Temperature Change in the Coming Week | ✅ Fait    | Prévisions météo hebdomadaires multi-villes   |
-| Line      | Area Pieces                           | ✅ Fait    | Niveau de stock critique vs normal            |
-| Line      | Data Transform Filter                 | ✅ Fait    | Filtrage patients par groupe sanguin          |
-| Line      | Line Gradient                         | ✅ Fait    | Altitude d'un vol commercial                  |
-| Line      | Line with Sections                    | 🔲 À faire | Phases de production industrielle             |
+| Catégorie | Titre                                 | Statut  | Sujet métier suggéré                          |
+| --------- | ------------------------------------- | ------- | --------------------------------------------- |
+| Line      | Basic Line Chart                      | ✅ Fait | Température mensuelle                         |
+| Line      | Smoothed Line Chart                   | ✅ Fait | Cours de bourse                               |
+| Line      | Basic area chart                      | ✅ Fait | Consommation électrique résidentielle         |
+| Line      | Stacked Line Chart                    | ✅ Fait | Répartition du trafic web par source          |
+| Line      | Stacked Area Chart                    | ✅ Fait | Consommation énergétique par secteur          |
+| Line      | Gradient Stacked Area Chart           | ✅ Fait | Évolution des ventes e-commerce par canal     |
+| Line      | Bump Chart (Ranking)                  | ✅ Fait | Classement équipes de football sur une saison |
+| Line      | Temperature Change in the Coming Week | ✅ Fait | Prévisions météo hebdomadaires multi-villes   |
+| Line      | Area Pieces                           | ✅ Fait | Niveau de stock critique vs normal            |
+| Line      | Data Transform Filter                 | ✅ Fait | Filtrage patients par groupe sanguin          |
+| Line      | Line Gradient                         | ✅ Fait | Altitude d'un vol commercial                  |
+| Line      | Line with Sections                    | ✅ Fait | Phases de production industrielle             |
 
 ### Bar
 
 | Catégorie | Titre                               | Statut     | Sujet métier suggéré                            |
 | --------- | ----------------------------------- | ---------- | ----------------------------------------------- |
-| Bar       | Basic Bar                           | 🔲 À faire | Ventes mensuelles par région                    |
-| Bar       | Axis Align with Tick                | 🔲 À faire | Heures de travail par jour de la semaine        |
+| Bar       | Basic Bar                           | ✅ Fait    | Ventes mensuelles par région                    |
+| Bar       | Axis Align with Tick                | ✅ Fait    | Heures de travail par jour de la semaine        |
 | Bar       | Bar with Background                 | 🔲 À faire | Taux d'occupation hôtelière                     |
 | Bar       | Set Style of Single Bar             | 🔲 À faire | Performance commerciaux (meilleur mis en avant) |
 | Bar       | Waterfall Chart                     | 🔲 À faire | Analyse de trésorerie mensuelle                 |

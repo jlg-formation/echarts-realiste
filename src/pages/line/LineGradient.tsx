@@ -53,7 +53,7 @@ const option: EChartsOption = {
 
       // Trouver la phase correspondante
       const flightPoint = flightData.find(
-        (f) => f.time === data.time && f.altitude === data.altitude
+        (f) => f.time === data.time && f.altitude === data.altitude,
       );
       const phase = flightPoint?.phase || "";
 
