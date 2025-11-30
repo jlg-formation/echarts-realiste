@@ -68,18 +68,18 @@ const variationMois = (
   100
 ).toFixed(2);
 const plusHaut = Math.max(
-  ...donneesBoursieres.valeurs.map((v) => v[3])
+  ...donneesBoursieres.valeurs.map((v) => v[3]),
 ).toFixed(2);
 const plusBas = Math.min(...donneesBoursieres.valeurs.map((v) => v[2])).toFixed(
-  2
+  2,
 );
 
 // Jours haussiers vs baissiers
 const joursHaussiers = donneesBoursieres.valeurs.filter(
-  (v) => v[1] > v[0]
+  (v) => v[1] > v[0],
 ).length;
 const joursBaissiers = donneesBoursieres.valeurs.filter(
-  (v) => v[1] < v[0]
+  (v) => v[1] < v[0],
 ).length;
 
 const option: EChartsOption = {

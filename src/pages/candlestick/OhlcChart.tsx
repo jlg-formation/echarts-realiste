@@ -73,7 +73,7 @@ const amplitude = (parseFloat(plusHaut) - parseFloat(plusBas)).toFixed(2);
 // Fonction de rendu OHLC (bâtons au lieu de bougies)
 function renderOHLC(
   params: CustomSeriesRenderItemParams,
-  api: CustomSeriesRenderItemAPI
+  api: CustomSeriesRenderItemAPI,
 ) {
   const xValue = api.value(0) as number;
   const openVal = api.value(1) as number;

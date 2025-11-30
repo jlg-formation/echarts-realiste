@@ -50,6 +50,11 @@ import OrganDataWithSvg from "./pages/map/OrganDataWithSvg";
 import FlightSeatmapWithSvg from "./pages/map/FlightSeatmapWithSvg";
 import BasicCandlestick from "./pages/candlestick/BasicCandlestick";
 import OhlcChart from "./pages/candlestick/OhlcChart";
+import ShangHaiIndex from "./pages/candlestick/ShangHaiIndex";
+import LargeScaleCandlestick from "./pages/candlestick/LargeScaleCandlestick";
+import AxisPointerLinkAndTouch from "./pages/candlestick/AxisPointerLinkAndTouch";
+import CandlestickBrush from "./pages/candlestick/CandlestickBrush";
+import BasicRadarChart from "./pages/radar/BasicRadarChart";
 
 function App() {
   return (
@@ -210,6 +215,26 @@ function App() {
               element={<BasicCandlestick />}
             />
             <Route path="/candlestick/ohlc-chart" element={<OhlcChart />} />
+            <Route
+              path="/candlestick/shanghai-index"
+              element={<ShangHaiIndex />}
+            />
+            <Route
+              path="/candlestick/large-scale-candlestick"
+              element={<LargeScaleCandlestick />}
+            />
+            <Route
+              path="/candlestick/axis-pointer-link-and-touch"
+              element={<AxisPointerLinkAndTouch />}
+            />
+            <Route
+              path="/candlestick/candlestick-brush"
+              element={<CandlestickBrush />}
+            />
+            <Route
+              path="/radar/basic-radar-chart"
+              element={<BasicRadarChart />}
+            />
           </Routes>
         </div>
       </div>

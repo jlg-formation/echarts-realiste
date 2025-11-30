@@ -141,7 +141,7 @@ const seatsData = generateSeats();
 const stats = {
   total: Object.keys(seatsData).length,
   occupied: Object.values(seatsData).filter(
-    (s) => s.status === "occupied" || s.status === "premium"
+    (s) => s.status === "occupied" || s.status === "premium",
   ).length,
   available: Object.values(seatsData).filter((s) => s.status === "available")
     .length,
@@ -150,14 +150,14 @@ const stats = {
   premium: Object.values(seatsData).filter((s) => s.status === "premium")
     .length,
   specialMeals: Object.values(seatsData).filter(
-    (s) => s.meal && s.meal !== "Standard"
+    (s) => s.meal && s.meal !== "Standard",
   ).length,
   specialRequests: Object.values(seatsData).filter((s) => s.specialRequest)
     .length,
 };
 
 const occupancyRate = Math.round(
-  (stats.occupied / (stats.total - stats.blocked)) * 100
+  (stats.occupied / (stats.total - stats.blocked)) * 100,
 );
 
 const SVG_URL =

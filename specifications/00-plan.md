@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 48 / 174
-- 🔲 Restants : 126
+- ✅ Traités : 53 / 174
+- 🔲 Restants : 121
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -103,20 +103,20 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Candlestick
 
-| Catégorie   | Titre                       | Statut     | Sujet métier suggéré           |
-| ----------- | --------------------------- | ---------- | ------------------------------ |
-| Candlestick | Basic Candlestick           | ✅ Fait    | Cours action Apple sur 1 mois  |
-| Candlestick | OHLC Chart                  | ✅ Fait    | Prix du pétrole Brent          |
-| Candlestick | ShangHai Index              | 🔲 À faire | Indice CAC 40                  |
-| Candlestick | Large Scale Candlestick     | 🔲 À faire | Historique Bitcoin 5 ans       |
-| Candlestick | Axis Pointer Link and Touch | 🔲 À faire | Crypto Ethereum avec volume    |
-| Candlestick | Candlestick Brush           | 🔲 À faire | Analyse technique action Tesla |
+| Catégorie   | Titre                       | Statut  | Sujet métier suggéré           |
+| ----------- | --------------------------- | ------- | ------------------------------ |
+| Candlestick | Basic Candlestick           | ✅ Fait | Cours action Apple sur 1 mois  |
+| Candlestick | OHLC Chart                  | ✅ Fait | Prix du pétrole Brent          |
+| Candlestick | ShangHai Index              | ✅ Fait | Indice CAC 40                  |
+| Candlestick | Large Scale Candlestick     | ✅ Fait | Historique Bitcoin 5 ans       |
+| Candlestick | Axis Pointer Link and Touch | ✅ Fait | Crypto Ethereum avec volume    |
+| Candlestick | Candlestick Brush           | ✅ Fait | Analyse technique action Tesla |
 
 ### Radar
 
 | Catégorie | Titre                  | Statut     | Sujet métier suggéré             |
 | --------- | ---------------------- | ---------- | -------------------------------- |
-| Radar     | Basic Radar Chart      | 🔲 À faire | Profil compétences candidat RH   |
+| Radar     | Basic Radar Chart      | ✅ Fait    | Profil compétences candidat RH   |
 | Radar     | AQI - Radar Chart      | 🔲 À faire | Qualité de l'air multi-polluants |
 | Radar     | Customized Radar Chart | 🔲 À faire | Évaluation 360° d'un manager     |
 | Radar     | Proportion of Browsers | 🔲 À faire | Comparaison features smartphones |
