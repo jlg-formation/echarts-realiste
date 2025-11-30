@@ -1,8 +1,13 @@
 ---
 agent: agent
+args:
+  count:
+    type: number
+    description: Nombre de diagrammes à traiter (par défaut 1)
+    default: 1
 ---
 
-# Génération du Plan de Suivi des Diagrammes
+# Avancement du Projet ECharts Réalistes
 
 ## Contexte
 
@@ -12,14 +17,37 @@ Actuellement, certains exemples ont déjà leur propre page React (avec `interna
 
 ## Ta mission
 
-Génère ou mets à jour le fichier `/specifications/00-plan.md` qui sert de **tableau de bord de suivi** pour savoir quels diagrammes ont été traités et lesquels restent à faire.
+Ce prompt a **deux comportements** selon l'état du projet :
+
+### 🆕 Si le fichier `/specifications/00-plan.md` N'EXISTE PAS
+
+→ **Crée le fichier de plan** qui sert de tableau de bord de suivi pour savoir quels diagrammes ont été traités et lesquels restent à faire.
+
+### 🚀 Si le fichier `/specifications/00-plan.md` EXISTE DÉJÀ
+
+→ **Traite les prochains diagrammes** du plan en utilisant le prompt `realiste.prompt.md` :
+
+1. Lis le fichier `/specifications/00-plan.md`
+2. Trouve les **`count` premiers diagrammes avec le statut "🔲 À faire"** (valeur par défaut : **{{ count }}**)
+3. Pour **chaque diagramme** à traiter, appelle le prompt `realiste.prompt.md` avec les paramètres appropriés
+4. Une fois tous les diagrammes traités, mets à jour le fichier `00-plan.md` pour refléter les nouveaux statuts
+
+**Exemple d'appel pour un diagramme :**
+
+```
+@realiste.prompt.md section="<Catégorie>" titre="<Titre>"
+```
 
 ## Sources de données
 
 1. **`src/components/examples/ExamplesGrid.tsx`** : contient la liste de tous les exemples avec leur `id`, `title`, `category` et éventuellement `internalLink`
 2. **`src/pages/`** : contient les pages React déjà créées pour les exemples traités
 
-## Structure attendue du fichier `/specifications/00-plan.md`
+---
+
+## Création du Plan (si inexistant)
+
+### Structure attendue du fichier `/specifications/00-plan.md`
 
 ```markdown
 # Plan de Réalisation - Exemples ECharts Réalistes
@@ -31,25 +59,25 @@ Génère ou mets à jour le fichier `/specifications/00-plan.md` qui sert de **t
 
 ## Comment traiter un ou plusieurs diagrammes
 
-Pour traiter des diagrammes, utilise le prompt **realiste.prompt.md** avec les arguments `section`, `titre` et `count` :
+Pour traiter des diagrammes, utilise le prompt **avance.prompt.md** avec le paramètre `count` :
 ```
 
-@realiste.prompt.md section="<NomSection>" titre="<TitreDuDiagramme>" count=<nombre>
+@avance.prompt.md count=<nombre>
 
 ```
 
 ### Paramètre `count`
 
-Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diagrammes consécutifs à traiter** en partant de la ligne indiquée dans le tableau de suivi.
+Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diagrammes consécutifs à traiter** en partant du premier diagramme "🔲 À faire" dans le tableau.
 
-- `count=1` : traite uniquement le diagramme spécifié par `section` et `titre`
-- `count=3` : traite le diagramme spécifié **puis les 2 suivants** dans le tableau (3 au total)
-- `count=5` : traite 5 diagrammes consécutifs à partir de celui spécifié
+- `count=1` : traite uniquement le prochain diagramme à faire
+- `count=3` : traite les 3 prochains diagrammes à faire
+- `count=5` : traite les 5 prochains diagrammes à faire
 
 **Exemples :**
 
-- `@realiste.prompt.md section="Line" titre="Smoothed Line Chart"` → traite 1 seul diagramme
-- `@realiste.prompt.md section="Line" titre="Smoothed Line Chart" count=3` → traite ce diagramme + les 2 suivants du tableau
+- `@avance.prompt.md` → traite le prochain diagramme à faire
+- `@avance.prompt.md count=3` → traite les 3 prochains diagrammes à faire
 
 ## Tableau de suivi
 
@@ -62,7 +90,7 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | ...       | ...                  | ...        | ...                          |
 ```
 
-## Règles importantes
+### Règles pour la création du plan
 
 1. **Statut "✅ Fait"** : l'exemple possède un `internalLink` dans `ExamplesGrid.tsx` ET sa page existe dans `src/pages/`
 2. **Statut "🔲 À faire"** : l'exemple n'a pas encore de page interne
@@ -150,10 +178,20 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
    - Pompiers (interventions, temps réponse, types)
    - Eau/Assainissement (consommation, fuites, qualité)
 
+---
+
 ## Critères de succès
 
-- [ ] Le fichier `/specifications/00-plan.md` est créé ou mis à jour
+### Si création du plan
+
+- [ ] Le fichier `/specifications/00-plan.md` est créé
 - [ ] Tous les exemples de `ExamplesGrid.tsx` sont listés dans le tableau
 - [ ] Les statuts reflètent l'état réel du code (présence ou non d'`internalLink` + page existante)
 - [ ] Chaque diagramme "À faire" a un sujet métier unique et pertinent suggéré
 - [ ] Le compteur de progression est correct
+
+### Si traitement de diagrammes
+
+- [ ] Les `count` prochains diagrammes "🔲 À faire" ont été traités via `realiste.prompt.md`
+- [ ] Le fichier `00-plan.md` a été mis à jour avec les nouveaux statuts "✅ Fait"
+- [ ] Le compteur de progression a été recalculé

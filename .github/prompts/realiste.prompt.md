@@ -10,7 +10,10 @@ Expert en visualisation de données réaliste et en insight.
 
 ## Ton objectif
 
-Modifier les options echarts de la page donnée en paramètre pour que l'exemple devienne réaliste.
+Modifier la page donnée en paramètre pour :
+
+1. **Rendre le scénario réaliste** : enrichir les options ECharts avec un contexte métier concret
+2. **Ajouter une note pédagogique** : utiliser la prop `notes` du composant `ChartEditor` pour afficher une documentation Markdown dans l'onglet "Notes"
 
 ## Syntaxe de la commande
 
@@ -66,13 +69,47 @@ Realiste veut en particulier dire que :
 - on comprend tout de suite le message transmis
 - il y a toujours un message qui est passé et qui indique une décision à prendre ou conscientiser un problème ou une bonne nouvelle.
 
-### Note pédagogique
+### Note pédagogique via la prop `notes`
 
-En plus du scénario réaliste, ajouter une **note pédagogique**. Cette note doit :
+En plus du scénario réaliste, ajouter une **note pédagogique** via la prop `notes` du composant `ChartEditor`.
+
+#### Comment implémenter la note
+
+1. Créer une constante `notes` contenant le texte Markdown de la note pédagogique
+2. Passer cette constante à la prop `notes` du composant `ChartEditor`
+
+```tsx
+const notes = `
+## 📚 Note pédagogique : [Type de graphique]
+
+### ✅ Quand utiliser ce type de diagramme
+...
+
+### ❌ Quand ne pas utiliser ce type de diagramme
+...
+`;
+
+export default function MonGraphique() {
+  return (
+    <ChartEditor
+      title="Mon Graphique"
+      section="Section"
+      option={option}
+      notes={notes} // ← Ajouter cette prop
+    />
+  );
+}
+```
+
+#### Contenu de la note pédagogique
+
+La note doit :
 
 - Expliquer **quand utiliser** ce type de diagramme
 - Expliquer **quand ne pas utiliser** ce type de diagramme
-- Expliquer de manière structurée avec des titres et chapitres, avec bullets points et paragraphe explicatif
+- Être structurée avec des titres, sous-titres, bullet points et paragraphes explicatifs
+- Donner des exemples concrets d'utilisation
+- Mentionner les erreurs courantes à éviter
 
 #### Exemple de note pédagogique (pour un graphique en ligne)
 
@@ -113,7 +150,9 @@ Le graphique en ligne est idéal dans les situations suivantes :
 
 ### Options echarts
 
-N'intervenir que dans les options echarts pour enrichir la visualisation de donnée
+N'intervenir que dans les options echarts pour enrichir la visualisation de donnée.
+
+**Important** : Ne pas utiliser `graphic` pour afficher la note pédagogique dans le graphique. La note doit être passée via la prop `notes` du composant `ChartEditor` et s'affichera dans l'onglet "Notes" dédié.
 
 ### Garder le même type de graphique
 
@@ -121,10 +160,12 @@ Le but est de montrer un cas d'utilisation d'un graphique en l'intégrant dans u
 
 ## Critères de succès
 
-- Le page revisitée doit présenter un scénario réaliste.
-- Aucun probleme d'accessibilité (couleur, contraste, taille de caractères, etc.)
+- La page revisitée doit présenter un scénario réaliste
+- La prop `notes` est ajoutée au composant `ChartEditor` avec une note pédagogique complète
+- Aucun problème d'accessibilité (couleur, contraste, taille de caractères, etc.)
 - Pas de texte tronqué
 - Pas de recouvrement de texte
+- Pas de `graphic` utilisé pour la note pédagogique (utiliser la prop `notes` à la place)
 
 ## Exemple avant/après
 
@@ -148,9 +189,12 @@ const option: EChartsOption = {
 };
 ```
 
-### Après (options réalistes)
+### Après (options réalistes + note pédagogique)
 
-```typescript
+```tsx
+import { ChartEditor } from "@/components/chart-editor/ChartEditor";
+import type { EChartsOption } from "echarts";
+
 const option: EChartsOption = {
   title: {
     text: "Fréquentation du site e-commerce - Semaine 47",
@@ -203,20 +247,53 @@ const option: EChartsOption = {
       },
     },
   ],
-  graphic: {
-    type: "text",
-    right: 10,
-    bottom: 10,
-    style: {
-      text: "💡 Graphique en ligne : idéal pour visualiser des tendances\ntemporelles et détecter des anomalies dans une série.",
-      fontSize: 11,
-      fill: "#666",
-      backgroundColor: "#f5f5f5",
-      padding: [6, 10],
-      borderRadius: 4,
-    },
-  },
 };
+
+const notes = `
+## 📚 Note pédagogique : Graphique en ligne (Line Chart)
+
+### ✅ Quand utiliser ce type de diagramme
+
+Le graphique en ligne est idéal dans les situations suivantes :
+
+- **Visualiser une évolution temporelle** : suivi de métriques sur des jours, semaines, mois ou années
+- **Détecter des tendances** : croissance, décroissance, saisonnalité
+- **Identifier des anomalies** : pics ou chutes soudaines dans les données
+- **Comparer plusieurs séries** : évolution parallèle de 2-5 variables sur la même période
+- **Montrer la continuité** : quand les données ont une progression logique entre les points
+
+**Exemples concrets :**
+
+- Évolution du chiffre d'affaires mensuel
+- Suivi de la température sur une journée
+- Progression du nombre d'utilisateurs actifs
+
+### ❌ Quand ne pas utiliser ce type de diagramme
+
+Évitez le graphique en ligne dans ces cas :
+
+- **Données catégorielles sans ordre** : utilisez plutôt un diagramme en barres
+- **Comparaison de proportions** : préférez un camembert ou un treemap
+- **Peu de points de données** (< 3) : un tableau ou des indicateurs chiffrés seront plus clairs
+- **Données non continues** : si les points n'ont pas de lien logique entre eux
+- **Trop de séries** (> 5-6 lignes) : le graphique devient illisible, envisagez des small multiples
+
+**Erreurs courantes à éviter :**
+
+- Ne pas connecter des points qui n'ont pas de relation temporelle
+- Ne pas utiliser pour des données cumulées (préférer un area chart)
+`;
+
+export default function BasicLineChart() {
+  return (
+    <ChartEditor
+      title="Basic Line Chart"
+      section="Line"
+      option={option}
+      notes={notes}
+    />
+  );
+}
 ```
 
 **Ce qui rend cet exemple réaliste :**
@@ -227,4 +304,11 @@ const option: EChartsOption = {
 - **Unités claires** : "Visiteurs uniques" et "k" pour milliers
 - **Point d'attention visuel** : le vendredi est en rouge avec un label d'alerte
 - **Ligne de moyenne** : donne un repère pour contextualiser les valeurs
-- **Note pédagogique** : explique quand et pourquoi utiliser ce type de graphique
+
+**Ce qui rend la note pédagogique utile :**
+
+- **Prop `notes`** : la note est passée au composant `ChartEditor` et s'affiche dans l'onglet "Notes"
+- **Structure claire** : titres, sous-titres, bullet points pour une lecture rapide
+- **Cas d'usage** : explique quand utiliser et quand éviter ce type de graphique
+- **Exemples concrets** : aide à transposer dans son propre contexte
+- **Erreurs à éviter** : prévient les mauvaises pratiques
