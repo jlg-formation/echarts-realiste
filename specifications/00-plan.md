@@ -114,13 +114,13 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Radar
 
-| Catégorie | Titre                  | Statut     | Sujet métier suggéré             |
-| --------- | ---------------------- | ---------- | -------------------------------- |
-| Radar     | Basic Radar Chart      | ✅ Fait    | Profil compétences candidat RH   |
-| Radar     | AQI - Radar Chart      | ✅ Fait    | Qualité de l'air multi-polluants |
-| Radar     | Customized Radar Chart | ✅ Fait    | Évaluation 360° d'un manager     |
-| Radar     | Proportion of Browsers | ✅ Fait    | Comparaison features smartphones |
-| Radar     | Multiple Radar         | ✅ Fait    | Benchmark produits concurrents   |
+| Catégorie | Titre                  | Statut  | Sujet métier suggéré             |
+| --------- | ---------------------- | ------- | -------------------------------- |
+| Radar     | Basic Radar Chart      | ✅ Fait | Profil compétences candidat RH   |
+| Radar     | AQI - Radar Chart      | ✅ Fait | Qualité de l'air multi-polluants |
+| Radar     | Customized Radar Chart | ✅ Fait | Évaluation 360° d'un manager     |
+| Radar     | Proportion of Browsers | ✅ Fait | Comparaison features smartphones |
+| Radar     | Multiple Radar         | ✅ Fait | Benchmark produits concurrents   |
 
 ### Boxplot
 

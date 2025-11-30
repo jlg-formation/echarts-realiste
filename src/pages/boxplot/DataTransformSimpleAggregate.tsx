@@ -302,7 +302,7 @@ const option: EChartsOption = {
 const allSalaries = salaryData.map((d) => d.salaire);
 const globalStats = calculateBoxplotStats(allSalaries);
 const avgSalary = Math.round(
-  allSalaries.reduce((a, b) => a + b, 0) / allSalaries.length,
+  allSalaries.reduce((a, b) => a + b, 0) / allSalaries.length
 );
 
 const notes = `
