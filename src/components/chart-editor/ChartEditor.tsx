@@ -9,12 +9,18 @@ interface ChartEditorProps {
   title: string;
   section: string;
   option: EChartsOption;
+  notes?: string;
 }
 
 const MIN_PANEL_WIDTH = 300;
 const STORAGE_KEY = "chartEditorSplitPosition";
 
-export function ChartEditor({ title, section, option }: ChartEditorProps) {
+export function ChartEditor({
+  title,
+  section,
+  option,
+  notes,
+}: ChartEditorProps) {
   const [currentOption, setCurrentOption] = useState<EChartsOption>(option);
   const [generatedAt, setGeneratedAt] = useState(() => {
     const now = new Date();
@@ -161,6 +167,7 @@ export function ChartEditor({ title, section, option }: ChartEditorProps) {
             option={currentOption}
             onRun={handleRun}
             chartInstance={chartInstance}
+            notes={notes}
           />
         </div>
 

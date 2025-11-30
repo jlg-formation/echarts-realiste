@@ -1,13 +1,15 @@
 import { useState, useCallback, useMemo, useRef } from "react";
 import type { EChartsOption, ECharts } from "echarts";
+import Markdown from "react-markdown";
 import JsonTreeView from "./JsonTreeView";
 
-type TabType = "edit" | "full" | "preview";
+type TabType = "edit" | "full" | "preview" | "notes";
 
 interface CodePanelProps {
   option: EChartsOption;
   onRun: (newOption: EChartsOption) => void;
   chartInstance: ECharts | null;
+  notes?: string;
 }
 
 function escapeString(str: string): string {
@@ -42,17 +44,17 @@ function formatOption(option: EChartsOption): string {
           (v) =>
             typeof v === "string" ||
             typeof v === "number" ||
-            typeof v === "boolean",
+            typeof v === "boolean"
         )
       ) {
         const items = value.map((v) =>
-          typeof v === "string" ? `'${escapeString(v)}'` : String(v),
+          typeof v === "string" ? `'${escapeString(v)}'` : String(v)
         );
         const singleLine = `[${items.join(", ")}]`;
         if (singleLine.length < 60) return singleLine;
       }
       const items = value.map(
-        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`,
+        (v) => `${nextSpaces}${formatValue(v, indent + 1)}`
       );
       return `[\n${items.join(",\n")}\n${spaces}]`;
     }
@@ -61,7 +63,7 @@ function formatOption(option: EChartsOption): string {
       const entries = Object.entries(value as Record<string, unknown>);
       if (entries.length === 0) return "{}";
       const items = entries.map(
-        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`,
+        ([k, v]) => `${nextSpaces}${k}: ${formatValue(v, indent + 1)}`
       );
       return `{\n${items.join(",\n")}\n${spaces}}`;
     }
@@ -88,6 +90,7 @@ export default function CodePanel({
   option,
   onRun,
   chartInstance,
+  notes,
 }: CodePanelProps) {
   const [activeTab, setActiveTab] = useState<TabType>("edit");
   const [code, setCode] = useState(() => formatOption(option));
@@ -130,7 +133,7 @@ export default function CodePanel({
         lineNumbersRef.current.scrollTop = e.currentTarget.scrollTop;
       }
     },
-    [],
+    []
   );
 
   // Code affiché pour les onglets Edit Code et Full Code
@@ -142,10 +145,21 @@ export default function CodePanel({
 
   // Rendu du contenu en fonction de l'onglet actif
   const renderContent = () => {
+    if (activeTab === "notes" && notes) {
+      // Affichage du contenu Markdown pour l'onglet Notes
+      return (
+        <div className="h-full overflow-auto bg-white p-6">
+          <div className="prose prose-sm max-w-none prose-headings:text-gray-800 prose-p:text-gray-600 prose-li:text-gray-600 prose-strong:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none">
+            <Markdown>{notes}</Markdown>
+          </div>
+        </div>
+      );
+    }
+
     if (activeTab === "preview") {
       // Affichage en arbre dépliable pour Option Preview
       return (
-        <div className="flex-1 overflow-auto bg-gray-50">
+        <div className="h-full overflow-auto bg-gray-50">
           {resolvedOption ? (
             <JsonTreeView data={resolvedOption} initialExpanded={true} />
           ) : (
@@ -230,6 +244,18 @@ export default function CodePanel({
           >
             Option Preview
           </button>
+          {notes && (
+            <button
+              onClick={() => setActiveTab("notes")}
+              className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
+                activeTab === "notes"
+                  ? "text-blue-600 border-b-2 border-blue-600"
+                  : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Notes
+            </button>
+          )}
         </div>
       </div>
 

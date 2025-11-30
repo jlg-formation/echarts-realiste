@@ -28,6 +28,7 @@ Ajouter un système de **documentation pédagogique** pour chaque exemple de gra
 3. **Rendu Markdown**
    - Utiliser une librairie légère pour parser le Markdown (ex: `react-markdown`)
    - Styliser le rendu avec TailwindCSS (prose ou classes personnalisées)
+   - **Le conteneur doit être scrollable** : utiliser `overflow-auto` et `flex-1` pour que le contenu défile verticalement si le texte est trop long
 
 ### Exemple d'utilisation
 
