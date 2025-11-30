@@ -73,13 +73,13 @@ const variationMois = (
   100
 ).toFixed(1);
 const volumeMoyen = Math.round(
-  ethereumData.volumes.reduce((a, b) => a + b, 0) / ethereumData.volumes.length
+  ethereumData.volumes.reduce((a, b) => a + b, 0) / ethereumData.volumes.length,
 );
 const volumeMax = Math.max(...ethereumData.volumes);
 
 // Déterminer la couleur des volumes (vert si hausse, rouge si baisse)
 const volumeColors = ethereumData.ohlc.map((candle) =>
-  candle[1] >= candle[0] ? "#22c55e" : "#dc2626"
+  candle[1] >= candle[0] ? "#22c55e" : "#dc2626",
 );
 
 const option: EChartsOption = {

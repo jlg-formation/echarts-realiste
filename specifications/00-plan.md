@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 53 / 174
-- 🔲 Restants : 121
+- ✅ Traités : 56 / 174
+- 🔲 Restants : 118
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -117,9 +117,9 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Catégorie | Titre                  | Statut     | Sujet métier suggéré             |
 | --------- | ---------------------- | ---------- | -------------------------------- |
 | Radar     | Basic Radar Chart      | ✅ Fait    | Profil compétences candidat RH   |
-| Radar     | AQI - Radar Chart      | 🔲 À faire | Qualité de l'air multi-polluants |
-| Radar     | Customized Radar Chart | 🔲 À faire | Évaluation 360° d'un manager     |
-| Radar     | Proportion of Browsers | 🔲 À faire | Comparaison features smartphones |
+| Radar     | AQI - Radar Chart      | ✅ Fait    | Qualité de l'air multi-polluants |
+| Radar     | Customized Radar Chart | ✅ Fait    | Évaluation 360° d'un manager     |
+| Radar     | Proportion of Browsers | ✅ Fait    | Comparaison features smartphones |
 | Radar     | Multiple Radar         | 🔲 À faire | Benchmark produits concurrents   |
 
 ### Boxplot

@@ -55,6 +55,9 @@ import LargeScaleCandlestick from "./pages/candlestick/LargeScaleCandlestick";
 import AxisPointerLinkAndTouch from "./pages/candlestick/AxisPointerLinkAndTouch";
 import CandlestickBrush from "./pages/candlestick/CandlestickBrush";
 import BasicRadarChart from "./pages/radar/BasicRadarChart";
+import AqiRadarChart from "./pages/radar/AqiRadarChart";
+import CustomizedRadarChart from "./pages/radar/CustomizedRadarChart";
+import ProportionOfBrowsers from "./pages/radar/ProportionOfBrowsers";
 
 function App() {
   return (
@@ -234,6 +237,15 @@ function App() {
             <Route
               path="/radar/basic-radar-chart"
               element={<BasicRadarChart />}
+            />
+            <Route path="/radar/aqi-radar-chart" element={<AqiRadarChart />} />
+            <Route
+              path="/radar/customized-radar-chart"
+              element={<CustomizedRadarChart />}
+            />
+            <Route
+              path="/radar/proportion-of-browsers"
+              element={<ProportionOfBrowsers />}
             />
           </Routes>
         </div>

@@ -33,21 +33,21 @@ const prixMorceaux: Record<string, { prix: number; categorie: string }> = {
   Tendron: { prix: 9, categorie: "economique" },
 };
 
-// Mapping des noms SVG vers nos noms français
-const nomsSvgVersFrancais: Record<string, string> = {
-  Rumsteak: "Rumsteck",
-  Rump: "Rumsteck",
-  Sirloin: "Faux-filet",
-  Tenderloin: "Filet",
-  Ribeye: "Entrecôte",
-  Rib: "Côte de bœuf",
-  Chuck: "Paleron",
-  Brisket: "Poitrine",
-  Shank: "Jarret",
-  Flank: "Flanchet",
-  "Short plate": "Plat de côtes",
-  Round: "Gîte",
-};
+// Mapping des noms SVG vers nos noms français (pour référence future)
+// const nomsSvgVersFrancais: Record<string, string> = {
+//   Rumsteak: "Rumsteck",
+//   Rump: "Rumsteck",
+//   Sirloin: "Faux-filet",
+//   Tenderloin: "Filet",
+//   Ribeye: "Entrecôte",
+//   Rib: "Côte de bœuf",
+//   Chuck: "Paleron",
+//   Brisket: "Poitrine",
+//   Shank: "Jarret",
+//   Flank: "Flanchet",
+//   "Short plate": "Plat de côtes",
+//   Round: "Gîte",
+// };
 
 const SVG_URL =
   "https://echarts.apache.org/examples/data/asset/geo/Beef_cuts_France.svg";
@@ -225,7 +225,7 @@ export default function GeoBeefCuts() {
             name: nom,
             value: prix,
             categorie,
-          }),
+          })
         );
 
         const newOption: EChartsOption = {

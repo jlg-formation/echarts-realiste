@@ -72,8 +72,8 @@ const amplitude = (parseFloat(plusHaut) - parseFloat(plusBas)).toFixed(2);
 
 // Fonction de rendu OHLC (bâtons au lieu de bougies)
 function renderOHLC(
-  params: CustomSeriesRenderItemParams,
-  api: CustomSeriesRenderItemAPI,
+  _params: CustomSeriesRenderItemParams,
+  api: CustomSeriesRenderItemAPI
 ) {
   const xValue = api.value(0) as number;
   const openVal = api.value(1) as number;
@@ -92,11 +92,11 @@ function renderOHLC(
   const color = isUp ? "#22c55e" : "#dc2626";
 
   return {
-    type: "group",
+    type: "group" as const,
     children: [
       // Ligne verticale (high-low)
       {
-        type: "line",
+        type: "line" as const,
         shape: {
           x1: highPoint[0],
           y1: highPoint[1],
@@ -110,7 +110,7 @@ function renderOHLC(
       },
       // Tick gauche (open)
       {
-        type: "line",
+        type: "line" as const,
         shape: {
           x1: openPoint[0] - halfWidth,
           y1: openPoint[1],
@@ -124,7 +124,7 @@ function renderOHLC(
       },
       // Tick droit (close)
       {
-        type: "line",
+        type: "line" as const,
         shape: {
           x1: closePoint[0],
           y1: closePoint[1],

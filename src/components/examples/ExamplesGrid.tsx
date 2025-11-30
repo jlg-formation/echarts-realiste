@@ -383,9 +383,24 @@ const examplesData: Record<string, Example[]> = {
       category: "radar",
       internalLink: "/radar/basic-radar-chart",
     },
-    { id: "radar-aqi", title: "AQI - Radar Chart", category: "radar" },
-    { id: "radar-custom", title: "Customized Radar Chart", category: "radar" },
-    { id: "radar2", title: "Proportion of Browsers", category: "radar" },
+    {
+      id: "radar-aqi",
+      title: "AQI - Radar Chart",
+      category: "radar",
+      internalLink: "/radar/aqi-radar-chart",
+    },
+    {
+      id: "radar-custom",
+      title: "Customized Radar Chart",
+      category: "radar",
+      internalLink: "/radar/customized-radar-chart",
+    },
+    {
+      id: "radar2",
+      title: "Proportion of Browsers",
+      category: "radar",
+      internalLink: "/radar/proportion-of-browsers",
+    },
     { id: "radar-multiple", title: "Multiple Radar", category: "radar" },
   ],
   boxplot: [

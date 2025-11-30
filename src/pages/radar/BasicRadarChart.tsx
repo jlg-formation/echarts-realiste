@@ -32,10 +32,10 @@ const competences = [
 
 // Calcul des moyennes
 const moyenneAlice = Math.round(
-  candidats[0].scores.reduce((a, b) => a + b, 0) / candidats[0].scores.length
+  candidats[0].scores.reduce((a, b) => a + b, 0) / candidats[0].scores.length,
 );
 const moyenneThomas = Math.round(
-  candidats[1].scores.reduce((a, b) => a + b, 0) / candidats[1].scores.length
+  candidats[1].scores.reduce((a, b) => a + b, 0) / candidats[1].scores.length,
 );
 
 // Seuil minimum requis pour le poste
@@ -76,7 +76,7 @@ const option: EChartsOption = {
       const scores = candidat.scores;
       const competencesList = competences.map(
         (c, i) =>
-          `${c.name.replace("\n", " ")} : <b>${scores[i]}/100</b> ${scores[i] >= seuilMinimum[i] ? "✅" : "❌"}`
+          `${c.name.replace("\n", " ")} : <b>${scores[i]}/100</b> ${scores[i] >= seuilMinimum[i] ? "✅" : "❌"}`,
       );
 
       return `

@@ -76,7 +76,7 @@ const plusBas = Math.min(...teslaData.ohlc.map((v) => v[2]));
 
 // Couleurs des volumes
 const volumeColors = teslaData.ohlc.map((candle) =>
-  candle[1] >= candle[0] ? "#22c55e" : "#dc2626"
+  candle[1] >= candle[0] ? "#22c55e" : "#dc2626",
 );
 
 const option: EChartsOption = {
