@@ -17,7 +17,7 @@ export default function Header() {
       {/* GitHub link */}
       <div className="flex items-center">
         <a
-          href="https://github.com/apache/echarts"
+          href="https://github.com/jlg-formation/echarts-realiste"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#6e7079] hover:text-[#e43961] transition-colors cursor-pointer"
