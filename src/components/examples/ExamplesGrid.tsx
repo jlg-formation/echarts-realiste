@@ -319,12 +319,23 @@ const examplesData: Record<string, Example[]> = {
       category: "map",
       internalLink: "/map/pie-charts-on-geo-map",
     },
-    { id: "geo-beef-cuts", title: "GEO Beef Cuts", category: "map" },
-    { id: "geo-organ", title: "Organ Data with SVG", category: "map" },
+    {
+      id: "geo-beef-cuts",
+      title: "GEO Beef Cuts",
+      category: "map",
+      internalLink: "/map/geo-beef-cuts",
+    },
+    {
+      id: "geo-organ",
+      title: "Organ Data with SVG",
+      category: "map",
+      internalLink: "/map/organ-data-with-svg",
+    },
     {
       id: "geo-seatmap-flight",
       title: "Flight Seatmap with SVG",
       category: "map",
+      internalLink: "/map/flight-seatmap-with-svg",
     },
   ],
   candlestick: [
@@ -332,8 +343,14 @@ const examplesData: Record<string, Example[]> = {
       id: "candlestick-simple",
       title: "Basic Candlestick",
       category: "candlestick",
+      internalLink: "/candlestick/basic-candlestick",
     },
-    { id: "custom-ohlc", title: "OHLC Chart", category: "candlestick" },
+    {
+      id: "custom-ohlc",
+      title: "OHLC Chart",
+      category: "candlestick",
+      internalLink: "/candlestick/ohlc-chart",
+    },
     { id: "candlestick-sh", title: "ShangHai Index", category: "candlestick" },
     {
       id: "candlestick-large",

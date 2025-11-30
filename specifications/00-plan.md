@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 43 / 174
-- 🔲 Restants : 131
+- ✅ Traités : 48 / 174
+- 🔲 Restants : 126
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -92,21 +92,21 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### GEO/Map
 
-| Catégorie | Titre                      | Statut     | Sujet métier suggéré                       |
-| --------- | -------------------------- | ---------- | ------------------------------------------ |
-| Map       | Geo Graph                  | ✅ Fait    | Réseau de transport ferroviaire            |
-| Map       | Geo Choropleth and Scatter | ✅ Fait    | Densité population + villes principales    |
-| Map       | Pie Charts on GEO Map      | ✅ Fait    | Répartition production agricole par région |
-| Map       | GEO Beef Cuts              | 🔲 À faire | Anatomie pièces de viande (boucherie)      |
-| Map       | Organ Data with SVG        | 🔲 À faire | Données médicales par organe               |
-| Map       | Flight Seatmap with SVG    | 🔲 À faire | Occupation sièges avion                    |
+| Catégorie | Titre                      | Statut  | Sujet métier suggéré                       |
+| --------- | -------------------------- | ------- | ------------------------------------------ |
+| Map       | Geo Graph                  | ✅ Fait | Réseau de transport ferroviaire            |
+| Map       | Geo Choropleth and Scatter | ✅ Fait | Densité population + villes principales    |
+| Map       | Pie Charts on GEO Map      | ✅ Fait | Répartition production agricole par région |
+| Map       | GEO Beef Cuts              | ✅ Fait | Anatomie pièces de viande (boucherie)      |
+| Map       | Organ Data with SVG        | ✅ Fait | Données médicales par organe               |
+| Map       | Flight Seatmap with SVG    | ✅ Fait | Occupation sièges avion                    |
 
 ### Candlestick
 
 | Catégorie   | Titre                       | Statut     | Sujet métier suggéré           |
 | ----------- | --------------------------- | ---------- | ------------------------------ |
-| Candlestick | Basic Candlestick           | 🔲 À faire | Cours action Apple sur 1 mois  |
-| Candlestick | OHLC Chart                  | 🔲 À faire | Prix du pétrole Brent          |
+| Candlestick | Basic Candlestick           | ✅ Fait    | Cours action Apple sur 1 mois  |
+| Candlestick | OHLC Chart                  | ✅ Fait    | Prix du pétrole Brent          |
 | Candlestick | ShangHai Index              | 🔲 À faire | Indice CAC 40                  |
 | Candlestick | Large Scale Candlestick     | 🔲 À faire | Historique Bitcoin 5 ans       |
 | Candlestick | Axis Pointer Link and Touch | 🔲 À faire | Crypto Ethereum avec volume    |

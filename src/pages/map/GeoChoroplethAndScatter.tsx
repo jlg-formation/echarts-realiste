@@ -191,7 +191,7 @@ const option: EChartsOption = {
         const ville = villes.find(
           (v) =>
             v.x === (p.data.value as number[])[0] &&
-            v.y === (p.data.value as number[])[1]
+            v.y === (p.data.value as number[])[1],
         );
         if (!ville) return "";
 
@@ -354,7 +354,7 @@ ${regions
   .slice(0, 5)
   .map(
     (r) =>
-      `| ${r.nom} | ${r.population.toFixed(1)}M | ${r.densite} hab/km² | ${r.densite > densiteMoyenne ? "+" : ""}${(((r.densite - densiteMoyenne) / densiteMoyenne) * 100).toFixed(0)} % |`
+      `| ${r.nom} | ${r.population.toFixed(1)}M | ${r.densite} hab/km² | ${r.densite > densiteMoyenne ? "+" : ""}${(((r.densite - densiteMoyenne) / densiteMoyenne) * 100).toFixed(0)} % |`,
   )
   .join("\n")}
 

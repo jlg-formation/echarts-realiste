@@ -45,6 +45,11 @@ import ScatterWithJittering from "./pages/scatter/ScatterWithJittering";
 import GeoGraph from "./pages/map/GeoGraph";
 import GeoChoroplethAndScatter from "./pages/map/GeoChoroplethAndScatter";
 import PieChartsOnGeoMap from "./pages/map/PieChartsOnGeoMap";
+import GeoBeefCuts from "./pages/map/GeoBeefCuts";
+import OrganDataWithSvg from "./pages/map/OrganDataWithSvg";
+import FlightSeatmapWithSvg from "./pages/map/FlightSeatmapWithSvg";
+import BasicCandlestick from "./pages/candlestick/BasicCandlestick";
+import OhlcChart from "./pages/candlestick/OhlcChart";
 
 function App() {
   return (
@@ -191,6 +196,20 @@ function App() {
               path="/map/pie-charts-on-geo-map"
               element={<PieChartsOnGeoMap />}
             />
+            <Route path="/map/geo-beef-cuts" element={<GeoBeefCuts />} />
+            <Route
+              path="/map/organ-data-with-svg"
+              element={<OrganDataWithSvg />}
+            />
+            <Route
+              path="/map/flight-seatmap-with-svg"
+              element={<FlightSeatmapWithSvg />}
+            />
+            <Route
+              path="/candlestick/basic-candlestick"
+              element={<BasicCandlestick />}
+            />
+            <Route path="/candlestick/ohlc-chart" element={<OhlcChart />} />
           </Routes>
         </div>
       </div>

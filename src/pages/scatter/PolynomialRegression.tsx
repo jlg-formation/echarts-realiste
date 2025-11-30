@@ -138,7 +138,7 @@ const option: EChartsOption = {
       const vitesse = p.data[0];
       const conso = p.data[1];
       const point = consommationData.find(
-        (d) => d.vitesse === vitesse && d.conso === conso
+        (d) => d.vitesse === vitesse && d.conso === conso,
       );
       if (!point) return "";
 

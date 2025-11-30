@@ -140,7 +140,7 @@ const option: EChartsOption = {
       const point = salaryData.find(
         (d) =>
           Math.abs(d.experienceJitter - expJitter) < 0.01 &&
-          d.salaire === salaire
+          d.salaire === salaire,
       );
 
       if (!point) return "";

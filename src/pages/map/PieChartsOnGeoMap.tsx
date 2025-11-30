@@ -267,7 +267,7 @@ Les **pie charts sur carte** combinent :
 ${regionsAgricoles
   .map((r) => {
     const [type, valeur] = Object.entries(r.productions).reduce((a, b) =>
-      a[1] > b[1] ? a : b
+      a[1] > b[1] ? a : b,
     );
     return `| ${r.nom} | ${labelsFr[type]} | ${valeur} % |`;
   })
