@@ -87,7 +87,7 @@ const option: EChartsOption = {
       }
 
       const dataPoint = growthData.find(
-        (d) => d.mois === (p.data as number[])[0]
+        (d) => d.mois === (p.data as number[])[0],
       );
       if (!dataPoint) return "";
 

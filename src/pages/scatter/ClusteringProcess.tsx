@@ -100,7 +100,7 @@ const caParCluster = Object.keys(clusterConfig).map((cluster) => {
   const clusterClients = clientsData.filter((c) => c.cluster === cluster);
   const ca = clusterClients.reduce(
     (sum, c) => sum + c.frequence * c.montant,
-    0
+    0,
   );
   return { cluster, ca };
 });

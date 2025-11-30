@@ -40,6 +40,11 @@ import ClusteringProcess from "./pages/scatter/ClusteringProcess";
 import ExponentialRegression from "./pages/scatter/ExponentialRegression";
 import EffectScatterChart from "./pages/scatter/EffectScatterChart";
 import LinearRegression from "./pages/scatter/LinearRegression";
+import PolynomialRegression from "./pages/scatter/PolynomialRegression";
+import ScatterWithJittering from "./pages/scatter/ScatterWithJittering";
+import GeoGraph from "./pages/map/GeoGraph";
+import GeoChoroplethAndScatter from "./pages/map/GeoChoroplethAndScatter";
+import PieChartsOnGeoMap from "./pages/map/PieChartsOnGeoMap";
 
 function App() {
   return (
@@ -168,6 +173,23 @@ function App() {
             <Route
               path="/scatter/linear-regression"
               element={<LinearRegression />}
+            />
+            <Route
+              path="/scatter/polynomial-regression"
+              element={<PolynomialRegression />}
+            />
+            <Route
+              path="/scatter/scatter-with-jittering"
+              element={<ScatterWithJittering />}
+            />
+            <Route path="/map/geo-graph" element={<GeoGraph />} />
+            <Route
+              path="/map/geo-choropleth-and-scatter"
+              element={<GeoChoroplethAndScatter />}
+            />
+            <Route
+              path="/map/pie-charts-on-geo-map"
+              element={<PieChartsOnGeoMap />}
             />
           </Routes>
         </div>

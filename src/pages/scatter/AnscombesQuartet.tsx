@@ -81,7 +81,7 @@ const createSeriesData = (
   dataset: number[][],
   color: string,
   title: string,
-  subtitle: string
+  subtitle: string,
 ) => ({
   title,
   subtitle,
@@ -98,25 +98,25 @@ const datasets = [
     datasetI,
     "#3b82f6",
     "I - Relation linéaire",
-    "Ventes (M€) vs Budget pub (k€)"
+    "Ventes (M€) vs Budget pub (k€)",
   ),
   createSeriesData(
     datasetII,
     "#22c55e",
     "II - Relation curviligne",
-    "Rendement (t/ha) vs Engrais (kg)"
+    "Rendement (t/ha) vs Engrais (kg)",
   ),
   createSeriesData(
     datasetIII,
     "#f59e0b",
     "III - Outlier influent",
-    "Notes vs Assiduité + 1 tricheur"
+    "Notes vs Assiduité + 1 tricheur",
   ),
   createSeriesData(
     datasetIV,
     "#ef4444",
     "IV - X quasi-constant",
-    "Erreur de saisie typique"
+    "Erreur de saisie typique",
   ),
 ];
 

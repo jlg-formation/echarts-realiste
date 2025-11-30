@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 38 / 174
-- 🔲 Restants : 136
+- ✅ Traités : 43 / 174
+- 🔲 Restants : 131
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -79,24 +79,24 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Scatter
 
-| Catégorie | Titre                  | Statut     | Sujet métier suggéré                         |
-| --------- | ---------------------- | ---------- | -------------------------------------------- |
-| Scatter   | Basic Scatter Chart    | ✅ Fait    | Corrélation prix immobilier vs surface       |
-| Scatter   | Anscombe's quartet     | ✅ Fait    | Données statistiques pédagogiques            |
-| Scatter   | Clustering Process     | ✅ Fait    | Segmentation clients e-commerce              |
-| Scatter   | Exponential Regression | ✅ Fait    | Croissance virale d'une application          |
-| Scatter   | Effect Scatter Chart   | ✅ Fait    | Épidémie - foyers actifs sur une carte       |
-| Scatter   | Linear Regression      | ✅ Fait    | Corrélation heures d'étude vs notes          |
-| Scatter   | Polynomial Regression  | 🔲 À faire | Courbe de consommation carburant vs vitesse  |
-| Scatter   | Scatter with Jittering | 🔲 À faire | Répartition salaires par niveau d'expérience |
+| Catégorie | Titre                  | Statut  | Sujet métier suggéré                         |
+| --------- | ---------------------- | ------- | -------------------------------------------- |
+| Scatter   | Basic Scatter Chart    | ✅ Fait | Corrélation prix immobilier vs surface       |
+| Scatter   | Anscombe's quartet     | ✅ Fait | Données statistiques pédagogiques            |
+| Scatter   | Clustering Process     | ✅ Fait | Segmentation clients e-commerce              |
+| Scatter   | Exponential Regression | ✅ Fait | Croissance virale d'une application          |
+| Scatter   | Effect Scatter Chart   | ✅ Fait | Épidémie - foyers actifs sur une carte       |
+| Scatter   | Linear Regression      | ✅ Fait | Corrélation heures d'étude vs notes          |
+| Scatter   | Polynomial Regression  | ✅ Fait | Courbe de consommation carburant vs vitesse  |
+| Scatter   | Scatter with Jittering | ✅ Fait | Répartition salaires par niveau d'expérience |
 
 ### GEO/Map
 
 | Catégorie | Titre                      | Statut     | Sujet métier suggéré                       |
 | --------- | -------------------------- | ---------- | ------------------------------------------ |
-| Map       | Geo Graph                  | 🔲 À faire | Réseau de transport ferroviaire            |
-| Map       | Geo Choropleth and Scatter | 🔲 À faire | Densité population + villes principales    |
-| Map       | Pie Charts on GEO Map      | 🔲 À faire | Répartition production agricole par région |
+| Map       | Geo Graph                  | ✅ Fait    | Réseau de transport ferroviaire            |
+| Map       | Geo Choropleth and Scatter | ✅ Fait    | Densité population + villes principales    |
+| Map       | Pie Charts on GEO Map      | ✅ Fait    | Répartition production agricole par région |
 | Map       | GEO Beef Cuts              | 🔲 À faire | Anatomie pièces de viande (boucherie)      |
 | Map       | Organ Data with SVG        | 🔲 À faire | Données médicales par organe               |
 | Map       | Flight Seatmap with SVG    | 🔲 À faire | Occupation sièges avion                    |

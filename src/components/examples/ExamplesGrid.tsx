@@ -291,21 +291,34 @@ const examplesData: Record<string, Example[]> = {
       id: "scatter-polynomial-regression",
       title: "Polynomial Regression",
       category: "scatter",
+      internalLink: "/scatter/polynomial-regression",
     },
     {
       id: "scatter-jitter",
       title: "Scatter with Jittering",
       category: "scatter",
+      internalLink: "/scatter/scatter-with-jittering",
     },
   ],
   map: [
-    { id: "geo-graph", title: "Geo Graph", category: "map" },
+    {
+      id: "geo-graph",
+      title: "Geo Graph",
+      category: "map",
+      internalLink: "/map/geo-graph",
+    },
     {
       id: "geo-choropleth-scatter",
       title: "Geo Choropleth and Scatter",
       category: "map",
+      internalLink: "/map/geo-choropleth-and-scatter",
     },
-    { id: "map-iceland-pie", title: "Pie Charts on GEO Map", category: "map" },
+    {
+      id: "map-iceland-pie",
+      title: "Pie Charts on GEO Map",
+      category: "map",
+      internalLink: "/map/pie-charts-on-geo-map",
+    },
     { id: "geo-beef-cuts", title: "GEO Beef Cuts", category: "map" },
     { id: "geo-organ", title: "Organ Data with SVG", category: "map" },
     {

@@ -119,7 +119,7 @@ const option: EChartsOption = {
       const residuel = note - notePredite;
 
       const etudiant = etudiantsData.find(
-        (e) => e.heures === heures && e.note === note
+        (e) => e.heures === heures && e.note === note,
       );
       const profil = etudiant?.profil || "";
 
