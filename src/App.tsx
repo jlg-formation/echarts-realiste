@@ -63,6 +63,7 @@ import MultipleRadar from "./pages/radar/MultipleRadar";
 import DataTransformSimpleAggregate from "./pages/boxplot/DataTransformSimpleAggregate";
 import BoxplotLightVelocity from "./pages/boxplot/BoxplotLightVelocity";
 import BoxplotLightVelocity2 from "./pages/boxplot/BoxplotLightVelocity2";
+import MultipleCategories from "./pages/boxplot/MultipleCategories";
 
 function App() {
   return (
@@ -265,6 +266,10 @@ function App() {
             <Route
               path="/boxplot/boxplot-light-velocity2"
               element={<BoxplotLightVelocity2 />}
+            />
+            <Route
+              path="/boxplot/multiple-categories"
+              element={<MultipleCategories />}
             />
           </Routes>
         </div>

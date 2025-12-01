@@ -427,7 +427,12 @@ const examplesData: Record<string, Example[]> = {
       category: "boxplot",
       internalLink: "/boxplot/boxplot-light-velocity2",
     },
-    { id: "boxplot-multi", title: "Multiple Categories", category: "boxplot" },
+    {
+      id: "boxplot-multi",
+      title: "Multiple Categories",
+      category: "boxplot",
+      internalLink: "/boxplot/multiple-categories",
+    },
   ],
   heatmap: [
     {
