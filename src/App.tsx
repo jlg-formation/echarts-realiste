@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import Examples from "./pages/Examples";
+import Pedagogy from "./pages/Pedagogy";
 import About from "./pages/About";
 import Legal from "./pages/Legal";
 import Header from "./components/layout/Header";
@@ -80,6 +81,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/examples" element={<Examples />} />
+            <Route path="/pedagogie" element={<Pedagogy />} />
             <Route path="/about" element={<About />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="/line/basic-line-chart" element={<BasicLineChart />} />

@@ -21,6 +21,12 @@ export default function Header() {
           Exemples
         </Link>
         <Link
+          to="/pedagogie"
+          className="text-sm text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors"
+        >
+          Pédagogie
+        </Link>
+        <Link
           to="/about"
           className="text-sm text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors"
         >
