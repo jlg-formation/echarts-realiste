@@ -5,12 +5,10 @@ export default function Header() {
     <header className="h-[50px] bg-white flex items-center justify-between px-5 shadow-[0_2px_8px_rgba(0,0,0,0.08)] relative z-50">
       {/* Logo */}
       <div className="flex items-center">
-        <Link to="/" className="flex items-center cursor-pointer">
-          <img
-            src="https://echarts.apache.org/en/images/logo.png"
-            alt="Apache ECharts"
-            className="h-6"
-          />
+        <Link to="/" className="flex items-center cursor-pointer group">
+          <span className="text-xl font-bold bg-gradient-to-r from-[#440154] via-[#21918c] to-[#90d743] bg-clip-text text-transparent group-hover:from-[#90d743] group-hover:via-[#21918c] group-hover:to-[#440154] transition-all duration-500">
+            echarts-réaliste
+          </span>
         </Link>
       </div>
 
