@@ -62,6 +62,7 @@ import ProportionOfBrowsers from "./pages/radar/ProportionOfBrowsers";
 import MultipleRadar from "./pages/radar/MultipleRadar";
 import DataTransformSimpleAggregate from "./pages/boxplot/DataTransformSimpleAggregate";
 import BoxplotLightVelocity from "./pages/boxplot/BoxplotLightVelocity";
+import BoxplotLightVelocity2 from "./pages/boxplot/BoxplotLightVelocity2";
 
 function App() {
   return (
@@ -260,6 +261,10 @@ function App() {
             <Route
               path="/boxplot/boxplot-light-velocity"
               element={<BoxplotLightVelocity />}
+            />
+            <Route
+              path="/boxplot/boxplot-light-velocity2"
+              element={<BoxplotLightVelocity2 />}
             />
           </Routes>
         </div>

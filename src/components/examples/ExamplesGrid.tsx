@@ -425,6 +425,7 @@ const examplesData: Record<string, Example[]> = {
       id: "boxplot-light-velocity2",
       title: "Boxplot Light Velocity2",
       category: "boxplot",
+      internalLink: "/boxplot/boxplot-light-velocity2",
     },
     { id: "boxplot-multi", title: "Multiple Categories", category: "boxplot" },
   ],
