@@ -15,6 +15,12 @@ export default function Header() {
       {/* Links */}
       <div className="flex items-center gap-4">
         <Link
+          to="/about"
+          className="text-xs text-gray-400 hover:text-[#21918c] transition-colors"
+        >
+          À propos
+        </Link>
+        <Link
           to="/legal"
           className="text-xs text-gray-400 hover:text-[#21918c] transition-colors"
         >

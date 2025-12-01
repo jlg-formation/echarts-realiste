@@ -24,6 +24,39 @@ export default function Legal() {
 
         <section className="mb-8">
           <h2 className="mb-4 text-xl font-semibold text-gray-700">
+            À propos de ce projet
+          </h2>
+          <p className="mb-4 text-gray-600">
+            Ce site a une vocation pédagogique. Il est inspiré de la{" "}
+            <a
+              href="https://echarts.apache.org/examples/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#21918c] hover:underline"
+            >
+              documentation officielle d'Apache ECharts
+            </a>{" "}
+            et a pour objectif de rendre les exemples de cette documentation
+            plus réalistes en utilisant des données concrètes et
+            contextualisées.
+          </p>
+          <p className="text-gray-600">
+            Ce site utilise des références et s'inspire des exemples du site de
+            documentation d'Apache ECharts. Apache ECharts est un projet de la{" "}
+            <a
+              href="https://www.apache.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#21918c] hover:underline"
+            >
+              Apache Software Foundation
+            </a>
+            .
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="mb-4 text-xl font-semibold text-gray-700">
             Hébergement
           </h2>
           <p className="text-gray-600">
