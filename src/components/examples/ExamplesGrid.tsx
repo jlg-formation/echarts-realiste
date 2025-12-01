@@ -439,8 +439,14 @@ const examplesData: Record<string, Example[]> = {
       id: "heatmap-cartesian",
       title: "Heatmap on Cartesian",
       category: "heatmap",
+      internalLink: "/heatmap/heatmap-on-cartesian",
     },
-    { id: "heatmap-large", title: "Heatmap - 20K data", category: "heatmap" },
+    {
+      id: "heatmap-large",
+      title: "Heatmap - 20K data",
+      category: "heatmap",
+      internalLink: "/heatmap/heatmap-20k-data",
+    },
     {
       id: "heatmap-large-piecewise",
       title: "Heatmap - Discrete Mapping of Color",

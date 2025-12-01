@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 61 / 174
-- 🔲 Restants : 113
+- ✅ Traités : 63 / 174
+- 🔲 Restants : 111
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -135,8 +135,8 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 | Catégorie | Titre                               | Statut     | Sujet métier suggéré                   |
 | --------- | ----------------------------------- | ---------- | -------------------------------------- |
-| Heatmap   | Heatmap on Cartesian                | 🔲 À faire | Affluence métro par heure et station   |
-| Heatmap   | Heatmap - 20K data                  | 🔲 À faire | Activité GitHub commits sur l'année    |
+| Heatmap   | Heatmap on Cartesian                | ✅ Fait    | Affluence métro par heure et station   |
+| Heatmap   | Heatmap - 20K data                  | ✅ Fait    | Activité GitHub commits sur l'année    |
 | Heatmap   | Heatmap - Discrete Mapping of Color | 🔲 À faire | Niveaux d'alerte pollution par zone    |
 | Heatmap   | Calendar Heatmap                    | 🔲 À faire | Activité sportive quotidienne (Strava) |
 

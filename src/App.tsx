@@ -64,6 +64,8 @@ import DataTransformSimpleAggregate from "./pages/boxplot/DataTransformSimpleAgg
 import BoxplotLightVelocity from "./pages/boxplot/BoxplotLightVelocity";
 import BoxplotLightVelocity2 from "./pages/boxplot/BoxplotLightVelocity2";
 import MultipleCategories from "./pages/boxplot/MultipleCategories";
+import HeatmapOnCartesian from "./pages/heatmap/HeatmapOnCartesian";
+import Heatmap20KData from "./pages/heatmap/Heatmap20KData";
 
 function App() {
   return (
@@ -270,6 +272,14 @@ function App() {
             <Route
               path="/boxplot/multiple-categories"
               element={<MultipleCategories />}
+            />
+            <Route
+              path="/heatmap/heatmap-on-cartesian"
+              element={<HeatmapOnCartesian />}
+            />
+            <Route
+              path="/heatmap/heatmap-20k-data"
+              element={<Heatmap20KData />}
             />
           </Routes>
         </div>
