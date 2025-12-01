@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 63 / 174
-- 🔲 Restants : 111
+- ✅ Traités : 66 / 174
+- 🔲 Restants : 108
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -133,18 +133,18 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 
 ### Heatmap
 
-| Catégorie | Titre                               | Statut     | Sujet métier suggéré                   |
-| --------- | ----------------------------------- | ---------- | -------------------------------------- |
-| Heatmap   | Heatmap on Cartesian                | ✅ Fait    | Affluence métro par heure et station   |
-| Heatmap   | Heatmap - 20K data                  | ✅ Fait    | Activité GitHub commits sur l'année    |
-| Heatmap   | Heatmap - Discrete Mapping of Color | 🔲 À faire | Niveaux d'alerte pollution par zone    |
-| Heatmap   | Calendar Heatmap                    | 🔲 À faire | Activité sportive quotidienne (Strava) |
+| Catégorie | Titre                               | Statut  | Sujet métier suggéré                   |
+| --------- | ----------------------------------- | ------- | -------------------------------------- |
+| Heatmap   | Heatmap on Cartesian                | ✅ Fait | Affluence métro par heure et station   |
+| Heatmap   | Heatmap - 20K data                  | ✅ Fait | Activité GitHub commits sur l'année    |
+| Heatmap   | Heatmap - Discrete Mapping of Color | ✅ Fait | Niveaux d'alerte pollution par zone    |
+| Heatmap   | Calendar Heatmap                    | ✅ Fait | Activité sportive quotidienne (Strava) |
 
 ### Graph
 
 | Catégorie | Titre                   | Statut     | Sujet métier suggéré            |
 | --------- | ----------------------- | ---------- | ------------------------------- |
-| Graph     | Force Layout            | 🔲 À faire | Réseau social d'une entreprise  |
+| Graph     | Force Layout            | ✅ Fait    | Réseau social d'une entreprise  |
 | Graph     | Graph on Cartesian      | 🔲 À faire | Dépendances entre microservices |
 | Graph     | Simple Graph            | 🔲 À faire | Organigramme équipe projet      |
 | Graph     | Force Layout            | 🔲 À faire | Cartographie écosystème startup |

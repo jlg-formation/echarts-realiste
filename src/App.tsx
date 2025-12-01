@@ -66,6 +66,9 @@ import BoxplotLightVelocity2 from "./pages/boxplot/BoxplotLightVelocity2";
 import MultipleCategories from "./pages/boxplot/MultipleCategories";
 import HeatmapOnCartesian from "./pages/heatmap/HeatmapOnCartesian";
 import Heatmap20KData from "./pages/heatmap/Heatmap20KData";
+import HeatmapDiscreteMappingOfColor from "./pages/heatmap/HeatmapDiscreteMappingOfColor";
+import CalendarHeatmap from "./pages/heatmap/CalendarHeatmap";
+import ForceLayout from "./pages/graph/ForceLayout";
 
 function App() {
   return (
@@ -281,6 +284,15 @@ function App() {
               path="/heatmap/heatmap-20k-data"
               element={<Heatmap20KData />}
             />
+            <Route
+              path="/heatmap/heatmap-discrete-mapping-of-color"
+              element={<HeatmapDiscreteMappingOfColor />}
+            />
+            <Route
+              path="/heatmap/calendar-heatmap"
+              element={<CalendarHeatmap />}
+            />
+            <Route path="/graph/force-layout" element={<ForceLayout />} />
           </Routes>
         </div>
       </div>
