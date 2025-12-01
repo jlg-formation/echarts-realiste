@@ -12,8 +12,14 @@ export default function Header() {
         </Link>
       </div>
 
-      {/* GitHub link */}
-      <div className="flex items-center">
+      {/* Links */}
+      <div className="flex items-center gap-4">
+        <Link
+          to="/legal"
+          className="text-xs text-gray-400 hover:text-[#21918c] transition-colors"
+        >
+          Mentions légales
+        </Link>
         <a
           href="https://github.com/jlg-formation/echarts-realiste"
           target="_blank"
