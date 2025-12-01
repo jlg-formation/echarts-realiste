@@ -38,16 +38,16 @@ export default function Home() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Link
             to="/examples"
-            className="inline-flex items-center gap-2 rounded-lg bg-(--viridis-light) px-4 py-2 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-[#2a9d63]"
+            className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#440154] via-[#31688E] to-[#35B779] px-4 py-2 text-lg font-semibold text-white shadow-sm transition-all hover:brightness-110"
           >
             Explorer les exemples
             <ArrowRight className="h-5 w-5" />
           </Link>
           <Link
             to="/pedagogie"
-            className="inline-flex items-center gap-2 rounded-lg border border-(--viridis-mid) px-4 py-2 text-lg font-semibold text-(--viridis-mid) transition-colors hover:bg-(--viridis-mid) hover:text-white"
+            className="inline-flex items-center gap-2 rounded-lg border border-(--viridis-mid) bg-gradient-to-r from-[#440154] via-[#31688E] to-[#35B779] bg-clip-text px-4 py-2 text-lg font-semibold text-transparent transition-all hover:opacity-80"
           >
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="h-5 w-5 text-(--viridis-mid)" />
             Pédagogie
           </Link>
         </div>

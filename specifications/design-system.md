@@ -57,20 +57,22 @@ Les couleurs des graphiques ECharts **ne doivent jamais être affectées** par c
 
 ### Bouton primaire
 
-- Fond : `viridis-light`
+- Fond : **gradient viridis** `linear-gradient(135deg, #440154, #31688E, #35B779, #FDE725)`
 - Texte : `#ffffff`
 - Coins : `rounded-lg`
 - Padding : `px-4 py-2`
-- Hover : variante légèrement plus sombre
+- Hover : luminosité légèrement augmentée (`brightness-110`)
 - Ombre discrète : `shadow-sm`
+- Classes Tailwind : `bg-gradient-to-r from-[#440154] via-[#31688E] to-[#35B779]`
 
 ### Bouton secondaire
 
 - Fond : transparent
-- Texte : `viridis-mid`
+- Texte : **gradient viridis** (via `bg-clip-text text-transparent`)
 - Bordure : `1px solid var(--viridis-mid)`
 - Coins : `rounded-lg`
-- Hover : opacité +10%
+- Hover : bordure en gradient viridis, opacité +10%
+- Classes Tailwind : `bg-gradient-to-r from-[#440154] via-[#31688E] to-[#35B779] bg-clip-text text-transparent`
 
 ---
 
