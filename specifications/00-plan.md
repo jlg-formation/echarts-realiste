@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 59 / 174
-- 🔲 Restants : 115
+- ✅ Traités : 60 / 174
+- 🔲 Restants : 114
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -128,7 +128,7 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | --------- | ------------------------------- | ---------- | ------------------------------------- |
 | Boxplot   | Data Transform Simple Aggregate | ✅ Fait    | Distribution salaires par département |
 | Boxplot   | Boxplot Light Velocity          | ✅ Fait    | Temps de réponse serveur              |
-| Boxplot   | Boxplot Light Velocity2         | 🔲 À faire | Latence réseau par datacenter         |
+| Boxplot   | Boxplot Light Velocity2         | ✅ Fait    | Latence réseau par datacenter         |
 | Boxplot   | Multiple Categories             | 🔲 À faire | Notes examens par matière             |
 
 ### Heatmap
