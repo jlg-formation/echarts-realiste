@@ -150,7 +150,7 @@ export default function Examples() {
       />
 
       {/* Contenu principal */}
-      <main ref={mainRef} className="flex-1 bg-[#f7f8fa] overflow-y-auto">
+      <main ref={mainRef} className="flex-1 overflow-y-auto bg-[#f7f8fa]">
         <ExamplesGrid />
       </main>
     </div>

@@ -28,14 +28,14 @@ export default function ActionBar({
   }, [onShare]);
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 border-t border-gray-200 bg-white">
+    <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-2">
       {/* Boutons d'action */}
       <div className="flex items-center gap-2">
         <button
           onClick={handleDownload}
-          className="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 rounded border border-gray-300 bg-white px-4 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
         >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none">
             <path
               d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"
               stroke="currentColor"
@@ -48,9 +48,9 @@ export default function ActionBar({
         </button>
         <button
           onClick={handleScreenshot}
-          className="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 rounded border border-gray-300 bg-white px-4 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
         >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none">
             <rect
               x="3"
               y="3"
@@ -73,9 +73,9 @@ export default function ActionBar({
         </button>
         <button
           onClick={handleShare}
-          className="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+          className="flex items-center gap-2 rounded border border-gray-300 bg-white px-4 py-1.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
         >
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+          <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none">
             <circle
               cx="18"
               cy="5"

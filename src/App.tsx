@@ -75,7 +75,7 @@ import ForceLayout from "./pages/graph/ForceLayout";
 function App() {
   return (
     <BrowserRouter basename="/echarts-realiste/">
-      <div className="h-screen flex flex-col bg-gray-50">
+      <div className="flex h-screen flex-col bg-gray-50">
         <Header />
         <div className="flex-1 overflow-hidden">
           <Routes>

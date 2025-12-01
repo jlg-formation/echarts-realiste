@@ -46,7 +46,7 @@ function TreeNode({ keyName, value, depth, initialExpanded }: TreeNodeProps) {
     return (
       <div className="flex items-start" style={{ paddingLeft: indent }}>
         {keyName && <span className="text-purple-600">{keyName}: </span>}
-        <span className="text-green-600 break-all">"{value}"</span>
+        <span className="break-all text-green-600">"{value}"</span>
       </div>
     );
   }
@@ -85,17 +85,17 @@ function TreeNode({ keyName, value, depth, initialExpanded }: TreeNodeProps) {
     return (
       <div>
         <div
-          className="flex items-center cursor-pointer hover:bg-gray-100 rounded"
+          className="flex cursor-pointer items-center rounded hover:bg-gray-100"
           style={{ paddingLeft: indent }}
           onClick={toggleExpand}
         >
-          <span className="text-gray-400 w-4 text-center select-none">
+          <span className="w-4 text-center text-gray-400 select-none">
             {isExpanded ? "▼" : "▶"}
           </span>
-          {keyName && <span className="text-purple-600 ml-1">{keyName}: </span>}
-          <span className="text-gray-600 ml-1">
+          {keyName && <span className="ml-1 text-purple-600">{keyName}: </span>}
+          <span className="ml-1 text-gray-600">
             Array({value.length})
-            {!isExpanded && <span className="text-gray-400 ml-1">[...]</span>}
+            {!isExpanded && <span className="ml-1 text-gray-400">[...]</span>}
           </span>
         </div>
         {isExpanded && (
@@ -132,20 +132,20 @@ function TreeNode({ keyName, value, depth, initialExpanded }: TreeNodeProps) {
     return (
       <div>
         <div
-          className="flex items-center cursor-pointer hover:bg-gray-100 rounded"
+          className="flex cursor-pointer items-center rounded hover:bg-gray-100"
           style={{ paddingLeft: indent }}
           onClick={toggleExpand}
         >
-          <span className="text-gray-400 w-4 text-center select-none">
+          <span className="w-4 text-center text-gray-400 select-none">
             {isExpanded ? "▼" : "▶"}
           </span>
-          {keyName && <span className="text-purple-600 ml-1">{keyName}: </span>}
-          <span className="text-gray-600 ml-1">
+          {keyName && <span className="ml-1 text-purple-600">{keyName}: </span>}
+          <span className="ml-1 text-gray-600">
             {"{"}
             {entries.length}
             {"}"}
             {!isExpanded && (
-              <span className="text-gray-400 ml-1">{"{...}"}</span>
+              <span className="ml-1 text-gray-400">{"{...}"}</span>
             )}
           </span>
         </div>
@@ -180,7 +180,7 @@ export default function JsonTreeView({
   initialExpanded = true,
 }: JsonTreeViewProps) {
   return (
-    <div className="font-mono text-xs leading-6 py-2 px-1">
+    <div className="px-1 py-2 font-mono text-xs leading-6">
       <TreeNode value={data} depth={0} initialExpanded={initialExpanded} />
     </div>
   );

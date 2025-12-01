@@ -99,14 +99,14 @@ export default function PreviewPanel({
 
   return (
     <div
-      className={`flex flex-col h-full ${darkMode ? "bg-gray-900" : "bg-white"}`}
+      className={`flex h-full flex-col ${darkMode ? "bg-gray-900" : "bg-white"}`}
     >
       {/* Options bar */}
       <div
-        className={`flex items-center gap-4 px-4 py-2 border-b ${darkMode ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}
+        className={`flex items-center gap-4 border-b px-4 py-2 ${darkMode ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}
       >
         {/* Dark Mode toggle */}
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2">
           <div className="relative">
             <input
               type="checkbox"
@@ -115,12 +115,12 @@ export default function PreviewPanel({
               className="sr-only"
             />
             <div
-              className={`w-10 h-5 rounded-full transition-colors ${
+              className={`h-5 w-10 rounded-full transition-colors ${
                 darkMode ? "bg-blue-500" : "bg-gray-300"
               }`}
             />
             <div
-              className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
+              className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
                 darkMode ? "translate-x-5" : ""
               }`}
             />
@@ -133,7 +133,7 @@ export default function PreviewPanel({
         </label>
 
         {/* Decal Pattern toggle */}
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2">
           <div className="relative">
             <input
               type="checkbox"
@@ -142,12 +142,12 @@ export default function PreviewPanel({
               className="sr-only"
             />
             <div
-              className={`w-10 h-5 rounded-full transition-colors ${
+              className={`h-5 w-10 rounded-full transition-colors ${
                 decalPattern ? "bg-blue-500" : "bg-gray-300"
               }`}
             />
             <div
-              className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
+              className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
                 decalPattern ? "translate-x-5" : ""
               }`}
             />
@@ -169,10 +169,10 @@ export default function PreviewPanel({
           <select
             value={renderType}
             onChange={(e) => setRenderType(e.target.value as RenderType)}
-            className={`px-2 py-1 text-sm border rounded ${
+            className={`rounded border px-2 py-1 text-sm ${
               darkMode
-                ? "bg-gray-700 border-gray-600 text-gray-300"
-                : "bg-white border-gray-300 text-gray-700"
+                ? "border-gray-600 bg-gray-700 text-gray-300"
+                : "border-gray-300 bg-white text-gray-700"
             }`}
           >
             <option value="canvas">Canvas</option>
@@ -181,7 +181,7 @@ export default function PreviewPanel({
         </div>
 
         {/* Grayscale (Photocopie N&B) toggle */}
-        <label className="flex items-center gap-2 cursor-pointer">
+        <label className="flex cursor-pointer items-center gap-2">
           <div className="relative">
             <input
               type="checkbox"
@@ -190,12 +190,12 @@ export default function PreviewPanel({
               className="sr-only"
             />
             <div
-              className={`w-10 h-5 rounded-full transition-colors ${
+              className={`h-5 w-10 rounded-full transition-colors ${
                 grayscale ? "bg-blue-500" : "bg-gray-300"
               }`}
             />
             <div
-              className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
+              className={`absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
                 grayscale ? "translate-x-5" : ""
               }`}
             />
@@ -212,7 +212,7 @@ export default function PreviewPanel({
       <div className="flex-1 p-4">
         <div
           ref={chartRef}
-          className={`w-full h-full ${grayscale ? "grayscale" : ""}`}
+          className={`h-full w-full ${grayscale ? "grayscale" : ""}`}
         />
       </div>
     </div>

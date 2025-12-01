@@ -70,7 +70,7 @@ function Section({ categoryId, examples }: SectionProps) {
         <h2 className="text-2xl font-normal text-gray-800">
           {categoryNames[categoryId] || categoryId}
         </h2>
-        <span className="text-sm lowercase text-gray-400">{categoryId}</span>
+        <span className="text-sm text-gray-400 lowercase">{categoryId}</span>
       </div>
 
       {/* Grille d'exemples */}
@@ -101,7 +101,7 @@ export default function PedagogyGrid() {
     return (
       <div className="flex h-full items-center justify-center p-6">
         <div className="max-w-md text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-(--viridis-light) bg-opacity-10">
+          <div className="bg-opacity-10 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-(--viridis-light)">
             <svg
               className="h-8 w-8 text-(--viridis-light)"
               fill="none"

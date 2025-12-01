@@ -149,23 +149,7 @@ export default function CodePanel({
       // Affichage du contenu Markdown pour l'onglet Notes
       return (
         <div className="h-full overflow-auto bg-white p-6">
-          <div
-            className="prose prose-sm max-w-none 
-            prose-headings:font-semibold prose-headings:text-gray-800 prose-headings:mt-6 prose-headings:mb-3
-            prose-h2:text-xl prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2
-            prose-h3:text-lg prose-h3:text-gray-700
-            prose-h4:text-base prose-h4:text-gray-600
-            prose-p:text-gray-600 prose-p:my-2 prose-p:leading-relaxed
-            prose-li:text-gray-600 prose-li:my-1
-            prose-ul:my-2 prose-ul:list-disc prose-ul:pl-4
-            prose-ol:my-2 prose-ol:list-decimal prose-ol:pl-4
-            prose-strong:text-gray-800 prose-strong:font-semibold
-            prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:text-pink-600 prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-lg
-            prose-blockquote:border-l-4 prose-blockquote:border-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-gray-700
-            prose-hr:my-6 prose-hr:border-gray-200
-            first:prose-headings:mt-0"
-          >
+          <div className="prose prose-sm prose-headings:font-semibold prose-headings:text-gray-800 prose-headings:mt-6 prose-headings:mb-3 prose-h2:text-xl prose-h2:border-b prose-h2:border-gray-200 prose-h2:pb-2 prose-h3:text-lg prose-h3:text-gray-700 prose-h4:text-base prose-h4:text-gray-600 prose-p:text-gray-600 prose-p:my-2 prose-p:leading-relaxed prose-li:text-gray-600 prose-li:my-1 prose-ul:my-2 prose-ul:list-disc prose-ul:pl-4 prose-ol:my-2 prose-ol:list-decimal prose-ol:pl-4 prose-strong:text-gray-800 prose-strong:font-semibold prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:text-pink-600 prose-code:before:content-none prose-code:after:content-none prose-pre:bg-gray-100 prose-pre:text-gray-800 prose-pre:border prose-pre:border-gray-200 prose-pre:rounded-lg prose-blockquote:border-l-4 prose-blockquote:border-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-gray-700 prose-hr:my-6 prose-hr:border-gray-200 first:prose-headings:mt-0 max-w-none">
             <Markdown>{notes}</Markdown>
           </div>
         </div>
@@ -179,7 +163,7 @@ export default function CodePanel({
           {resolvedOption ? (
             <JsonTreeView data={resolvedOption} initialExpanded={true} />
           ) : (
-            <div className="p-4 text-gray-500 text-sm">
+            <div className="p-4 text-sm text-gray-500">
               Chart not ready yet...
             </div>
           )}
@@ -195,7 +179,7 @@ export default function CodePanel({
         {/* Line numbers */}
         <div
           ref={lineNumbersRef}
-          className="shrink-0 py-2 px-2 text-right text-xs text-gray-400 bg-gray-50 select-none font-mono overflow-hidden"
+          className="shrink-0 overflow-hidden bg-gray-50 px-2 py-2 text-right font-mono text-xs text-gray-400 select-none"
         >
           {displayCode.split("\n").map((_: string, i: number) => (
             <div key={i} className="leading-5">
@@ -208,7 +192,7 @@ export default function CodePanel({
         {isReadOnly ? (
           <pre
             onScroll={handleScroll}
-            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 bg-gray-50 overflow-auto"
+            className="flex-1 overflow-auto bg-gray-50 p-2 font-mono text-xs leading-5 text-gray-800"
           >
             {displayCode}
           </pre>
@@ -217,7 +201,7 @@ export default function CodePanel({
             value={code}
             onChange={(e) => setCode(e.target.value)}
             onScroll={handleScroll}
-            className="flex-1 p-2 font-mono text-xs leading-5 text-gray-800 resize-none outline-none bg-white overflow-auto"
+            className="flex-1 resize-none overflow-auto bg-white p-2 font-mono text-xs leading-5 text-gray-800 outline-none"
             spellCheck={false}
           />
         )}
@@ -226,15 +210,15 @@ export default function CodePanel({
   };
 
   return (
-    <div className="flex flex-col h-full bg-white">
+    <div className="flex h-full flex-col bg-white">
       {/* Tabs header */}
-      <div className="flex items-center justify-between px-2 border-b border-gray-200">
+      <div className="flex items-center justify-between border-b border-gray-200 px-2">
         <div className="flex items-center">
           <button
             onClick={() => setActiveTab("edit")}
-            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
+            className={`cursor-pointer px-4 py-2 text-sm transition-colors ${
               activeTab === "edit"
-                ? "text-blue-600 border-b-2 border-blue-600"
+                ? "border-b-2 border-blue-600 text-blue-600"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -242,9 +226,9 @@ export default function CodePanel({
           </button>
           <button
             onClick={() => setActiveTab("full")}
-            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
+            className={`cursor-pointer px-4 py-2 text-sm transition-colors ${
               activeTab === "full"
-                ? "text-blue-600 border-b-2 border-blue-600"
+                ? "border-b-2 border-blue-600 text-blue-600"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -252,9 +236,9 @@ export default function CodePanel({
           </button>
           <button
             onClick={() => setActiveTab("preview")}
-            className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
+            className={`cursor-pointer px-4 py-2 text-sm transition-colors ${
               activeTab === "preview"
-                ? "text-blue-600 border-b-2 border-blue-600"
+                ? "border-b-2 border-blue-600 text-blue-600"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -263,9 +247,9 @@ export default function CodePanel({
           {notes && (
             <button
               onClick={() => setActiveTab("notes")}
-              className={`px-4 py-2 text-sm transition-colors cursor-pointer ${
+              className={`cursor-pointer px-4 py-2 text-sm transition-colors ${
                 activeTab === "notes"
-                  ? "text-blue-600 border-b-2 border-blue-600"
+                  ? "border-b-2 border-blue-600 text-blue-600"
                   : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -276,12 +260,12 @@ export default function CodePanel({
       </div>
 
       {/* Action bar - simplified with only Run button */}
-      <div className="flex items-center justify-end px-2 py-1 border-b border-gray-200 bg-gray-50">
+      <div className="flex items-center justify-end border-b border-gray-200 bg-gray-50 px-2 py-1">
         <button
           onClick={handleRun}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white bg-green-500 rounded hover:bg-green-600 transition-colors cursor-pointer"
+          className="flex cursor-pointer items-center gap-1.5 rounded bg-green-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-green-600"
         >
-          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z" />
           </svg>
           Run

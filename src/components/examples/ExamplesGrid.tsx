@@ -916,7 +916,7 @@ function Section({ categoryId, examples }: SectionProps) {
       className="mb-10"
     >
       {/* Titre de la section */}
-      <div className="flex items-baseline gap-3 mb-5">
+      <div className="mb-5 flex items-baseline gap-3">
         <h2 className="text-2xl font-normal text-gray-800">
           {categoryNames[categoryId] || categoryId}
         </h2>

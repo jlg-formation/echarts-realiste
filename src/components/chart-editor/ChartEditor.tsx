@@ -136,31 +136,31 @@ export function ChartEditor({
   }, []);
 
   return (
-    <div className="flex flex-col h-full bg-gray-100">
+    <div className="flex h-full flex-col bg-gray-100">
       {/* Breadcrumb */}
-      <div className="px-4 py-2 text-sm text-gray-600 bg-white border-b border-gray-200">
+      <div className="border-b border-gray-200 bg-white px-4 py-2 text-sm text-gray-600">
         <Link
           to="/"
-          className="text-gray-400 hover:text-blue-600 transition-colors"
+          className="text-gray-400 transition-colors hover:text-blue-600"
         >
           Examples
         </Link>
         <span className="mx-2 text-gray-400">/</span>
         <Link
           to={`/#${section.toLowerCase()}`}
-          className="text-gray-400 hover:text-blue-600 transition-colors"
+          className="text-gray-400 transition-colors hover:text-blue-600"
         >
           {section}
         </Link>
         <span className="mx-2 text-gray-400">/</span>
-        <span className="text-gray-800 font-medium">{title}</span>
+        <span className="font-medium text-gray-800">{title}</span>
       </div>
 
       {/* Main content - 2 resizable columns */}
       <div ref={containerRef} className="flex flex-1 overflow-hidden">
         {/* Left panel - Code editor */}
         <div
-          className="border-r border-gray-300 overflow-hidden"
+          className="overflow-hidden border-r border-gray-300"
           style={{ width: leftPanelWidth > 0 ? leftPanelWidth : "50%" }}
         >
           <CodePanel
@@ -173,14 +173,14 @@ export function ChartEditor({
 
         {/* Resizable divider */}
         <div
-          className={`w-1 bg-gray-300 hover:bg-blue-400 cursor-col-resize transition-colors shrink-0 ${
+          className={`w-1 shrink-0 cursor-col-resize bg-gray-300 transition-colors hover:bg-blue-400 ${
             isDragging ? "bg-blue-500" : ""
           }`}
           onMouseDown={handleMouseDown}
         />
 
         {/* Right panel - Preview */}
-        <div className="flex-1 flex flex-col min-w-[300px]">
+        <div className="flex min-w-[300px] flex-1 flex-col">
           <div className="flex-1 overflow-hidden">
             <PreviewPanel
               key={resizeKey}

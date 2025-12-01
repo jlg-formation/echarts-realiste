@@ -403,9 +403,9 @@ export default function OrganDataWithSvg() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-96">
+      <div className="flex h-96 items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+          <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2 border-blue-500"></div>
           <p className="text-gray-600">Chargement du schéma anatomique...</p>
         </div>
       </div>
@@ -414,9 +414,9 @@ export default function OrganDataWithSvg() {
 
   if (error || !option) {
     return (
-      <div className="flex items-center justify-center h-96">
+      <div className="flex h-96 items-center justify-center">
         <div className="text-center text-red-600">
-          <p className="text-xl mb-2">⚠️ Erreur de chargement</p>
+          <p className="mb-2 text-xl">⚠️ Erreur de chargement</p>
           <p>{error || "Impossible de charger le graphique"}</p>
         </div>
       </div>

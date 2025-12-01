@@ -24,17 +24,17 @@ export default function ExampleCard({
   // Si un lien interne est fourni, utiliser Link
   if (internalLink) {
     return (
-      <div className="w-[280px] flex flex-col">
+      <div className="flex w-[280px] flex-col">
         {/* Thumbnail avec bordure */}
         <Link
           to={internalLink}
-          className="group block bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+          className="group block cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg"
         >
-          <div className="h-[180px] bg-white overflow-hidden">
+          <div className="h-[180px] overflow-hidden bg-white">
             <img
               src={thumbnail}
               alt={title}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
               loading="lazy"
               onError={(e) => {
                 (e.target as HTMLImageElement).src =
@@ -47,7 +47,7 @@ export default function ExampleCard({
         {/* Titre en dessous de la carte */}
         <Link
           to={internalLink}
-          className="mt-2 text-sm font-bold text-gray-900 truncate cursor-pointer hover:text-blue-600 transition-colors"
+          className="mt-2 cursor-pointer truncate text-sm font-bold text-gray-900 transition-colors hover:text-blue-600"
           title={title}
         >
           {title}
@@ -57,17 +57,17 @@ export default function ExampleCard({
   }
 
   return (
-    <div className="w-[280px] flex flex-col">
+    <div className="flex w-[280px] flex-col">
       {/* Thumbnail avec bordure */}
       <button
         onClick={handleExternalClick}
-        className="group block bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+        className="group block cursor-pointer overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-lg"
       >
-        <div className="h-[180px] bg-white overflow-hidden">
+        <div className="h-[180px] overflow-hidden bg-white">
           <img
             src={thumbnail}
             alt={title}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
             onError={(e) => {
               (e.target as HTMLImageElement).src =
@@ -79,7 +79,7 @@ export default function ExampleCard({
 
       {/* Titre en dessous de la carte */}
       <h3
-        className="mt-2 text-sm font-bold text-gray-900 truncate cursor-pointer hover:text-blue-600 transition-colors"
+        className="mt-2 cursor-pointer truncate text-sm font-bold text-gray-900 transition-colors hover:text-blue-600"
         onClick={handleExternalClick}
         title={title}
       >
