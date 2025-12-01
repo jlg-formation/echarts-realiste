@@ -6,3 +6,4 @@
 6. Le projet doit utiliser tailwind et le moins possible de CSS natif
 7. Utiliser le conventional commit
 8. Coder en utilisant les format de prettier et du fichier `.prettierrc`.
+9. Utiliser le [design system](./specifications/design-system.md) pour generer des pages HTML ou refactorer.

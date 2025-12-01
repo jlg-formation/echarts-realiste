@@ -1,158 +1,109 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import { useLocation, useNavigate } from "react-router";
-import Sidebar from "../components/layout/Sidebar";
-import ExamplesGrid from "../components/examples/ExamplesGrid";
+import { Link } from "react-router";
 
 export default function Home() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  // Lire le hash initial de l'URL (ex: #bar -> bar)
-  const getInitialCategory = () => {
-    const hash = location.hash.replace("#", "");
-    return hash || "line";
-  };
-
-  const [activeCategory, setActiveCategory] = useState(getInitialCategory);
-  const mainRef = useRef<HTMLElement>(null);
-  const isScrollingRef = useRef(false);
-  const isInitialScrollDone = useRef(false);
-
-  // Scroll instantané vers une section (sans animation)
-  const scrollToSectionInstant = useCallback((categoryId: string) => {
-    const element = document.getElementById(`section-${categoryId}`);
-    if (element && mainRef.current) {
-      setActiveCategory(categoryId);
-
-      // Offset pour que le titre soit visible (pas masqué par le padding)
-      const offset = 60;
-      const targetPosition = element.offsetTop - offset;
-      mainRef.current.scrollTop = targetPosition;
-    }
-  }, []);
-
-  // Scroll vers une section avec animation
-  const scrollToSectionAnimated = useCallback(
-    (categoryId: string) => {
-      const element = document.getElementById(`section-${categoryId}`);
-      if (element && mainRef.current) {
-        isScrollingRef.current = true;
-        setActiveCategory(categoryId);
-
-        // Mettre à jour l'URL avec le hash (sans recharger la page)
-        navigate(`/#${categoryId}`, { replace: true });
-
-        // Scroll rapide avec easing
-        // Offset pour que le titre soit visible (pas masqué par le padding)
-        const offset = 60;
-        const targetPosition = element.offsetTop - offset;
-        const startPosition = mainRef.current.scrollTop;
-        const distance = targetPosition - startPosition;
-        const duration = 200; // 200ms pour un scroll rapide
-        let startTime: number | null = null;
-
-        // Fonction easing (ease-in-out)
-        const easeInOutCubic = (t: number): number => {
-          return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        };
-
-        const animateScroll = (currentTime: number) => {
-          if (startTime === null) startTime = currentTime;
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easedProgress = easeInOutCubic(progress);
-
-          mainRef.current!.scrollTop = startPosition + distance * easedProgress;
-
-          if (progress < 1) {
-            requestAnimationFrame(animateScroll);
-          } else {
-            isScrollingRef.current = false;
-          }
-        };
-
-        requestAnimationFrame(animateScroll);
-      }
-    },
-    [navigate],
-  );
-
-  const handleCategoryClick = useCallback(
-    (categoryId: string) => {
-      scrollToSectionAnimated(categoryId);
-    },
-    [scrollToSectionAnimated],
-  );
-
-  // Scroll initial vers le hash quand le composant est monté
-  useEffect(() => {
-    if (!isInitialScrollDone.current && mainRef.current) {
-      const hash = location.hash.replace("#", "");
-      if (hash) {
-        // Petit délai pour s'assurer que le DOM est prêt
-        setTimeout(() => {
-          scrollToSectionInstant(hash);
-        }, 100);
-      }
-      isInitialScrollDone.current = true;
-    }
-  }, [location.hash, scrollToSectionInstant]);
-
-  // Écouter les changements de hash (bouton back/forward du navigateur)
-  useEffect(() => {
-    const handlePopState = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash && hash !== activeCategory) {
-        scrollToSectionInstant(hash);
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [activeCategory, scrollToSectionInstant]);
-
-  // Handle scroll to update active category
-  useEffect(() => {
-    const mainElement = mainRef.current;
-    if (!mainElement) return;
-
-    const handleScroll = () => {
-      if (isScrollingRef.current) return;
-
-      const sections = mainElement.querySelectorAll("[data-section]");
-      let currentSection = "line";
-
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const mainRect = mainElement.getBoundingClientRect();
-        if (rect.top <= mainRect.top + 100) {
-          currentSection = section.getAttribute("data-section") || "line";
-        }
-      });
-
-      if (currentSection !== activeCategory) {
-        setActiveCategory(currentSection);
-        // Mettre à jour l'URL silencieusement lors du scroll
-        navigate(`/#${currentSection}`, { replace: true });
-      }
-    };
-
-    mainElement.addEventListener("scroll", handleScroll);
-    return () => mainElement.removeEventListener("scroll", handleScroll);
-  }, [activeCategory, navigate]);
-
   return (
-    <div className="flex h-full">
-      {/* Sidebar */}
-      <Sidebar
-        selectedCategory={activeCategory}
-        onCategoryChange={handleCategoryClick}
-      />
+    <div className="flex h-full items-center justify-center bg-white">
+      <div className="max-w-2xl px-8 text-center">
+        {/* Tagline principale */}
+        <h1 className="mt-8 mb-4 text-5xl font-semibold tracking-tight text-[var(--viridis-mid)]">
+          Visualisez vos données avec{" "}
+          <span className="text-[var(--viridis-dark)]">Apache ECharts</span>
+        </h1>
 
-      {/* Contenu principal */}
-      <main ref={mainRef} className="flex-1 bg-[#f7f8fa] overflow-y-auto">
-        <ExamplesGrid />
-      </main>
+        {/* Sous-titre */}
+        <p className="mb-8 text-lg leading-relaxed text-[#333333]">
+          Découvrez une collection d'exemples interactifs pour créer des
+          graphiques époustouflants. Explorez, copiez et personnalisez le code
+          pour vos projets.
+        </p>
+
+        {/* Features */}
+        <div className="mb-10 flex flex-wrap justify-center gap-4">
+          <div className="flex items-center gap-2 rounded-xl border border-[#e8e8e8] bg-white p-6 text-sm text-[#444444] shadow-md">
+            <svg
+              className="h-5 w-5 text-[var(--viridis-light)]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            100+ exemples
+          </div>
+          <div className="flex items-center gap-2 rounded-xl border border-[#e8e8e8] bg-white p-6 text-sm text-[#444444] shadow-md">
+            <svg
+              className="h-5 w-5 text-[var(--viridis-light)]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            Code TypeScript
+          </div>
+          <div className="flex items-center gap-2 rounded-xl border border-[#e8e8e8] bg-white p-6 text-sm text-[#444444] shadow-md">
+            <svg
+              className="h-5 w-5 text-[var(--viridis-light)]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            Open Source
+          </div>
+        </div>
+
+        {/* CTA Button */}
+        <Link
+          to="/examples"
+          className="inline-flex items-center gap-2 rounded-lg bg-[var(--viridis-light)] px-4 py-2 text-lg font-semibold text-white shadow-sm transition-colors hover:bg-[#2a9d63]"
+        >
+          Explorer les exemples
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 7l5 5m0 0l-5 5m5-5H6"
+            />
+          </svg>
+        </Link>
+
+        {/* Footer note */}
+        <p className="mt-8 text-base text-[#444444]">
+          Basé sur{" "}
+          <a
+            href="https://echarts.apache.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--viridis-mid)] no-underline transition-colors hover:text-[var(--viridis-light)] hover:underline"
+          >
+            Apache ECharts
+          </a>{" "}
+          • Propulsé par React et TypeScript
+        </p>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Design System - Palette Viridis */
+:root {
+  --viridis-dark: #440154;
+  --viridis-mid: #31688e;
+  --viridis-light: #35b779;
+  --viridis-bright: #fde725;
+}
+
 /* Scrollbar personnalisée pour la sidebar */
 .sidebar-scroll::-webkit-scrollbar {
   width: 6px;

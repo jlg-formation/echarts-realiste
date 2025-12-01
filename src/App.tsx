@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home";
+import Examples from "./pages/Examples";
 import About from "./pages/About";
 import Legal from "./pages/Legal";
 import Header from "./components/layout/Header";
@@ -78,6 +79,7 @@ function App() {
         <div className="flex-1 overflow-hidden">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/examples" element={<Examples />} />
             <Route path="/about" element={<About />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="/line/basic-line-chart" element={<BasicLineChart />} />
