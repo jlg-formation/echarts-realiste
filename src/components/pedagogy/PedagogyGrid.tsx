@@ -25,7 +25,26 @@ const categoryOrder = [
 // Données des exemples pédagogiques par catégorie
 // Les exemples seront ajoutés au fur et à mesure
 const pedagogyData: Record<string, PedagogyExample[]> = {
-  line: [],
+  line: [
+    {
+      id: "too-many-series",
+      title: "Trop de séries sur un graphique",
+      description:
+        "Au-delà de 4-5 séries, un graphique linéaire devient illisible. Regrouper les données en catégories pertinentes améliore la compréhension.",
+      category: "line",
+      dontLink: "/pedagogy/line/too-many-series-dont",
+      doLink: "/pedagogy/line/too-many-series-do",
+    },
+    {
+      id: "missing-data",
+      title: "Gestion des données manquantes",
+      description:
+        "Remplacer les données manquantes par 0 fausse la visualisation. Mieux vaut interrompre la courbe ou afficher des estimations distinctes.",
+      category: "line",
+      dontLink: "/pedagogy/line/missing-data-dont",
+      doLink: "/pedagogy/line/missing-data-do",
+    },
+  ],
   bar: [],
   pie: [],
   scatter: [],

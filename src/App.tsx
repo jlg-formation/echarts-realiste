@@ -76,6 +76,11 @@ import TruncatedAxisDont from "./pages/pedagogy/axes/TruncatedAxisDont";
 import TruncatedAxisDo from "./pages/pedagogy/axes/TruncatedAxisDo";
 import IrregularIntervalsDont from "./pages/pedagogy/axes/IrregularIntervalsDont";
 import IrregularIntervalsDo from "./pages/pedagogy/axes/IrregularIntervalsDo";
+// Pedagogy - Line
+import TooManySeriesDont from "./pages/pedagogy/line/TooManySeriesDont";
+import TooManySeriesDo from "./pages/pedagogy/line/TooManySeriesDo";
+import MissingDataDont from "./pages/pedagogy/line/MissingDataDont";
+import MissingDataDo from "./pages/pedagogy/line/MissingDataDo";
 
 function App() {
   return (
@@ -318,6 +323,23 @@ function App() {
             <Route
               path="/pedagogy/axes/irregular-intervals-do"
               element={<IrregularIntervalsDo />}
+            />
+            {/* Pedagogy - Line */}
+            <Route
+              path="/pedagogy/line/too-many-series-dont"
+              element={<TooManySeriesDont />}
+            />
+            <Route
+              path="/pedagogy/line/too-many-series-do"
+              element={<TooManySeriesDo />}
+            />
+            <Route
+              path="/pedagogy/line/missing-data-dont"
+              element={<MissingDataDont />}
+            />
+            <Route
+              path="/pedagogy/line/missing-data-do"
+              element={<MissingDataDo />}
             />
           </Routes>
         </div>
