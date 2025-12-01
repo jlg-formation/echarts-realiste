@@ -15,12 +15,24 @@ interface ChartEditorProps {
 const MIN_PANEL_WIDTH = 300;
 const STORAGE_KEY = "chartEditorSplitPosition";
 
+// Determine the base path and label for the breadcrumb based on section
+function getBreadcrumbInfo(section: string): {
+  basePath: string;
+  baseLabel: string;
+} {
+  if (section.toLowerCase() === "pedagogy") {
+    return { basePath: "/pedagogie", baseLabel: "Pédagogie" };
+  }
+  return { basePath: "/examples", baseLabel: "Examples" };
+}
+
 export function ChartEditor({
   title,
   section,
   option,
   notes,
 }: ChartEditorProps) {
+  const { basePath, baseLabel } = getBreadcrumbInfo(section);
   const [currentOption, setCurrentOption] = useState<EChartsOption>(option);
   const [generatedAt, setGeneratedAt] = useState(() => {
     const now = new Date();
@@ -140,18 +152,22 @@ export function ChartEditor({
       {/* Breadcrumb */}
       <div className="border-b border-gray-200 bg-white px-4 py-2 text-sm text-gray-600">
         <Link
-          to="/"
+          to={basePath}
           className="text-gray-400 transition-colors hover:text-blue-600"
         >
-          Examples
+          {baseLabel}
         </Link>
-        <span className="mx-2 text-gray-400">/</span>
-        <Link
-          to={`/#${section.toLowerCase()}`}
-          className="text-gray-400 transition-colors hover:text-blue-600"
-        >
-          {section}
-        </Link>
+        {section.toLowerCase() !== "pedagogy" && (
+          <>
+            <span className="mx-2 text-gray-400">/</span>
+            <Link
+              to={`${basePath}#${section.toLowerCase()}`}
+              className="text-gray-400 transition-colors hover:text-blue-600"
+            >
+              {section}
+            </Link>
+          </>
+        )}
         <span className="mx-2 text-gray-400">/</span>
         <span className="font-medium text-gray-800">{title}</span>
       </div>
