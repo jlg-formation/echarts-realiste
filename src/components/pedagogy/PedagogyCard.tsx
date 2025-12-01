@@ -18,7 +18,7 @@ export default function PedagogyCard({
   return (
     <div className="rounded-xl border border-[#e8e8e8] bg-white p-6 shadow-md">
       {/* Titre et description */}
-      <h3 className="mb-2 text-lg font-semibold text-[var(--viridis-dark)]">
+      <h3 className="mb-2 text-lg font-semibold text-(--viridis-dark)">
         {title}
       </h3>
       <p className="mb-4 text-sm leading-relaxed text-[#444444]">

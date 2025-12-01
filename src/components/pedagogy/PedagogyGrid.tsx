@@ -101,9 +101,9 @@ export default function PedagogyGrid() {
     return (
       <div className="flex h-full items-center justify-center p-6">
         <div className="max-w-md text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--viridis-light)] bg-opacity-10">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-(--viridis-light) bg-opacity-10">
             <svg
-              className="h-8 w-8 text-[var(--viridis-light)]"
+              className="h-8 w-8 text-(--viridis-light)"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -116,7 +116,7 @@ export default function PedagogyGrid() {
               />
             </svg>
           </div>
-          <h2 className="mb-2 text-xl font-semibold text-[var(--viridis-dark)]">
+          <h2 className="mb-2 text-xl font-semibold text-(--viridis-dark)">
             Contenu pédagogique à venir
           </h2>
           <p className="leading-relaxed text-[#444444]">
