@@ -15,14 +15,20 @@ export default function Header() {
       {/* Links */}
       <div className="flex items-center gap-4">
         <Link
+          to="/examples"
+          className="text-sm text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors"
+        >
+          Exemples
+        </Link>
+        <Link
           to="/about"
-          className="text-xs text-gray-400 hover:text-[#21918c] transition-colors"
+          className="text-sm text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors"
         >
           À propos
         </Link>
         <Link
           to="/legal"
-          className="text-xs text-gray-400 hover:text-[#21918c] transition-colors"
+          className="text-sm text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors"
         >
           Mentions légales
         </Link>
@@ -30,7 +36,7 @@ export default function Header() {
           href="https://github.com/jlg-formation/echarts-realiste"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#6e7079] hover:text-[#e43961] transition-colors cursor-pointer"
+          className="text-[var(--viridis-mid)] hover:text-[var(--viridis-light)] transition-colors cursor-pointer"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path
