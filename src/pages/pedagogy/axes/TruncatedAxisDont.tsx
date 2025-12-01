@@ -1,14 +1,21 @@
 import { ChartEditor } from "../../../components/chart-editor/ChartEditor";
 import type { EChartsOption } from "echarts";
 
-// Parts de marché des navigateurs web - T4 2024
-const navigateurs = ["Chrome", "Safari", "Edge", "Firefox", "Opera"];
-const partsMarche = [65.7, 18.2, 5.1, 2.8, 2.1];
+// Taux de satisfaction client par équipe support - T4 2024
+// Toutes les équipes ont un bon score (entre 82% et 94%)
+const equipes = [
+  "Équipe Nord",
+  "Équipe Sud",
+  "Équipe Est",
+  "Équipe Ouest",
+  "Équipe Centre",
+];
+const satisfaction = [94.2, 91.5, 88.7, 85.3, 82.1];
 
 const option: EChartsOption = {
   title: {
-    text: "Parts de marché navigateurs - T4 2024",
-    subtext: "⚠️ Attention : cet axe est tronqué !",
+    text: "Satisfaction client par équipe support - T4 2024",
+    subtext: "⚠️ Attention : cet axe est tronqué (commence à 80%) !",
     left: "center",
     textStyle: {
       fontSize: 16,
@@ -26,29 +33,30 @@ const option: EChartsOption = {
     },
     formatter: (params: unknown) => {
       const p = params as { name: string; value: number }[];
-      return `<b>${p[0].name}</b><br/>Part de marché : <b>${p[0].value} %</b>`;
+      return `<b>${p[0].name}</b><br/>Satisfaction : <b>${p[0].value} %</b>`;
     },
   },
   grid: {
-    left: 80,
+    left: 100,
     right: 40,
     bottom: 60,
     top: 100,
   },
   xAxis: {
     type: "category",
-    data: navigateurs,
+    data: equipes,
     axisLabel: {
-      fontSize: 12,
+      fontSize: 11,
+      rotate: 15,
     },
   },
   yAxis: {
     type: "value",
-    name: "Part de marché (%)",
+    name: "Taux de satisfaction (%)",
     nameLocation: "middle",
-    nameGap: 50,
-    min: 0, // ❌ Axe tronqué à 60% !
-    max: 70,
+    nameGap: 60,
+    min: 80, // ❌ Axe tronqué à 80% !
+    max: 96,
     interval: 2,
     axisLabel: {
       formatter: "{value} %",
@@ -56,19 +64,12 @@ const option: EChartsOption = {
   },
   series: [
     {
-      name: "Part de marché",
+      name: "Satisfaction",
       type: "bar",
-      data: partsMarche.map((value) => ({
+      data: satisfaction.map((value) => ({
         value,
         itemStyle: {
-          color:
-            value > 50
-              ? "#3b82f6"
-              : value > 10
-                ? "#60a5fa"
-                : value > 5
-                  ? "#93c5fd"
-                  : "#bfdbfe",
+          color: value >= 90 ? "#22c55e" : value >= 85 ? "#eab308" : "#ef4444",
           borderRadius: [4, 4, 0, 0],
         },
       })),
@@ -89,29 +90,32 @@ const notes = `
 
 ### ❌ Pourquoi c'est une mauvaise pratique
 
-Un axe Y ne commençant pas à 0 **exagère visuellement les différences** entre les valeurs.
-Dans cet exemple, l'axe commence à 0% mais utilise un intervalle très serré (2%) avec un maximum à 70%, ce qui :
+Un axe Y commençant à 80% au lieu de 0% **exagère visuellement les différences** entre les valeurs :
 
-- **Écrase visuellement** les petites valeurs (Firefox à 2.8%, Opera à 2.1%)
-- **Crée une impression trompeuse** : Chrome semble dominer de manière écrasante
-- **Rend difficile** la comparaison des navigateurs minoritaires entre eux
+**Ce que le graphique suggère visuellement :**
+- L'Équipe Centre (82.1%) semble avoir un score **catastrophique**
+- L'Équipe Nord (94.2%) semble **5x meilleure** que l'Équipe Centre
+- Les couleurs rouge/jaune/vert renforcent cette impression faussée
+
+**La réalité des données :**
+- Toutes les équipes ont un **excellent score** (> 80% de satisfaction)
+- L'écart réel entre la meilleure et la moins bonne n'est que de **12 points**
+- L'Équipe Centre à 82.1% reste une **très bonne performance**
 
 **Problèmes concrets :**
-- Le lecteur ne peut pas facilement estimer que Safari (18.2%) représente presque 1/5 du marché
-- La différence entre Firefox (2.8%) et Opera (2.1%) paraît insignifiante alors qu'elle représente +33%
-- L'échelle tronquée masque l'ordre de grandeur réel des données
+- Un manager pourrait sanctionner injustement l'Équipe Centre
+- L'Équipe Nord pourrait être survalorisée pour un écart marginal
+- Les décisions RH seraient basées sur une perception faussée
 
-**Cas où c'est parfois acceptable :**
-- Données avec une baseline naturelle (ex: température en °C où 0°C n'est pas un minimum)
-- Variations très faibles sur une grande valeur (ex: cours de bourse sur une journée)
-- **À condition d'indiquer clairement** que l'axe est tronqué avec une annotation visible
+### 🔧 Quand un axe tronqué est acceptable
 
-### 🔧 Comment corriger
+- Données boursières (variations de quelques % sur un cours)
+- Températures (0°C n'est pas un minimum naturel)
+- **À condition d'indiquer TRÈS clairement** que l'axe est tronqué
 
-Voir la version "Do" de cet exemple qui utilise :
-- Un axe Y complet de 0% à 100% (ou auto-scalé)
-- Des intervalles adaptés à la plage de données
-- Une représentation visuelle proportionnelle aux valeurs réelles
+### 📊 Solution
+
+Voir la version "Do" avec un axe commençant à 0%.
 `;
 
 export default function TruncatedAxisDont() {

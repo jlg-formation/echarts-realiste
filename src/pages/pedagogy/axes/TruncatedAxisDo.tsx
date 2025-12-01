@@ -1,15 +1,21 @@
 import { ChartEditor } from "../../../components/chart-editor/ChartEditor";
 import type { EChartsOption } from "echarts";
 
-// Parts de marché des navigateurs web - T4 2024 (mêmes données)
-const navigateurs = ["Chrome", "Safari", "Edge", "Firefox", "Opera", "Autres"];
-const partsMarche = [65.7, 18.2, 5.1, 2.8, 2.1, 6.1];
+// Taux de satisfaction client par équipe support - T4 2024
+// Mêmes données que le Don't pour comparaison
+const equipes = [
+  "Équipe Nord",
+  "Équipe Sud",
+  "Équipe Est",
+  "Équipe Ouest",
+  "Équipe Centre",
+];
+const satisfaction = [94.2, 91.5, 88.7, 85.3, 82.1];
 
 const option: EChartsOption = {
   title: {
-    text: "Parts de marché navigateurs - T4 2024",
-    subtext:
-      "🌐 Chrome domine avec 2/3 du marché · Safari profite de l'écosystème Apple",
+    text: "Satisfaction client par équipe support - T4 2024",
+    subtext: "✅ Toutes les équipes au-dessus de 80% · Écart max : 12 points",
     left: "center",
     textStyle: {
       fontSize: 16,
@@ -17,7 +23,7 @@ const option: EChartsOption = {
     },
     subtextStyle: {
       fontSize: 12,
-      color: "#666",
+      color: "#16a34a",
     },
   },
   tooltip: {
@@ -27,31 +33,33 @@ const option: EChartsOption = {
     },
     formatter: (params: unknown) => {
       const p = params as { name: string; value: number }[];
-      const total = partsMarche.reduce((a, b) => a + b, 0);
-      const ratio = ((p[0].value / total) * 100).toFixed(1);
-      return `<b>${p[0].name}</b><br/>Part de marché : <b>${p[0].value} %</b><br/><small>(${ratio}% du graphique)</small>`;
+      const value = p[0].value;
+      const appreciation =
+        value >= 90 ? "Excellent" : value >= 85 ? "Très bien" : "Bien";
+      return `<b>${p[0].name}</b><br/>Satisfaction : <b>${value} %</b><br/>Appréciation : ${appreciation}`;
     },
   },
   grid: {
-    left: 80,
+    left: 100,
     right: 40,
     bottom: 60,
     top: 100,
   },
   xAxis: {
     type: "category",
-    data: navigateurs,
+    data: equipes,
     axisLabel: {
-      fontSize: 12,
+      fontSize: 11,
+      rotate: 15,
     },
   },
   yAxis: {
     type: "value",
-    name: "Part de marché (%)",
+    name: "Taux de satisfaction (%)",
     nameLocation: "middle",
-    nameGap: 50,
-    min: 0,
-    max: 100, // ✅ Axe complet de 0 à 100%
+    nameGap: 60,
+    min: 0, // ✅ Axe commençant à 0
+    max: 100,
     interval: 20,
     axisLabel: {
       formatter: "{value} %",
@@ -59,26 +67,16 @@ const option: EChartsOption = {
   },
   series: [
     {
-      name: "Part de marché",
+      name: "Satisfaction",
       type: "bar",
-      data: partsMarche.map((value, index) => {
-        // Couleurs distinctes pour chaque navigateur
-        const colors = [
-          "#4285F4", // Chrome (bleu Google)
-          "#000000", // Safari (noir Apple)
-          "#0078D4", // Edge (bleu Microsoft)
-          "#FF7139", // Firefox (orange)
-          "#FF1B2D", // Opera (rouge)
-          "#9CA3AF", // Autres (gris)
-        ];
-        return {
-          value,
-          itemStyle: {
-            color: colors[index],
-            borderRadius: [4, 4, 0, 0],
-          },
-        };
-      }),
+      data: satisfaction.map((value) => ({
+        value,
+        itemStyle: {
+          // Toutes les barres en vert car toutes > 80%
+          color: "#22c55e",
+          borderRadius: [4, 4, 0, 0],
+        },
+      })),
       label: {
         show: true,
         position: "top",
@@ -87,6 +85,25 @@ const option: EChartsOption = {
         fontWeight: "bold",
       },
       barWidth: "60%",
+      markLine: {
+        silent: true,
+        symbol: "none",
+        lineStyle: {
+          color: "#9ca3af",
+          type: "dashed",
+        },
+        data: [
+          {
+            yAxis: 80,
+            label: {
+              formatter: "Objectif 80%",
+              position: "insideEndTop",
+              fontSize: 10,
+              color: "#6b7280",
+            },
+          },
+        ],
+      },
     },
   ],
 };
@@ -96,36 +113,38 @@ const notes = `
 
 ### ✅ Pourquoi c'est une bonne pratique
 
-Un axe Y commençant à 0 et allant jusqu'à 100% (pour des pourcentages) permet une **représentation proportionnelle fidèle** des données :
+Un axe Y commençant à 0% permet une **représentation proportionnelle fidèle** :
 
-- **Chrome (65.7%)** occupe visuellement ~2/3 de la hauteur maximale
-- **Safari (18.2%)** est clairement visible comme ~1/5 du marché
-- **Les "petits" navigateurs** restent lisibles et comparables entre eux
+**Ce que le graphique montre correctement :**
+- Toutes les équipes ont des barres de **hauteur similaire** (toutes > 80%)
+- L'écart visuel correspond à l'écart réel (12 points sur 100)
+- Le message est clair : **toutes les équipes performent bien**
 
-**Avantages de cette approche :**
-1. **Honnêteté visuelle** : les proportions correspondent aux valeurs réelles
-2. **Comparaison intuitive** : le lecteur peut estimer les ratios d'un coup d'œil
-3. **Pas de manipulation** : aucune exagération des différences
+**Décisions justes possibles :**
+- Féliciter l'Équipe Nord sans diaboliser l'Équipe Centre
+- Identifier que l'écart est **marginal** et ne justifie pas de mesures drastiques
+- Peut-être chercher à comprendre les bonnes pratiques de l'Équipe Nord pour les partager
 
-### 📊 Analyse de ce graphique
+### 📊 Améliorations apportées
 
-**Insights clés :**
-- 🏆 **Chrome domine** avec près de 2/3 du marché mondial (65.7%)
-- 🍎 **Safari** profite de l'écosystème Apple (iPhone, Mac) avec 18.2%
-- 📉 **Edge** peine à s'imposer malgré son intégration à Windows (5.1%)
-- 🦊 **Firefox** continue de perdre du terrain (2.8%)
+1. **Axe 0-100%** : proportions visuelles correctes
+2. **Couleur uniforme verte** : toutes les équipes sont au-dessus de l'objectif
+3. **Ligne d'objectif à 80%** : montre que tout le monde est au-dessus
+4. **Sous-titre informatif** : résume l'insight ("Écart max : 12 points")
 
-**Message pour les décideurs :**
-- Si vous développez une application web, testez en priorité sur Chrome et Safari
-- Edge et Firefox restent importants pour les utilisateurs professionnels
-- Attention aux différences de comportement entre moteurs (Chromium vs WebKit vs Gecko)
+### 🎯 Message transmis
 
-### 🎨 Bonnes pratiques appliquées
+> "Toutes nos équipes support ont une excellente satisfaction client.
+> L'Équipe Nord est légèrement en tête, mais l'ensemble est homogène."
 
-- **Couleurs identitaires** : chaque navigateur a sa couleur de marque
-- **Catégorie "Autres"** : évite d'avoir trop de petites barres
-- **Labels directs** : les valeurs sont affichées au-dessus des barres
-- **Sous-titre informatif** : résume l'insight principal
+C'est très différent du message trompeur de la version "Don't" !
+
+### 💡 Conseil
+
+Si vous devez vraiment zoomer sur les différences, utilisez plutôt :
+- Un **graphique de variation** (écart par rapport à la moyenne)
+- Un **tableau** avec les valeurs exactes
+- Un **texte explicatif** mentionnant que l'écart est faible
 `;
 
 export default function TruncatedAxisDo() {
