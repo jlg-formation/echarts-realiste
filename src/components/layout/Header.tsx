@@ -6,7 +6,7 @@ export default function Header() {
       {/* Logo */}
       <div className="flex items-center">
         <Link to="/" className="flex items-center cursor-pointer group">
-          <span className="text-xl font-bold bg-gradient-to-r from-[#440154] via-[#21918c] to-[#90d743] bg-clip-text text-transparent group-hover:from-[#90d743] group-hover:via-[#21918c] group-hover:to-[#440154] transition-all duration-500">
+          <span className="text-xl font-bold bg-linear-to-r from-[#440154] via-[#21918c] to-[#90d743] bg-clip-text text-transparent group-hover:from-[#90d743] group-hover:via-[#21918c] group-hover:to-[#440154] transition-all duration-500">
             echarts-réaliste
           </span>
         </Link>
