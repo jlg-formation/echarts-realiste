@@ -71,6 +71,11 @@ import Heatmap20KData from "./pages/heatmap/Heatmap20KData";
 import HeatmapDiscreteMappingOfColor from "./pages/heatmap/HeatmapDiscreteMappingOfColor";
 import CalendarHeatmap from "./pages/heatmap/CalendarHeatmap";
 import ForceLayout from "./pages/graph/ForceLayout";
+// Pedagogy - Axes
+import TruncatedAxisDont from "./pages/pedagogy/axes/TruncatedAxisDont";
+import TruncatedAxisDo from "./pages/pedagogy/axes/TruncatedAxisDo";
+import IrregularIntervalsDont from "./pages/pedagogy/axes/IrregularIntervalsDont";
+import IrregularIntervalsDo from "./pages/pedagogy/axes/IrregularIntervalsDo";
 
 function App() {
   return (
@@ -297,6 +302,23 @@ function App() {
               element={<CalendarHeatmap />}
             />
             <Route path="/graph/force-layout" element={<ForceLayout />} />
+            {/* Pedagogy - Axes */}
+            <Route
+              path="/pedagogy/axes/truncated-axis-dont"
+              element={<TruncatedAxisDont />}
+            />
+            <Route
+              path="/pedagogy/axes/truncated-axis-do"
+              element={<TruncatedAxisDo />}
+            />
+            <Route
+              path="/pedagogy/axes/irregular-intervals-dont"
+              element={<IrregularIntervalsDont />}
+            />
+            <Route
+              path="/pedagogy/axes/irregular-intervals-do"
+              element={<IrregularIntervalsDo />}
+            />
           </Routes>
         </div>
       </div>

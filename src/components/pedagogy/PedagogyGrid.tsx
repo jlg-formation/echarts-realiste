@@ -5,8 +5,6 @@ interface PedagogyExample {
   title: string;
   description: string;
   category: string;
-  dontThumbnail: string;
-  doThumbnail: string;
   dontLink?: string;
   doLink?: string;
 }
@@ -34,7 +32,26 @@ const pedagogyData: Record<string, PedagogyExample[]> = {
   general: [],
   colors: [],
   labels: [],
-  axes: [],
+  axes: [
+    {
+      id: "truncated-axis",
+      title: "Axe Y tronqué",
+      description:
+        "Un axe Y ne commençant pas à 0 exagère visuellement les différences entre les valeurs et peut induire le lecteur en erreur.",
+      category: "axes",
+      dontLink: "/pedagogy/axes/truncated-axis-dont",
+      doLink: "/pedagogy/axes/truncated-axis-do",
+    },
+    {
+      id: "irregular-intervals",
+      title: "Intervalles temporels irréguliers",
+      description:
+        "Omettre des périodes sur l'axe X crée une impression trompeuse de continuité et cache les variations réelles des données.",
+      category: "axes",
+      dontLink: "/pedagogy/axes/irregular-intervals-dont",
+      doLink: "/pedagogy/axes/irregular-intervals-do",
+    },
+  ],
   legend: [],
 };
 
@@ -80,8 +97,6 @@ function Section({ categoryId, examples }: SectionProps) {
             key={example.id}
             title={example.title}
             description={example.description}
-            dontThumbnail={example.dontThumbnail}
-            doThumbnail={example.doThumbnail}
             dontLink={example.dontLink}
             doLink={example.doLink}
           />
