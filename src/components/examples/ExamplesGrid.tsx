@@ -467,7 +467,12 @@ const examplesData: Record<string, Example[]> = {
       category: "graph",
       internalLink: "/graph/force-layout",
     },
-    { id: "graph-grid", title: "Graph on Cartesian", category: "graph" },
+    {
+      id: "graph-grid",
+      title: "Graph on Cartesian",
+      category: "graph",
+      internalLink: "/graph/graph-on-cartesian",
+    },
     { id: "graph-simple", title: "Simple Graph", category: "graph" },
     { id: "graph-force", title: "Force Layout", category: "graph" },
     { id: "graph", title: "Les Miserables", category: "graph" },

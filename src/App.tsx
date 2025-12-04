@@ -71,6 +71,7 @@ import Heatmap20KData from "./pages/heatmap/Heatmap20KData";
 import HeatmapDiscreteMappingOfColor from "./pages/heatmap/HeatmapDiscreteMappingOfColor";
 import CalendarHeatmap from "./pages/heatmap/CalendarHeatmap";
 import ForceLayout from "./pages/graph/ForceLayout";
+import GraphOnCartesian from "./pages/graph/GraphOnCartesian";
 // Pedagogy - Axes
 import TruncatedAxisDont from "./pages/pedagogy/axes/TruncatedAxisDont";
 import TruncatedAxisDo from "./pages/pedagogy/axes/TruncatedAxisDo";
@@ -307,6 +308,10 @@ function App() {
               element={<CalendarHeatmap />}
             />
             <Route path="/graph/force-layout" element={<ForceLayout />} />
+            <Route
+              path="/graph/graph-on-cartesian"
+              element={<GraphOnCartesian />}
+            />
             {/* Pedagogy - Axes */}
             <Route
               path="/pedagogy/axes/truncated-axis-dont"

@@ -2,8 +2,8 @@
 
 ## Progression
 
-- ✅ Traités : 66 / 174
-- 🔲 Restants : 108
+- ✅ Traités : 67 / 174
+- 🔲 Restants : 107
 
 ## Comment traiter un ou plusieurs diagrammes
 
@@ -145,7 +145,7 @@ Le paramètre `count` (valeur par défaut : **1**) spécifie le **nombre de diag
 | Catégorie | Titre                   | Statut     | Sujet métier suggéré            |
 | --------- | ----------------------- | ---------- | ------------------------------- |
 | Graph     | Force Layout            | ✅ Fait    | Réseau social d'une entreprise  |
-| Graph     | Graph on Cartesian      | 🔲 À faire | Dépendances entre microservices |
+| Graph     | Graph on Cartesian      | ✅ Fait    | Dépendances entre microservices |
 | Graph     | Simple Graph            | 🔲 À faire | Organigramme équipe projet      |
 | Graph     | Force Layout            | 🔲 À faire | Cartographie écosystème startup |
 | Graph     | Les Miserables          | 🔲 À faire | Réseau de personnages série TV  |
